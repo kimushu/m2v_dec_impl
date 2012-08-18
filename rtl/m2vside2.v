@@ -5,10 +5,10 @@
 
 module m2vside2 #(
 	parameter
-	MVH_WIDTH,
-	MVV_WIDTH,
-	MBX_WIDTH,
-	MBY_WIDTH
+	MVH_WIDTH = 16,
+	MVV_WIDTH = 15,
+	MBX_WIDTH = 6,
+	MBY_WIDTH = 5
 ) (
 	input        clk,
 	input        reset_n,

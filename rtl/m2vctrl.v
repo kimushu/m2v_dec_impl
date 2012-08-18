@@ -5,12 +5,12 @@
 
 module m2vctrl #(
 	parameter
-	MEM_WIDTH,
-	MVH_WIDTH,
-	MVV_WIDTH,
-	MBX_WIDTH,
-	MBY_WIDTH,
-	MBX_ADDER
+	MEM_WIDTH = 21,
+	MVH_WIDTH = 16,
+	MVV_WIDTH = 15,
+	MBX_WIDTH = 6,
+	MBY_WIDTH = 5,
+	MBX_ADDER = 6
 ) (
 	input         clk,
 	input         reset_n,

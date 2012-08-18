@@ -90,7 +90,7 @@ EOD
 	puts(<<EOD) if params.any?
 #(
 	parameter
-#{params.map {|p| "\t#{p}"}.join(",\n")}
+#{params.map {|p| "\t#{p} = 0"}.join(",\n")}
 )
 EOD
 exports = []
@@ -133,9 +133,9 @@ puts(<<EOD)
 EOD
 modules.each {|m|
 	puts
-	puts("#{m[:name]} u_#{m[:name]}")
-	puts("#(\n#{m[:params].map {|p| "\t.#{p}(#{p})"}.join(",\n")}\n)") if m[:params].any?
-	puts("(")
+	print("#{m[:name]}")
+	print(" #(\n#{m[:params].map {|p| "\t.#{p}(#{p})"}.join(",\n")}\n)") if m[:params].any?
+	puts(" u_#{m[:name]} (")
 	maxlen = m[:wires].map {|wn| wn.size }.max
 	puts m[:wires].map {|wn|
 		i = wires.index {|w| w[:name] == wn }

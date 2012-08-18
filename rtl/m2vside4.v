@@ -5,8 +5,8 @@
 
 module m2vside4 #(
 	parameter
-	MBX_WIDTH,
-	MBY_WIDTH
+	MBX_WIDTH = 6,
+	MBY_WIDTH = 5
 ) (
 	input        clk,
 	input        reset_n,

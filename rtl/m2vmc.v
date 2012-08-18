@@ -5,11 +5,11 @@
 
 module m2vmc #(
 	parameter
-	MEM_WIDTH,
-	MVH_WIDTH,
-	MVV_WIDTH,
-	MBX_WIDTH,
-	MBY_WIDTH
+	MEM_WIDTH = 21,
+	MVH_WIDTH = 16,
+	MVV_WIDTH = 15,
+	MBX_WIDTH = 6,
+	MBY_WIDTH = 5
 ) (
 	input         clk,
 	input         reset_n,

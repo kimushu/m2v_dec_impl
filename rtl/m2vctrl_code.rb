@@ -22,7 +22,7 @@ module Assembler # {{{
 	# Verilog ソースから定数を取得
 	#
 	VERILOG_SOURCE.each {|f| load_verilog_constants(f) }
-	INST_WIDTH = DATA_WIDTH + G_WIDTH
+	# INST_WIDTH = DATA_WIDTH + G_WIDTH
 	REGISTERS = (0...(1<<RSEL_WIDTH)).map {|n| eval("R#{n} = :r#{n}") }
 
 	#------------------------------------------------------------
