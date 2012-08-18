@@ -1,0 +1,6 @@
+m2vctrl_code.{mif,log}
+m2vidct_fram.{mif,log}
+m2vidct_rom.{mif,log}
+m2visdq_cmem.{mif,log}
+m2vmc_fetch.{mif,log}
+m2vvld_table.{mif,log}
