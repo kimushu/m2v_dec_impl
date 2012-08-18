@@ -1,2 +1,6 @@
 db
 incremental_db
+.qsys_edit
+*.rpt
+*.smsg
+*.summary
