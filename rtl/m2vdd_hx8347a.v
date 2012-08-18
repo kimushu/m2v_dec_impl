@@ -4,7 +4,10 @@
 //================================================================================
 
 module m2vdd_hx8347a #(
-	`include "m2vcfg.vh"
+	parameter
+	MEM_WIDTH = 21,
+	MBX_WIDTH = 6,
+	MBY_WIDTH = 5
 ) (
 	input         clk,
 	input         reset_n,

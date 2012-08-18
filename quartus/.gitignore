@@ -4,3 +4,8 @@ incremental_db
 *.rpt
 *.smsg
 *.summary
+*.done
+*.jdi
+*.pin
+*.pof
+*.sof

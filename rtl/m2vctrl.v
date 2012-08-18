@@ -427,7 +427,7 @@ always @(posedge clk or negedge reset_n)
 	if(~reset_n)
 		{max_mby_r, max_mbx_r} <= 0;
 	else if(custom_inout_r && ioaddr_w == IO_MAX_MBXY)
-		{max_mby_r, max_mbx_r} <= {adata_r[(MBY_WIDTH+8-1):8], adata_r[(MBX_WIDTH-1):0];
+		{max_mby_r, max_mbx_r} <= {adata_r[(MBY_WIDTH+8-1):8], adata_r[(MBX_WIDTH-1):0]};
 
 always @(posedge clk or negedge reset_n)
 	if(~reset_n)

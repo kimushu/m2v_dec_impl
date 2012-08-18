@@ -77,22 +77,6 @@ set_parameter_property MEM_WIDTH UNITS None
 set_parameter_property MEM_WIDTH ALLOWED_RANGES -2147483648:2147483647
 set_parameter_property MEM_WIDTH AFFECTS_GENERATION false
 set_parameter_property MEM_WIDTH HDL_PARAMETER true
-add_parameter MVH_WIDTH INTEGER 16
-set_parameter_property MVH_WIDTH DEFAULT_VALUE 16
-set_parameter_property MVH_WIDTH DISPLAY_NAME MVH_WIDTH
-set_parameter_property MVH_WIDTH TYPE INTEGER
-set_parameter_property MVH_WIDTH UNITS None
-set_parameter_property MVH_WIDTH ALLOWED_RANGES -2147483648:2147483647
-set_parameter_property MVH_WIDTH AFFECTS_GENERATION false
-set_parameter_property MVH_WIDTH HDL_PARAMETER true
-add_parameter MVV_WIDTH INTEGER 15
-set_parameter_property MVV_WIDTH DEFAULT_VALUE 15
-set_parameter_property MVV_WIDTH DISPLAY_NAME MVV_WIDTH
-set_parameter_property MVV_WIDTH TYPE INTEGER
-set_parameter_property MVV_WIDTH UNITS None
-set_parameter_property MVV_WIDTH ALLOWED_RANGES -2147483648:2147483647
-set_parameter_property MVV_WIDTH AFFECTS_GENERATION false
-set_parameter_property MVV_WIDTH HDL_PARAMETER true
 add_parameter MBX_WIDTH INTEGER 6
 set_parameter_property MBX_WIDTH DEFAULT_VALUE 6
 set_parameter_property MBX_WIDTH DISPLAY_NAME MBX_WIDTH
@@ -109,14 +93,6 @@ set_parameter_property MBY_WIDTH UNITS None
 set_parameter_property MBY_WIDTH ALLOWED_RANGES -2147483648:2147483647
 set_parameter_property MBY_WIDTH AFFECTS_GENERATION false
 set_parameter_property MBY_WIDTH HDL_PARAMETER true
-add_parameter MBX_ADDER INTEGER 6
-set_parameter_property MBX_ADDER DEFAULT_VALUE 6
-set_parameter_property MBX_ADDER DISPLAY_NAME MBX_ADDER
-set_parameter_property MBX_ADDER TYPE INTEGER
-set_parameter_property MBX_ADDER UNITS None
-set_parameter_property MBX_ADDER ALLOWED_RANGES -2147483648:2147483647
-set_parameter_property MBX_ADDER AFFECTS_GENERATION false
-set_parameter_property MBX_ADDER HDL_PARAMETER true
 # | 
 # +-----------------------------------
 

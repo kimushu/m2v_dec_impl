@@ -44,19 +44,19 @@
          type = "long";
       }
    }
-   element m2vdd_hx8347a_0.ctrl
-   {
-      datum baseAddress
-      {
-         value = "24576";
-         type = "long";
-      }
-   }
    element hexdisp_0.ctrl
    {
       datum baseAddress
       {
          value = "12288";
+         type = "long";
+      }
+   }
+   element m2vdd_hx8347a_0.ctrl
+   {
+      datum baseAddress
+      {
+         value = "24576";
          type = "long";
       }
    }
@@ -177,14 +177,6 @@
          type = "int";
       }
    }
-   element pio_0.s1
-   {
-      datum baseAddress
-      {
-         value = "12800";
-         type = "long";
-      }
-   }
    element timer_0.s1
    {
       datum baseAddress
@@ -201,6 +193,14 @@
          type = "long";
       }
    }
+   element pio_0.s1
+   {
+      datum baseAddress
+      {
+         value = "12800";
+         type = "long";
+      }
+   }
    element sdram_0
    {
       datum _sortIndex
@@ -210,7 +210,7 @@
       }
       datum megawizard_uipreferences
       {
-         value = "{}";
+         value = "{output_language=VERILOG, output_directory=/home/shuta/projects/m2v_dec_impl/quartus}";
          type = "String";
       }
    }
@@ -274,10 +274,10 @@
  <parameter name="globalResetBus" value="false" />
  <parameter name="hdlLanguage" value="VERILOG" />
  <parameter name="maxAdditionalLatency" value="1" />
- <parameter name="projectName" value="eval_m2vdec_de0.qpf" />
+ <parameter name="projectName" value="m2v_dec_impl.qpf" />
  <parameter name="sopcBorderPoints" value="false" />
  <parameter name="systemHash" value="1" />
- <parameter name="timeStamp" value="1345043245784" />
+ <parameter name="timeStamp" value="1345274654115" />
  <parameter name="useTestBenchNamingPattern" value="false" />
  <instanceScript></instanceScript>
  <interface name="clk" internal="clk_0.clk_in" type="clock" dir="end" />
@@ -605,7 +605,7 @@
    enabled="1"
    name="ram_0">
   <parameter name="allowInSystemMemoryContentEditor" value="false" />
-  <parameter name="autoInitializationFileName">eval_m2vdec_de0_sys_ram_0</parameter>
+  <parameter name="autoInitializationFileName" value="demo_de0_sys_ram_0" />
   <parameter name="blockType" value="AUTO" />
   <parameter name="dataWidth" value="32" />
   <parameter name="deviceFamily" value="Cyclone III" />
