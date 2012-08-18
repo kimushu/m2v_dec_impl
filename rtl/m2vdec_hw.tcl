@@ -12,7 +12,6 @@
 # | /home/shuta/projects/m2v_dec_impl/ip/m2vdec.v
 # | 
 # |    ./m2vdec.v syn, sim
-# |    ./m2vcfg.vh syn, sim
 # |    ./m2vutils.vh syn, sim
 # |    ./m2vctrl.v syn, sim
 # |    ./m2vctrl_code.qip syn, sim
@@ -91,7 +90,6 @@ set_module_property FIX_110_VIP_PATH false
 # | files
 # | 
 add_file m2vdec.v {SYNTHESIS SIMULATION}
-add_file m2vcfg.vh {SYNTHESIS SIMULATION}
 add_file m2vutils.vh {SYNTHESIS SIMULATION}
 add_file m2vctrl.v {SYNTHESIS SIMULATION}
 add_file m2vctrl_code.qip {SYNTHESIS SIMULATION}

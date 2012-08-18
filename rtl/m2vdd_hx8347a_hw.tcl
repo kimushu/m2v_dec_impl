@@ -12,7 +12,6 @@
 # | /home/shuta/projects/m2v_dec_impl/ip/m2vdd_hx8347a.v
 # | 
 # |    ./m2vdd_hx8347a.v syn, sim
-# |    ./m2vcfg.vh syn, sim
 # |    ./m2vutils.vh syn, sim
 # |    ./ycbcr2rgb.v syn, sim
 # |    ./m2vdd_hx8347a_buf.qip syn, sim
@@ -56,7 +55,6 @@ set_module_property FIX_110_VIP_PATH false
 # | files
 # | 
 add_file m2vdd_hx8347a.v {SYNTHESIS SIMULATION}
-add_file m2vcfg.vh {SYNTHESIS SIMULATION}
 add_file m2vutils.vh {SYNTHESIS SIMULATION}
 add_file ycbcr2rgb.v {SYNTHESIS SIMULATION}
 add_file m2vdd_hx8347a_buf.qip {SYNTHESIS SIMULATION}
