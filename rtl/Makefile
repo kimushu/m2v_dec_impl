@@ -1,3 +1,9 @@
+#================================================================================
+# Makefile for rtl
+#
+# 1) Generate top module (m2vdec.v) from sub modules
+# 2) Generate MIF files
+#================================================================================
 
 Q ?= @
 MIFS = m2vctrl_code m2vidct_fram m2vidct_rom m2visdq_cmem m2vmc_fetch m2vvld_table
