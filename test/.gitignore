@@ -1,3 +1,6 @@
 /work
 obj
 transcript
+vsim.wlf
+*.mif
+*.ver
