@@ -113,11 +113,12 @@ $(DUMP_DIR):
 dir.ref: $(REF_DIR)
 
 $(REF_DIR):
-	@echo **** Please create symbolic link to reference data directory generated
-	@echo **** by software decoder \(m2v_dec_eval\) at \`$@\'.
-	@echo **** (This is NOT automatically executed by Makefiles)
-	@echo ****
-	@echo **** For example: ln -s \<project_root\>/m2v_dec_eval/ref_testmovie1.mpg.vs $@
+	@echo "****"
+	@echo "**** Please create symbolic link to reference data directory generated"
+	@echo "**** by software decoder (m2v_dec_eval) at \`$@'."
+	@echo "**** (This is NOT automatically executed by Makefiles)"
+	@echo "**** For example: ln -s <project_root>/m2v_dec_eval/ref_testmovie1.mpg.vs $@"
+	@echo "****"
 	@test
 
 # MIF generation & create symbolic links
@@ -134,11 +135,11 @@ mif.link: $(notdir $(wildcard $(RTL_DIR)/*.mif))
 
 # Execute simulation
 .PHONY: sim wave
-sim: compile mif
+sim: compile mif dir.ref
 	$(Q)vsim $(VSFLAGS) -do "run -all; quit -force" \
 		$(addprefix -sv_lib ,$(MODULES_DPI_C)) $(MODULES_DPI_C)
 
-wave: compile mif
+wave: compile mif dir.ref
 	$(Q)vsim $(VSFLAGS) -do "$(firstword $(MODULES_DPI_C)).do" \
 		$(addprefix -sv_lib ,$(MODULES_DPI_C)) $(MODULES_DPI_C)
 
