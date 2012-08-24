@@ -60,8 +60,6 @@ module m2vmc #(
 	output        fptr_number
 );
 
-`include "m2vutils.vh"
-
 localparam MBXY_WIDTH = (MBX_WIDTH+MBY_WIDTH);
 
 //--------------------------------------------------------------------------------
@@ -151,7 +149,7 @@ always @(posedge clk or negedge reset_n)
 		rxcnt_r <= 3'd3;
 	else if(softreset || state_r == ST_MIX || state_r == ST_IDLE)
 		rxcnt_r <= 3'd3;
-	else if((rxcnt_r[2] & ~rycnt_r[3] & ~fbuf_waitrequest) || state_r == ST_CALCREF)
+	else if((rxcnt_r[2] & ~rycnt_r[3] & ~fbuf_waitrequest) || state_r == ST_CALCREF || state_r == ST_PREFETCH)
 		rxcnt_r <= 3'd0;
 	else if(~fbuf_waitrequest)
 		rxcnt_r <= rxcnt_r + 1'b1;
@@ -202,13 +200,19 @@ always @(posedge clk or negedge reset_n)
 
 assign fptr_fetch_wait_w = use_1d_fptr_r ? fptr_fetch_1d_r : fptr_fetch_w;
 
-assign fb_fraddr_w = s3_block[2] ?
-	FBADDR_CH(fptr_fetch_wait_w, s3_block[0],
-				xref_1d_r[(MBX_WIDTH+3-1):3], xref_1d_r[2:0],
-				yref_1d_r[(MBY_WIDTH+4-1):4], yref_1d_r[3:0]) :
-	FBADDR_LU(fptr_fetch_wait_w,
-				xref_1d_r[(MBX_WIDTH+3-1):3], xref_1d_r[2:0],
-				yref_1d_r[(MBY_WIDTH+4-1):4], yref_1d_r[3:0]);
+m2vfbagen #(
+	.MEM_WIDTH (MEM_WIDTH),
+	.MBX_WIDTH (MBX_WIDTH),
+	.MBY_WIDTH (MBY_WIDTH)
+) u_fbagen_r (
+	.block (s3_block),
+	.frame (fptr_fetch_wait_w),
+	.mbx   (xref_1d_r[(MBX_WIDTH+3-1):3]),
+	.x2    (xref_1d_r[2:0]),
+	.mby   (yref_1d_r[(MBY_WIDTH+4-1):4]),
+	.y     (yref_1d_r[3:0]),
+	.addr  (fb_fraddr_w)
+);
 
 always @(posedge clk or negedge reset_n)
 	if(~reset_n)
@@ -447,13 +451,19 @@ always @(posedge clk or negedge reset_n)
 
 assign mwmbyx_w = {s4_mb_y, s4_mb_x};
 
-assign fb_mwaddr_w = s4_block[2] ?
-	FBADDR_CH(fptr_mix_w, s4_block[0],
-				s4_mb_x, {mwaddr_r[1:0], 1'b0},
-				s4_mb_y, {mwaddr_r[4:2], 1'b0}) :
-	FBADDR_LU(fptr_mix_w,
-				s4_mb_x, {s4_block[0], mwaddr_r[1:0]},
-				s4_mb_y, {s4_block[1], mwaddr_r[4:2]});
+m2vfbagen #(
+	.MEM_WIDTH (MEM_WIDTH),
+	.MBX_WIDTH (MBX_WIDTH),
+	.MBY_WIDTH (MBY_WIDTH)
+) u_fbagen_w (
+	.block (s4_block),
+	.frame (fptr_mix_w),
+	.mbx   (s4_mb_x),
+	.x2    (s4_block[2] ? {mwaddr_r[1:0], 1'b0} : {s4_block[0], mwaddr_r[1:0]}),
+	.mby   (s4_mb_y),
+	.y     (s4_block[2] ? {mwaddr_r[4:2], 1'b0} : {s4_block[1], mwaddr_r[4:2]}),
+	.addr  (fb_mwaddr_w)
+);
 
 assign fptr_update_w = s4_block[2] & s4_block[0] & mrlast_r & ~fbuf_waitrequest;
 

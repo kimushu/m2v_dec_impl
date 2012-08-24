@@ -54,8 +54,6 @@ module m2vdd_hx8347a #(
 `define R_EPL		8'h09	// Row address End (Lower byte)
 `define R_WD		8'h22	// Write Data (the same address as RD)
 
-`include "m2vutils.vh"
-
 localparam
 	B_START   = 31,
 	B_WRITE   = 30,
@@ -241,9 +239,20 @@ always @(posedge clk or negedge reset_n)
 assign next_frpxx2_w = {1'b0, frpxx2_r} + 1'b1;
 assign next_frpxy_w = {1'b0, frpxy_r} + 1'b1;
 
-assign fbuf_address = frchroma_r ?
-	FBADDR_CH(frpage_r, frpxx2_r[0], mbx_r, frpxx2_r, mby_r, {frpxy_r[2:0], 1'bx}) :
-	FBADDR_LU(frpage_r,              mbx_r, frpxx2_r, mby_r, frpxy_r);
+m2vfbagen #(
+	.MEM_WIDTH (MEM_WIDTH),
+	.MBX_WIDTH (MBX_WIDTH),
+	.MBY_WIDTH (MBY_WIDTH)
+) u_fbagen (
+	.block ({frchroma_r, 1'b0, frpxx2_r[0]}),
+	.frame (frpage_r),
+	.mbx   (mbx_r),
+	.x2    (frpxx2_r),
+	.mby   (mby_r),
+	.y     (frchroma_r ? {frpxy_r[2:0], 1'b0} : frpxy_r),
+	.addr  (fbuf_address)
+);
+
 assign fbuf_read = (state_r == ST_FBREAD);
 assign fbuf_write = 1'b0;
 assign fbuf_writedata = 16'bx;
