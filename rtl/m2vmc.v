@@ -524,6 +524,7 @@ assign {last_fpaddrb_w, next_fpaddrb_w} = {1'b0, fptr_addrb_r} + 1'b1;
 
 always @*
 	case(state_r)
+	ST_PREMIX,
 	ST_MIX:		fptr_addra_w = {1'b0, mwmbyx_w};
 	ST_PREFETCH,
 	ST_FETCH:	fptr_addra_w = {1'b1, frmbyx_w};

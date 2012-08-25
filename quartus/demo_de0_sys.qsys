@@ -177,14 +177,6 @@
          type = "int";
       }
    }
-   element timer_0.s1
-   {
-      datum baseAddress
-      {
-         value = "8192";
-         type = "long";
-      }
-   }
    element ram_0.s1
    {
       datum baseAddress
@@ -201,6 +193,14 @@
          type = "long";
       }
    }
+   element timer_0.s1
+   {
+      datum baseAddress
+      {
+         value = "8192";
+         type = "long";
+      }
+   }
    element sdram_0
    {
       datum _sortIndex
@@ -210,7 +210,7 @@
       }
       datum megawizard_uipreferences
       {
-         value = "{output_language=VERILOG, output_directory=/home/shuta/projects/m2v_dec_impl/quartus}";
+         value = "{}";
          type = "String";
       }
    }
@@ -277,7 +277,7 @@
  <parameter name="projectName" value="m2v_dec_impl.qpf" />
  <parameter name="sopcBorderPoints" value="false" />
  <parameter name="systemHash" value="1" />
- <parameter name="timeStamp" value="1345274654115" />
+ <parameter name="timeStamp" value="1345646284998" />
  <parameter name="useTestBenchNamingPattern" value="false" />
  <instanceScript></instanceScript>
  <interface name="clk" internal="clk_0.clk_in" type="clock" dir="end" />
@@ -671,7 +671,7 @@
   <parameter name="CHIPSELECT_THROUGH_READLATENCY" value="0" />
   <parameter name="IS_MEMORY_DEVICE" value="1" />
   <parameter name="MODULE_ASSIGNMENT_KEYS">embeddedsw.configuration.hwClassnameDriverSupportList,embeddedsw.configuration.hwClassnameDriverSupportDefault,embeddedsw.CMacro.SETUP_VALUE,embeddedsw.CMacro.WAIT_VALUE,embeddedsw.CMacro.HOLD_VALUE,embeddedsw.CMacro.TIMING_UNITS,embeddedsw.CMacro.SIZE,embeddedsw.memoryInfo.MEM_INIT_DATA_WIDTH,embeddedsw.memoryInfo.HAS_BYTE_LANE,embeddedsw.memoryInfo.IS_FLASH,embeddedsw.memoryInfo.GENERATE_DAT_SYM,embeddedsw.memoryInfo.GENERATE_FLASH,embeddedsw.memoryInfo.DAT_SYM_INSTALL_DIR,embeddedsw.memoryInfo.FLASH_INSTALL_DIR</parameter>
-  <parameter name="MODULE_ASSIGNMENT_VALUES">altera_avalon_lan91c111:altera_avalon_cfi_flash,altera_avalon_cfi_flash,35,70,35,ns,4194304u,16,1,1,1,1,SIM_DIR,APP_DIR</parameter>
+  <parameter name="MODULE_ASSIGNMENT_VALUES">altera_avalon_lan91c111:altera_avalon_cfi_flash,altera_avalon_cfi_flash,35,70,35,ns,1048576u,16,1,1,1,1,SIM_DIR,APP_DIR</parameter>
   <parameter name="INTERFACE_ASSIGNMENT_KEYS">embeddedsw.configuration.isFlash,embeddedsw.configuration.isMemoryDevice,embeddedsw.configuration.isNonVolatileStorage</parameter>
   <parameter name="INTERFACE_ASSIGNMENT_VALUES" value="1,1,1" />
   <parameter name="CLOCK_RATE" value="100000000" />
@@ -726,11 +726,8 @@
  </module>
  <module kind="m2vdd_hx8347a" version="1.0" enabled="1" name="m2vdd_hx8347a_0">
   <parameter name="MEM_WIDTH" value="23" />
-  <parameter name="MVH_WIDTH" value="16" />
-  <parameter name="MVV_WIDTH" value="15" />
   <parameter name="MBX_WIDTH" value="6" />
   <parameter name="MBY_WIDTH" value="5" />
-  <parameter name="MBX_ADDER" value="6" />
   <parameter name="AUTO_CLOCK_CLOCK_RATE" value="100000000" />
   <parameter name="AUTO_LCD_CLK_CLOCK_RATE" value="20000000" />
  </module>
@@ -749,7 +746,7 @@
   <parameter name="clockRate" value="100000000" />
   <parameter name="columnWidth" value="8" />
   <parameter name="dataWidth" value="16" />
-  <parameter name="generateSimulationModel" value="false" />
+  <parameter name="generateSimulationModel" value="true" />
   <parameter name="initNOPDelay" value="0.0" />
   <parameter name="initRefreshCommands" value="2" />
   <parameter name="masteredTristateBridgeSlave" value="" />

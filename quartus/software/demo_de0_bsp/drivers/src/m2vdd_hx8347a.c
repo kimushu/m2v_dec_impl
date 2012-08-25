@@ -8,9 +8,9 @@
 #include "sys/alt_alarm.h"
 
 static void delay(int ms)
-{
+{/*
 	int end = alt_nticks() + ms + 1;
-	while(alt_nticks() < end);
+	while(alt_nticks() < end);*/
 }
 
 //--------------------------------------------------------------------------------

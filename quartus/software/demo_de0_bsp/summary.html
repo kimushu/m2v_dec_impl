@@ -16,16 +16,16 @@
 <td width="20%" bgcolor="#77BBFF">CPU:</td><td>nios2_qsys_0</td>
 </tr>
 <tr mode="wrap">
-<td width="20%" bgcolor="#77BBFF">BSP Settings File:</td><td>./settings.bsp</td>
+<td width="20%" bgcolor="#77BBFF">BSP Settings File:</td><td>settings.bsp</td>
 </tr>
 <tr mode="wrap">
 <td width="20%" bgcolor="#77BBFF">BSP Version:</td><td>default</td>
 </tr>
 <tr mode="wrap">
-<td width="20%" bgcolor="#77BBFF">BSP Generated On:</td><td>2012/08/18 18:36:55</td>
+<td width="20%" bgcolor="#77BBFF">BSP Generated On:</td><td>2012/08/24 21:58:21</td>
 </tr>
 <tr mode="wrap">
-<td width="20%" bgcolor="#77BBFF">BSP Generated Timestamp:</td><td>1345282615618</td>
+<td width="20%" bgcolor="#77BBFF">BSP Generated Timestamp:</td><td>1345813101098</td>
 </tr>
 <tr mode="wrap">
 <td width="20%" bgcolor="#77BBFF">BSP Generated Location:</td><td>/home/shuta/projects/m2v_dec_impl/quartus/software/demo_de0_bsp</td>
@@ -81,6 +81,18 @@
 <tr bgcolor="#77BBFF" mode="wrap">
 <th align="left" width="15%">Region</th><th align="left" width="40%">Address Range</th><th align="left" width="15%">Size</th><th align="left" width="15%">Memory</th><th align="left" width="15%">Offset</th>
 </tr>
+<tr mode="wrap" STYLE="display: 'block'; font-family: 'courier'; color: '#000000'; font-weight: '500'; font-size: '14'; margin-top: '10pt'; text-align: 'left'">
+<td>testdata</td><td>0x00500000 - 0x005FFFFF</td><td>1048576</td><td>rom_0</td><td>1048576</td>
+</tr>
+<tr mode="wrap" STYLE="display: 'block'; font-family: 'courier'; color: '#000000'; font-weight: '500'; font-size: '14'; margin-top: '10pt'; text-align: 'left'">
+<td>rom_0</td><td>0x00400020 - 0x004FFFFF</td><td>1048544</td><td>rom_0</td><td>32</td>
+</tr>
+<tr mode="wrap" STYLE="display: 'block'; font-family: 'courier'; color: '#000000'; font-weight: '500'; font-size: '14'; margin-top: '10pt'; text-align: 'left'">
+<td>reset</td><td>0x00400000 - 0x0040001F</td><td>32</td><td>rom_0</td><td>0</td>
+</tr>
+<tr mode="wrap" STYLE="display: 'block'; font-family: 'courier'; color: '#000000'; font-weight: '500'; font-size: '14'; margin-top: '10pt'; text-align: 'left'">
+<td>ram_0</td><td>0x01000000 - 0x01001FFF</td><td>8192</td><td>ram_0</td><td>0</td>
+</tr>
 </table>
 <br>
 <br>
@@ -90,10 +102,10 @@
 <th align="left" width="50%">Section</th><th align="left" width="50%">Region</th>
 </tr>
 <tr mode="wrap" STYLE="display: 'block'; font-family: 'courier'; color: '#000000'; font-weight: '500'; font-size: '14'; margin-top: '10pt'; text-align: 'left'">
-<td>.text</td><td>ram_0</td>
+<td>.text</td><td>rom_0</td>
 </tr>
 <tr mode="wrap" STYLE="display: 'block'; font-family: 'courier'; color: '#000000'; font-weight: '500'; font-size: '14'; margin-top: '10pt'; text-align: 'left'">
-<td>.rodata</td><td>ram_0</td>
+<td>.rodata</td><td>rom_0</td>
 </tr>
 <tr mode="wrap" STYLE="display: 'block'; font-family: 'courier'; color: '#000000'; font-weight: '500'; font-size: '14'; margin-top: '10pt'; text-align: 'left'">
 <td>.rwdata</td><td>ram_0</td>
@@ -106,6 +118,9 @@
 </tr>
 <tr mode="wrap" STYLE="display: 'block'; font-family: 'courier'; color: '#000000'; font-weight: '500'; font-size: '14'; margin-top: '10pt'; text-align: 'left'">
 <td>.stack</td><td>ram_0</td>
+</tr>
+<tr mode="wrap" STYLE="display: 'block'; font-family: 'courier'; color: '#000000'; font-weight: '500'; font-size: '14'; margin-top: '10pt'; text-align: 'left'">
+<td>.testdata</td><td>testdata</td>
 </tr>
 </table>
 <h3>Settings</h3>
@@ -471,7 +486,7 @@
 <td width="20%">Default Value:</td><td>0</td>
 </tr>
 <tr>
-<td width="20%">Value:</td><td>0</td>
+<td width="20%">Value:</td><td>1</td>
 </tr>
 <tr>
 <td width="20%">Type:</td><td>Boolean</td>
@@ -1929,7 +1944,7 @@
 <td width="20%">Default Value:</td><td>none</td>
 </tr>
 <tr>
-<td width="20%">Value:</td><td>none</td>
+<td width="20%">Value:</td><td>timer_0</td>
 </tr>
 <tr>
 <td width="20%">Type:</td><td>UnquotedString</td>

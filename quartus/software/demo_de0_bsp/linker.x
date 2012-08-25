@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2_qsys_0' in SOPC Builder design 'demo_de0_sys'
  * SOPC Builder design path: ../../demo_de0_sys.sopcinfo
  *
- * Generated: Sat Aug 18 18:36:56 JST 2012
+ * Generated: Thu Aug 23 21:32:22 JST 2012
  */
 
 /*
@@ -51,7 +51,8 @@
 MEMORY
 {
     reset : ORIGIN = 0x400000, LENGTH = 32
-    rom_0 : ORIGIN = 0x400020, LENGTH = 4194272
+    rom_0 : ORIGIN = 0x400020, LENGTH = 1048544
+    testdata : ORIGIN = 0x500000, LENGTH = 1048576
     ram_0 : ORIGIN = 0x1000000, LENGTH = 8192
 }
 
@@ -112,6 +113,14 @@ SECTIONS
     } > rom_0
 
     PROVIDE (__flash_exceptions_start = LOADADDR(.exceptions));
+
+    .testdata :
+    {
+        PROVIDE (_alt_partition_testdata_start = ABSOLUTE(.));
+        *(.testdata .testdata.*)
+        . = ALIGN(4);
+        PROVIDE (_alt_partition_testdata_end = ABSOLUTE(.));
+    } > testdata
 
     .text :
     {
@@ -205,7 +214,7 @@ SECTIONS
         PROVIDE (__DTOR_END__ = ABSOLUTE(.));
         KEEP (*(.jcr))
         . = ALIGN(4);
-    } > ram_0 = 0x3a880100 /* Nios II NOP instruction */
+    } > rom_0 = 0x3a880100 /* Nios II NOP instruction */
 
     .rodata :
     {
@@ -215,7 +224,7 @@ SECTIONS
         *(.rodata1)
         . = ALIGN(4);
         PROVIDE (__ram_rodata_end = ABSOLUTE(.));
-    } > ram_0
+    } > rom_0
 
     PROVIDE (__flash_rodata_start = LOADADDR(.rodata));
 

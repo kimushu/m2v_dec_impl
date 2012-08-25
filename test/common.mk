@@ -2,6 +2,9 @@
 # Common makefile for testing
 #================================================================================
 
+# Default target
+compile:
+
 # Directories
 TEST_ROOT = $(dir $(word $(words $(MAKEFILE_LIST)),$(MAKEFILE_LIST)))
 RTL_DIR   = $(TEST_ROOT)../rtl
@@ -10,14 +13,11 @@ OBJ_DIR   = ./obj
 DUMP_DIR  = ./dump
 REF_DIR   = $(TEST_ROOT)ref
 
-ALTERA_ROOT = /opt/altera/11.1sp2
-SOPC_ROOT   = $(ALTERA_ROOT)/ip/altera/sopc_builder_ip
-
 vpath %.v $(RTL_DIR)
 
 # Environments
+include $(TEST_ROOT)altera.mk
 Q ?= @
-VS_LIBS += altera_mf_ver lpm_ver
 VLFLAGS += -lint -quiet +incdir+$(RTL_DIR) +define+SIM=1
 VSFLAGS = -lib $(WORK_DIR) $(addprefix -L ,$(VS_LIBS)) \
 			-GREF_DIR=\"$(REF_DIR)\" -GDUMP_DIR=\"$(DUMP_DIR)\" \
@@ -133,13 +133,17 @@ mif.link: $(notdir $(wildcard $(RTL_DIR)/*.mif))
 %.mif: $(RTL_DIR)/%.mif
 	$(Q)ln -s $< $@
 
+# Simulation environments
+.PHONY: env
+env: env.altera
+
 # Execute simulation
 .PHONY: sim wave
-sim: compile mif dir.ref
+sim: env compile mif dir.ref
 	$(Q)vsim $(VSFLAGS) -do "run -all; quit -force" \
 		$(addprefix -sv_lib ,$(MODULES_DPI_C)) $(MODULES_DPI_C)
 
-wave: compile mif dir.ref
+wave: env compile mif dir.ref
 	$(Q)vsim $(VSFLAGS) -do "$(firstword $(MODULES_DPI_C)).do" \
 		$(addprefix -sv_lib ,$(MODULES_DPI_C)) $(MODULES_DPI_C)
 

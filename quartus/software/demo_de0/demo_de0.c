@@ -19,7 +19,13 @@
  *
  */
 
-const alt_u32 test_1mb_m2v = 0x500000;
+#define M2V_FLASH_BASE	0x500000
+
+#ifdef M2V_FLASH_BASE
+const alt_u32 test_1mb_m2v = M2V_FLASH_BASE;
+const __attribute__((section(".testdata")))
+#include "pd1m_1mb.h"
+#endif
 
 volatile int fr_flags;
 alt_alarm al_frate;
@@ -29,8 +35,10 @@ static alt_u32 frame_rate_handler(void* context) __attribute__((section(".except
 
 static void delay(int ms)
 {
+#ifndef M2V_FLASH_BASE
 	int end = alt_nticks() + ms + 1;
-	while(alt_nticks() < end);
+	while(alt_nticks() < end);*/
+#endif
 }
 
 int main()
@@ -40,6 +48,7 @@ int main()
 	alt_u32 buf[512/4];
 
 	IOWR_32DIRECT(HEXDISP_0_BASE, 0, 0x00E0);
+#ifndef M2V_FLASH_BASE
 	disk_inittimer();
 
 	if((res = pf_mount(&fs)) != FR_OK) while(1);
@@ -47,6 +56,7 @@ int main()
 
 	if((res = pf_open("test.m2v")) != FR_OK) while(1);
 	IOWR_32DIRECT(HEXDISP_0_BASE, 0, 0x00E2);
+#endif
 
 	IOWR_M2VDEC_STATUS(M2VDEC_0_BASE, M2VDEC_STATUS_SRST_MSK);
 
@@ -56,7 +66,11 @@ int main()
 		IOWR_M2VDD_HX8347A_CONTROL(M2VDD_HX8347A_0_BASE, 0x22 |
 			M2VDD_HX8347A_CONTROL_WRITE_MSK |
 			M2VDD_HX8347A_CONTROL_RESET_MSK);
+#ifdef M2V_FLASH_BASE
+		for(pixels = 0; pixels < 50; pixels++)
+#else
 		for(pixels = 0; pixels < 320*240; pixels++)
+#endif
 		{
     		IOWR_M2VDD_HX8347A_CONTROL(M2VDD_HX8347A_0_BASE,
     			M2VDD_HX8347A_CONTROL_WRITE_MSK |
@@ -85,11 +99,15 @@ int main()
 
 	alt_u16 frames = 0;
 	alt_u8 stop = 0;
+#ifdef M2V_FLASH_BASE
+	alt_u32* p = (alt_u32*)test_1mb_m2v;
+#else
 	alt_u32* p = buf;
-//	alt_u32* p = (alt_u32*)0x500000;
 	WORD left = 0;
+#endif
 	while(1)
 	{
+#ifndef M2V_FLASH_BASE
 		if(left == 0)
 		{
 			if((res = pf_read(buf, 512, &left)) != 0)
@@ -99,6 +117,7 @@ int main()
 			}
 			p = buf;
 		}//-*/
+#endif
 		while(IORD_ALTERA_AVALON_FIFO_STATUS(FIFO_0_IN_CSR_BASE) & ALTERA_AVALON_FIFO_STATUS_F_MSK)
 		{
 			if(fr_flags == 3)
@@ -107,6 +126,7 @@ int main()
 				IOWR_M2VDD_HX8347A_CONTROL(M2VDD_HX8347A_0_BASE, M2VDD_HX8347A_CONTROL_START_MSK);
 				while(IORD_M2VDD_HX8347A_CONTROL(M2VDD_HX8347A_0_BASE) & 1);
 
+#ifndef M2V_FLASH_BASE
 				if((alt_u16)stop == (IORD_ALTERA_AVALON_PIO_DATA(PIO_0_BASE) & 0x2ff))
 				{
 					while( (IORD_ALTERA_AVALON_PIO_DATA(PIO_0_BASE) & (1 << 10)));
@@ -119,6 +139,7 @@ int main()
 				{
 					++stop;
 				}
+#endif
 
 				fr_flags = 0;
 				IOWR_32DIRECT(HEXDISP_0_BASE, 0, ++frames);
@@ -128,7 +149,9 @@ int main()
 			}
 		}
 		IOWR_ALTERA_AVALON_FIFO_DATA(FIFO_0_IN_BASE, *p++);
+#ifndef M2V_FLASH_BASE
 		left -= 4;
+#endif
 	}
 
 	/* Event loop never exits. */
@@ -141,7 +164,8 @@ static void m2vdec_irq_handler(void* context, alt_u32 id)
 {
 	if(IORD_M2VDEC_STATUS(M2VDEC_0_BASE) & M2VDEC_STATUS_IRQ_PIC_MSK)
 	{
-		*((volatile int*)context) |= 1;
+		//*((volatile int*)context) |= 1;
+		*((volatile int*)context) |= 3;
 	}
 	else
 	{
@@ -158,7 +182,11 @@ static alt_u32 frame_rate_handler(void* context)
 {
 	*((volatile int*)context) |= 2;
 	//return 33;
+#ifdef M2V_FLASH_BASE
+	return 0;
+#else
 	return (IORD_ALTERA_AVALON_PIO_DATA(PIO_0_BASE) & (1 << 8)) ? 1000 : 33;
+#endif
 }
 
 

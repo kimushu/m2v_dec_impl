@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2_qsys_0' in SOPC Builder design 'demo_de0_sys'
  * SOPC Builder design path: ../../demo_de0_sys.sopcinfo
  *
- * Generated: Sat Aug 18 18:36:56 JST 2012
+ * Generated: Fri Aug 24 21:58:22 JST 2012
  */
 
 /*
@@ -251,7 +251,7 @@
  */
 
 #define ALT_MAX_FD 4
-#define ALT_SYS_CLK none
+#define ALT_SYS_CLK TIMER_0
 #define ALT_TIMESTAMP_CLK none
 
 
@@ -365,7 +365,7 @@
 #define ROM_0_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define ROM_0_NAME "/dev/rom_0"
 #define ROM_0_SETUP_VALUE 35
-#define ROM_0_SIZE 4194304u
+#define ROM_0_SIZE 1048576u
 #define ROM_0_SPAN 4194304
 #define ROM_0_TIMING_UNITS "ns"
 #define ROM_0_TYPE "altera_generic_tristate_controller"
@@ -415,7 +415,7 @@
 #define SYSID_QSYS_0_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define SYSID_QSYS_0_NAME "/dev/sysid_qsys_0"
 #define SYSID_QSYS_0_SPAN 8
-#define SYSID_QSYS_0_TIMESTAMP 1345275292
+#define SYSID_QSYS_0_TIMESTAMP 1345812261
 #define SYSID_QSYS_0_TYPE "altera_avalon_sysid_qsys"
 
 
