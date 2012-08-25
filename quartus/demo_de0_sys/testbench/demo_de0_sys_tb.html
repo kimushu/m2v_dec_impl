@@ -1,0 +1,1500 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>Report</title>
+  <style type="text/css">
+body { font-family:arial ;}
+a { text-decoration:underline ; color:#003000 ;}
+a:hover { text-decoration:underline ; color:0030f0 ;}
+td { padding : 5px ;}
+table.topTitle { width:100% ;}
+table.topTitle td.l { text-align:left ; font-weight: bold ; font-size:30px ;}
+table.topTitle td.r { text-align:right ; font-weight: bold ; font-size:16px ;}
+table.blueBar { width : 100% ; border-spacing : 0px ;}
+table.blueBar td { background:#0036ff ; font-size:12px ; color : white ; text-align : left ; font-weight : bold ;}
+table.blueBar td.l { text-align : left ;}
+table.blueBar td.r { text-align : right ;}
+table.items { width:100% ; border-collapse:collapse ;}
+table.items td.label { font-weight:bold ; font-size:16px ; vertical-align:top ;}
+table.items td.mono { font-family:courier ; font-size:12px ; white-space:pre ;}
+div.label { font-weight:bold ; font-size:16px ; vertical-align:top ; text-align:center ;}
+table.grid { border-collapse:collapse ;}
+table.grid td { border:1px solid #bbb ; font-size:12px ;}
+body { font-family:arial ;}
+table.x { font-family:courier ; border-collapse:collapse ; padding:2px ;}
+table.x td { border:1px solid #bbb ;}
+td.tableTitle { font-weight:bold ; text-align:center ;}
+table.grid { border-collapse:collapse ;}
+table.grid td { border:1px solid #bbb ;}
+table.grid td.tableTitle { font-weight:bold ; text-align:center ;}
+table.mmap { border-collapse:collapse ; text-size:11px ; border:1px solid #d8d8d8 ;}
+table.mmap td { border-color:#d8d8d8 ; border-width:1px ; border-style:solid ;}
+table.mmap td.empty { border-style:none ; background-color:#f0f0f0 ;}
+table.mmap td.slavemodule { text-align:left ; font-size:11px ; border-style:solid solid none solid ;}
+table.mmap td.slavem { text-align:right ; font-size:9px ; font-style:italic ; border-style:none solid none solid ;}
+table.mmap td.slaveb { text-align:right ; font-size:9px ; font-style:italic ; border-style:none solid solid solid ;}
+table.mmap td.mastermodule { text-align:center ; font-size:11px ; border-style:solid solid none solid ;}
+table.mmap td.masterlr { text-align:center ; font-size:9px ; font-style:italic ; border-style:none solid solid solid ;}
+table.mmap td.masterl { text-align:center ; font-size:9px ; font-style:italic ; border-style:none none solid solid ;}
+table.mmap td.masterm { text-align:center ; font-size:9px ; font-style:italic ; border-style:none none solid none ;}
+table.mmap td.masterr { text-align:center ; font-size:9px ; font-style:italic ; border-style:none solid solid none ;}
+table.mmap td.addr { font-family:courier ; font-size:9px ; text-align:right ;}
+table.connectionboxes { border-collapse:separate ; border-spacing:0px ; font-family:arial ;}
+table.connectionboxes td.from { border-bottom:1px solid black ; font-size:9px ; font-style:italic ; vertical-align:bottom ; text-align:left ;}
+table.connectionboxes td.to { font-size:9px ; font-style:italic ; vertical-align:top ; text-align:right ;}
+table.connectionboxes td.lefthandwire { border-bottom:1px solid black ; font-size:9px ; font-style:italic ; vertical-align:bottom ; text-align:right ;}
+table.connectionboxes td.righthandwire { border-bottom:1px solid black ; font-size:9px ; font-style:italic ; vertical-align:bottom ; text-align:left ;}
+table.connectionboxes td.righthandlabel { font-size:11px ; vertical-align:bottom ; text-align:left ;}
+table.connectionboxes td.neighbor { padding:3px ; border:1px solid black ; font-size: 11px ; background:#e8e8e8 ; vertical-align:center ; text-align:center ;}
+table.connectionboxes td.main { padding:8px ; border:1px solid black ; font-size: 14px ; font-weight:bold ; background:#ffffff ; vertical-align:center ; text-align:center ;}
+.parametersbox { border:1px solid #d0d0d0 ; display:inline-block ; max-height:160px ; overflow:auto ; width:360px ; font-size:10px ;}
+.flowbox { display:inline-block ;}
+.parametersbox table { font-size:10px ;}
+td.parametername { font-style:italic ;}
+td.parametervalue { font-weight:bold ;}
+div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; border-top:1px solid #707070 ; border-bottom:1px solid #707070 ; padding:20px ; margin:20px ; width:auto ;}</style>
+ </head>
+ <body>
+  <table class="topTitle">
+   <tr>
+    <td class="l">demo_de0_sys_tb</td>
+    <td class="r">demo_de0_sys_tb
+     <br/>1.0
+     <br/>
+    </td>
+   </tr>
+  </table>
+  <table class="blueBar">
+   <tr>
+    <td class="l">2012.08.24.21:44:17</td>
+    <td class="r">Generation Report</td>
+   </tr>
+  </table>
+  <table class="items">
+   <tr>
+    <td class="label">Output Directory</td>
+    <td class="mono">/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/</td>
+   </tr>
+   <tr>
+    <td class="label">Files</td>
+    <td class="mono">/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/demo_de0_sys_tb.v (16198 bytes VERILOG)
+     <br/>
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/demo_de0_sys.v (604797 bytes VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/demo_de0_sys_altpll_0.vo (10477 bytes VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/demo_de0_sys_nios2_qsys_0.sdc (4457 bytes SDC)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/demo_de0_sys_nios2_qsys_0_rf_ram_b.mif (558 bytes MIF)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/demo_de0_sys_nios2_qsys_0_rf_ram_a.hex (668 bytes HEX)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/demo_de0_sys_nios2_qsys_0.do (4045 bytes OTHER)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/demo_de0_sys_nios2_qsys_0_jtag_debug_module_tck.v (8535 bytes VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/demo_de0_sys_nios2_qsys_0_rf_ram_b.hex (668 bytes HEX)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/demo_de0_sys_nios2_qsys_0_test_bench.v (30238 bytes VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/demo_de0_sys_nios2_qsys_0_rf_ram_a.mif (558 bytes MIF)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/demo_de0_sys_nios2_qsys_0_ociram_default_contents.dat (2378 bytes unknown type)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/demo_de0_sys_nios2_qsys_0.v (192919 bytes VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/demo_de0_sys_nios2_qsys_0_rf_ram_a.dat (292 bytes unknown type)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/demo_de0_sys_nios2_qsys_0_jtag_debug_module_wrapper.v (10632 bytes VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/demo_de0_sys_nios2_qsys_0_jtag_debug_module_sysclk.v (7130 bytes VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/demo_de0_sys_nios2_qsys_0_rf_ram_b.dat (292 bytes unknown type)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/demo_de0_sys_nios2_qsys_0_ociram_default_contents.mif (5714 bytes MIF)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/demo_de0_sys_nios2_qsys_0_ociram_default_contents.hex (5148 bytes HEX)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/demo_de0_sys_nios2_qsys_0_oci_test_bench.v (1522 bytes VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/demo_de0_sys_sysid_qsys_0.vo (1786 bytes VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/demo_de0_sys_ram_0.hex (40972 bytes HEX)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/demo_de0_sys_ram_0.v (3848 bytes VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/demo_de0_sys_rom_0.v (28012 bytes VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/altera_tristate_controller_translator.sv (6963 bytes SYSTEM_VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/altera_merlin_slave_translator.sv (15529 bytes SYSTEM_VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/altera_tristate_controller_aggregator.sv (9244 bytes SYSTEM_VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/demo_de0_sys_flash_0.sv (4662 bytes SYSTEM_VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/demo_de0_sys_fifo_0.v (23319 bytes VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/m2vdec.v (9889 bytes VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/m2vfbagen.v (839 bytes VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/m2vctrl.v (17921 bytes VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/m2vctrl_code.qip (288 bytes OTHER)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/m2vctrl_code.v (6558 bytes VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/m2vidct.v (6563 bytes VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/m2vidct_fram.qip (292 bytes OTHER)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/m2vidct_fram.v (9781 bytes VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/m2vidct_iram.qip (292 bytes OTHER)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/m2vidct_iram.v (9233 bytes VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/m2vidct_mult.qip (289 bytes OTHER)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/m2vidct_mult.v (4579 bytes VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/m2vidct_rom.qip (290 bytes OTHER)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/m2vidct_rom.v (6385 bytes VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/m2visdq.v (9257 bytes VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/m2visdq_cmem.qip (292 bytes OTHER)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/m2visdq_cmem.v (7437 bytes VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/m2visdq_dmem.qip (292 bytes OTHER)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/m2visdq_dmem.v (10943 bytes VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/m2visdq_mult.qip (289 bytes OTHER)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/m2visdq_mult.v (4571 bytes VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/m2vmc.v (16735 bytes VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/m2vmc_fetch.qip (290 bytes OTHER)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/m2vmc_fetch.v (10967 bytes VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/m2vmc_frameptr.qip (296 bytes OTHER)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/m2vmc_frameptr.v (10720 bytes VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/m2vsdp.v (10232 bytes VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/m2vside1.v (4469 bytes VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/m2vside2.v (2077 bytes VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/m2vside3.v (2077 bytes VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/m2vside4.v (1679 bytes VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/m2vstbuf.v (2571 bytes VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/m2vstbuf_fifo.qip (283 bytes OTHER)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/m2vstbuf_fifo.v (6931 bytes VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/m2vstbuf_shifter.qip (300 bytes OTHER)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/m2vstbuf_shifter.v (3930 bytes VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/m2vvld.v (5000 bytes VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/m2vvld_table.qip (292 bytes OTHER)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/m2vvld_table.v (6569 bytes VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/m2vctrl_code.mif (28756 bytes MIF)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/m2vidct_fram.mif (2834 bytes MIF)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/m2vidct_rom.mif (20307 bytes MIF)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/m2visdq_cmem.mif (12371 bytes MIF)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/m2vmc_fetch.mif (2002 bytes MIF)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/m2vvld_table.mif (53332 bytes MIF)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/seg7led_static.v (2330 bytes VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/m2vdd_hx8347a.v (13424 bytes VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/ycbcr2rgb.v (3674 bytes VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/m2vdd_hx8347a_buf.qip (302 bytes OTHER)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/m2vdd_hx8347a_buf.v (9275 bytes VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/m2vdd_hx8347a_fifo.qip (297 bytes OTHER)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/m2vdd_hx8347a_fifo.v (6517 bytes VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/ycbcr2rgb_mac.qip (206 bytes OTHER)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/ycbcr2rgb_mac.v (12575 bytes VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/demo_de0_sys_sdram_0_test_component.v (8947 bytes VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/demo_de0_sys_sdram_0.v (23255 bytes VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/demo_de0_sys_data_format_adapter.v (9589 bytes VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/demo_de0_sys_data_format_adapter_state_ram.v (10371 bytes VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/demo_de0_sys_data_format_adapter_data_ram.v (10367 bytes VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/demo_de0_sys_timing_adapter.v (2122 bytes VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/demo_de0_sys_timing_adapter_fifo.v (9677 bytes VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/demo_de0_sys_timer_0.v (5000 bytes VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/demo_de0_sys_spi_0.v (11949 bytes VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/demo_de0_sys_pio_0.v (1886 bytes VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/altera_merlin_master_translator.sv (16352 bytes SYSTEM_VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/altera_merlin_slave_agent.sv (18716 bytes SYSTEM_VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/altera_merlin_burst_uncompressor.sv (10133 bytes SYSTEM_VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/altera_avalon_sc_fifo.v (31349 bytes VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/altera_merlin_master_agent.sv (8447 bytes SYSTEM_VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/demo_de0_sys_addr_router.sv (6552 bytes SYSTEM_VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/demo_de0_sys_addr_router_001.sv (9216 bytes SYSTEM_VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/demo_de0_sys_id_router.sv (5875 bytes SYSTEM_VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/demo_de0_sys_id_router_002.sv (5887 bytes SYSTEM_VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/demo_de0_sys_id_router_003.sv (5808 bytes SYSTEM_VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/demo_de0_sys_addr_router_002.sv (5864 bytes SYSTEM_VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/demo_de0_sys_id_router_013.sv (5880 bytes SYSTEM_VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/altera_merlin_burst_adapter.sv (36042 bytes SYSTEM_VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/altera_reset_controller.v (3485 bytes VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/altera_reset_synchronizer.v (3477 bytes VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/demo_de0_sys_cmd_xbar_demux.sv (4625 bytes SYSTEM_VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/demo_de0_sys_cmd_xbar_demux_001.sv (10867 bytes SYSTEM_VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/altera_merlin_arbitrator.sv (9190 bytes SYSTEM_VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/demo_de0_sys_cmd_xbar_mux.sv (10133 bytes SYSTEM_VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/demo_de0_sys_rsp_xbar_demux.sv (4006 bytes SYSTEM_VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/demo_de0_sys_rsp_xbar_demux_003.sv (3395 bytes SYSTEM_VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/demo_de0_sys_rsp_xbar_mux.sv (11708 bytes SYSTEM_VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/demo_de0_sys_rsp_xbar_mux_001.sv (19666 bytes SYSTEM_VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/demo_de0_sys_cmd_xbar_demux_002.sv (3390 bytes SYSTEM_VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/demo_de0_sys_cmd_xbar_mux_013.sv (10135 bytes SYSTEM_VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/demo_de0_sys_rsp_xbar_demux_013.sv (4007 bytes SYSTEM_VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/altera_merlin_width_adapter.sv (35031 bytes SYSTEM_VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/altera_avalon_st_handshake_clock_crosser.v (7281 bytes VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/altera_avalon_st_clock_crosser.v (4765 bytes VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/altera_avalon_st_pipeline_base.v (4580 bytes VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/demo_de0_sys_irq_mapper.sv (1934 bytes SYSTEM_VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/verbosity_pkg.sv (6973 bytes SYSTEM_VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/altera_avalon_clock_source.sv (3065 bytes SYSTEM_VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/altera_avalon_reset_source.sv (3315 bytes SYSTEM_VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/altera_conduit_bfm.sv (4118 bytes SYSTEM_VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/altera_conduit_bfm_0002.sv (4021 bytes SYSTEM_VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/altera_conduit_bfm_0003.sv (8237 bytes SYSTEM_VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/altera_conduit_bfm_0004.sv (8129 bytes SYSTEM_VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/altera_conduit_bfm_0005.sv (5896 bytes SYSTEM_VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/altera_conduit_bfm_0006.sv (4049 bytes SYSTEM_VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/altera_inout.sv (1346 bytes SYSTEM_VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/altera_tristate_conduit_bridge_translator.sv (1088 bytes SYSTEM_VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/altera_external_memory_bfm.sv (16392 bytes SYSTEM_VERILOG)
+     <br/>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/altera_sdram_partner_module.v (6351 bytes VERILOG)
+     <br/>
+    </td>
+   </tr>
+   <tr>
+    <td class="label">Instantiations</td>
+    <td class="mono">
+     <table class="grid">
+      <tr>
+       <td><b>demo_de0_sys_tb</b>
+        <br/>demo_de0_sys_tb v1.0</td>
+       <td><b>demo_de0_sys</b> as demo_de0_sys_inst
+        <br/><b>altera_avalon_clock_source</b> as demo_de0_sys_inst_clk_bfm, rom_0_external_mem_bfm_clk_bfm, sdram_0_my_partner_clk_bfm
+        <br/><b>altera_avalon_reset_source</b> as demo_de0_sys_inst_reset_bfm
+        <br/><b>altera_conduit_bfm</b> as demo_de0_sys_inst_pll_phasedone_bfm, demo_de0_sys_inst_pll_locked_bfm
+        <br/><b>altera_conduit_bfm_0002</b> as demo_de0_sys_inst_pll_areset_bfm
+        <br/><b>altera_conduit_bfm_0003</b> as demo_de0_sys_inst_hd_bfm
+        <br/><b>altera_conduit_bfm_0004</b> as demo_de0_sys_inst_lcd_bfm
+        <br/><b>altera_conduit_bfm_0005</b> as demo_de0_sys_inst_sdcard_bfm
+        <br/><b>altera_conduit_bfm_0006</b> as demo_de0_sys_inst_sw_bfm
+        <br/><b>altera_tristate_conduit_bridge_translator</b> as flash_0_tcb_translator
+        <br/><b>altera_external_memory_bfm</b> as rom_0_external_mem_bfm
+        <br/><b>altera_sdram_partner_module</b> as sdram_0_my_partner
+        <br/>
+       </td>
+      </tr>
+      <tr>
+       <td><b>demo_de0_sys</b>
+        <br/>demo_de0_sys v1.0</td>
+       <td><b>demo_de0_sys_altpll_0</b> as altpll_0
+        <br/><b>demo_de0_sys_nios2_qsys_0</b> as nios2_qsys_0
+        <br/><b>demo_de0_sys_sysid_qsys_0</b> as sysid_qsys_0
+        <br/><b>demo_de0_sys_ram_0</b> as ram_0
+        <br/><b>demo_de0_sys_rom_0</b> as rom_0
+        <br/><b>demo_de0_sys_flash_0</b> as flash_0
+        <br/><b>demo_de0_sys_fifo_0</b> as fifo_0
+        <br/><b>m2vdec</b> as m2vdec_0
+        <br/><b>seg7led_static</b> as hexdisp_0
+        <br/><b>m2vdd_hx8347a</b> as m2vdd_hx8347a_0
+        <br/><b>demo_de0_sys_sdram_0</b> as sdram_0
+        <br/><b>demo_de0_sys_data_format_adapter</b> as data_format_adapter
+        <br/><b>demo_de0_sys_timing_adapter</b> as timing_adapter
+        <br/><b>demo_de0_sys_timer_0</b> as timer_0
+        <br/><b>demo_de0_sys_spi_0</b> as spi_0
+        <br/><b>demo_de0_sys_pio_0</b> as pio_0
+        <br/><b>altera_merlin_master_translator</b> as nios2_qsys_0_instruction_master_translator, nios2_qsys_0_data_master_translator, m2vdd_hx8347a_0_fbuf_translator, m2vdec_0_fbuf_translator
+        <br/><b>altera_merlin_slave_translator</b> as nios2_qsys_0_jtag_debug_module_translator, ram_0_s1_translator, rom_0_uas_translator, sysid_qsys_0_control_slave_translator, altpll_0_pll_slave_translator, fifo_0_in_translator, fifo_0_in_csr_translator, m2vdec_0_control_translator, hexdisp_0_ctrl_translator, m2vdd_hx8347a_0_ctrl_translator, timer_0_s1_translator, spi_0_spi_control_port_translator, pio_0_s1_translator, sdram_0_s1_translator
+        <br/><b>altera_merlin_slave_agent</b> as fifo_0_in_csr_translator_avalon_universal_slave_0_agent, spi_0_spi_control_port_translator_avalon_universal_slave_0_agent, sysid_qsys_0_control_slave_translator_avalon_universal_slave_0_agent, altpll_0_pll_slave_translator_avalon_universal_slave_0_agent, hexdisp_0_ctrl_translator_avalon_universal_slave_0_agent, fifo_0_in_translator_avalon_universal_slave_0_agent, m2vdd_hx8347a_0_ctrl_translator_avalon_universal_slave_0_agent, nios2_qsys_0_jtag_debug_module_translator_avalon_universal_slave_0_agent, rom_0_uas_translator_avalon_universal_slave_0_agent, pio_0_s1_translator_avalon_universal_slave_0_agent, ram_0_s1_translator_avalon_universal_slave_0_agent, timer_0_s1_translator_avalon_universal_slave_0_agent, m2vdec_0_control_translator_avalon_universal_slave_0_agent, sdram_0_s1_translator_avalon_universal_slave_0_agent
+        <br/><b>altera_avalon_sc_fifo</b> as fifo_0_in_csr_translator_avalon_universal_slave_0_agent_rsp_fifo, spi_0_spi_control_port_translator_avalon_universal_slave_0_agent_rsp_fifo, sysid_qsys_0_control_slave_translator_avalon_universal_slave_0_agent_rsp_fifo, altpll_0_pll_slave_translator_avalon_universal_slave_0_agent_rsp_fifo, altpll_0_pll_slave_translator_avalon_universal_slave_0_agent_rdata_fifo, hexdisp_0_ctrl_translator_avalon_universal_slave_0_agent_rsp_fifo, fifo_0_in_translator_avalon_universal_slave_0_agent_rsp_fifo, m2vdd_hx8347a_0_ctrl_translator_avalon_universal_slave_0_agent_rsp_fifo, nios2_qsys_0_jtag_debug_module_translator_avalon_universal_slave_0_agent_rsp_fifo, rom_0_uas_translator_avalon_universal_slave_0_agent_rsp_fifo, pio_0_s1_translator_avalon_universal_slave_0_agent_rsp_fifo, ram_0_s1_translator_avalon_universal_slave_0_agent_rsp_fifo, timer_0_s1_translator_avalon_universal_slave_0_agent_rsp_fifo, m2vdec_0_control_translator_avalon_universal_slave_0_agent_rsp_fifo, sdram_0_s1_translator_avalon_universal_slave_0_agent_rsp_fifo
+        <br/><b>altera_merlin_master_agent</b> as nios2_qsys_0_instruction_master_translator_avalon_universal_master_0_agent, nios2_qsys_0_data_master_translator_avalon_universal_master_0_agent, m2vdec_0_fbuf_translator_avalon_universal_master_0_agent, m2vdd_hx8347a_0_fbuf_translator_avalon_universal_master_0_agent
+        <br/><b>demo_de0_sys_addr_router</b> as addr_router
+        <br/><b>demo_de0_sys_addr_router_001</b> as addr_router_001
+        <br/><b>demo_de0_sys_id_router</b> as id_router, id_router_001
+        <br/><b>demo_de0_sys_id_router_002</b> as id_router_002
+        <br/><b>demo_de0_sys_id_router_003</b> as id_router_003, id_router_004, id_router_005, id_router_006, id_router_007, id_router_008, id_router_009, id_router_010, id_router_011, id_router_012
+        <br/><b>demo_de0_sys_addr_router_002</b> as addr_router_002, addr_router_003
+        <br/><b>demo_de0_sys_id_router_013</b> as id_router_013
+        <br/><b>altera_merlin_burst_adapter</b> as burst_adapter
+        <br/><b>altera_reset_controller</b> as rst_controller, rst_controller_001
+        <br/><b>demo_de0_sys_cmd_xbar_demux</b> as cmd_xbar_demux
+        <br/><b>demo_de0_sys_cmd_xbar_demux_001</b> as cmd_xbar_demux_001
+        <br/><b>demo_de0_sys_cmd_xbar_mux</b> as cmd_xbar_mux, cmd_xbar_mux_001, cmd_xbar_mux_002
+        <br/><b>demo_de0_sys_rsp_xbar_demux</b> as rsp_xbar_demux, rsp_xbar_demux_001, rsp_xbar_demux_002
+        <br/><b>demo_de0_sys_rsp_xbar_demux_003</b> as rsp_xbar_demux_003, rsp_xbar_demux_004, rsp_xbar_demux_005, rsp_xbar_demux_006, rsp_xbar_demux_007, rsp_xbar_demux_008, rsp_xbar_demux_009, rsp_xbar_demux_010, rsp_xbar_demux_011, rsp_xbar_demux_012
+        <br/><b>demo_de0_sys_rsp_xbar_mux</b> as rsp_xbar_mux
+        <br/><b>demo_de0_sys_rsp_xbar_mux_001</b> as rsp_xbar_mux_001
+        <br/><b>demo_de0_sys_cmd_xbar_demux_002</b> as cmd_xbar_demux_002, cmd_xbar_demux_003
+        <br/><b>demo_de0_sys_cmd_xbar_mux_013</b> as cmd_xbar_mux_013
+        <br/><b>demo_de0_sys_rsp_xbar_demux_013</b> as rsp_xbar_demux_013
+        <br/><b>altera_merlin_width_adapter</b> as width_adapter, width_adapter_001
+        <br/><b>altera_avalon_st_handshake_clock_crosser</b> as crosser, crosser_001
+        <br/><b>demo_de0_sys_irq_mapper</b> as irq_mapper
+        <br/>
+       </td>
+      </tr>
+      <tr>
+       <td><b>altera_avalon_clock_source</b>
+        <br/>altera_avalon_clock_source v11.1</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>altera_avalon_reset_source</b>
+        <br/>altera_avalon_reset_source v11.1</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>altera_conduit_bfm</b>
+        <br/>altera_conduit_bfm v11.1</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>altera_conduit_bfm_0002</b>
+        <br/>altera_conduit_bfm v11.1</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>altera_conduit_bfm_0003</b>
+        <br/>altera_conduit_bfm v11.1</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>altera_conduit_bfm_0004</b>
+        <br/>altera_conduit_bfm v11.1</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>altera_conduit_bfm_0005</b>
+        <br/>altera_conduit_bfm v11.1</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>altera_conduit_bfm_0006</b>
+        <br/>altera_conduit_bfm v11.1</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>altera_tristate_conduit_bridge_translator</b>
+        <br/>altera_tristate_conduit_bridge_translator v11.1</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>altera_external_memory_bfm</b>
+        <br/>altera_external_memory_bfm v11.1</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>altera_sdram_partner_module</b>
+        <br/>altera_sdram_partner_module v11.0</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>demo_de0_sys_altpll_0</b>
+        <br/>altpll v11.1</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>demo_de0_sys_nios2_qsys_0</b>
+        <br/>altera_nios2_qsys v11.1</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>demo_de0_sys_sysid_qsys_0</b>
+        <br/>altera_avalon_sysid_qsys v11.1</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>demo_de0_sys_ram_0</b>
+        <br/>altera_avalon_onchip_memory2 v11.1</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>demo_de0_sys_rom_0</b>
+        <br/>altera_generic_tristate_controller v11.1</td>
+       <td><b>altera_tristate_controller_translator</b> as tdt
+        <br/><b>altera_merlin_slave_translator</b> as slave_translator
+        <br/><b>altera_tristate_controller_aggregator</b> as tda
+        <br/>
+       </td>
+      </tr>
+      <tr>
+       <td><b>demo_de0_sys_flash_0</b>
+        <br/>altera_tristate_conduit_bridge v11.1</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>demo_de0_sys_fifo_0</b>
+        <br/>altera_avalon_fifo v11.1</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>m2vdec</b>
+        <br/>m2vdec v1.0</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>seg7led_static</b>
+        <br/>seg7led_static v1.0</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>m2vdd_hx8347a</b>
+        <br/>m2vdd_hx8347a v1.0</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>demo_de0_sys_sdram_0</b>
+        <br/>altera_avalon_new_sdram_controller v11.1</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>demo_de0_sys_data_format_adapter</b>
+        <br/>data_format_adapter v11.1</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>demo_de0_sys_timing_adapter</b>
+        <br/>timing_adapter v11.1</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>demo_de0_sys_timer_0</b>
+        <br/>altera_avalon_timer v11.1</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>demo_de0_sys_spi_0</b>
+        <br/>altera_avalon_spi v11.1</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>demo_de0_sys_pio_0</b>
+        <br/>altera_avalon_pio v11.1</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>altera_merlin_master_translator</b>
+        <br/>altera_merlin_master_translator v11.1</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>altera_merlin_slave_translator</b>
+        <br/>altera_merlin_slave_translator v11.1</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>altera_merlin_slave_agent</b>
+        <br/>altera_merlin_slave_agent v11.1</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>altera_avalon_sc_fifo</b>
+        <br/>altera_avalon_sc_fifo v11.1</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>altera_merlin_master_agent</b>
+        <br/>altera_merlin_master_agent v11.1</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>demo_de0_sys_addr_router</b>
+        <br/>altera_merlin_router v11.1</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>demo_de0_sys_addr_router_001</b>
+        <br/>altera_merlin_router v11.1</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>demo_de0_sys_id_router</b>
+        <br/>altera_merlin_router v11.1</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>demo_de0_sys_id_router_002</b>
+        <br/>altera_merlin_router v11.1</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>demo_de0_sys_id_router_003</b>
+        <br/>altera_merlin_router v11.1</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>demo_de0_sys_addr_router_002</b>
+        <br/>altera_merlin_router v11.1</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>demo_de0_sys_id_router_013</b>
+        <br/>altera_merlin_router v11.1</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>altera_merlin_burst_adapter</b>
+        <br/>altera_merlin_burst_adapter v11.1</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>altera_reset_controller</b>
+        <br/>altera_reset_controller v11.1</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>demo_de0_sys_cmd_xbar_demux</b>
+        <br/>altera_merlin_demultiplexer v11.1</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>demo_de0_sys_cmd_xbar_demux_001</b>
+        <br/>altera_merlin_demultiplexer v11.1</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>demo_de0_sys_cmd_xbar_mux</b>
+        <br/>altera_merlin_multiplexer v11.1</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>demo_de0_sys_rsp_xbar_demux</b>
+        <br/>altera_merlin_demultiplexer v11.1</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>demo_de0_sys_rsp_xbar_demux_003</b>
+        <br/>altera_merlin_demultiplexer v11.1</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>demo_de0_sys_rsp_xbar_mux</b>
+        <br/>altera_merlin_multiplexer v11.1</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>demo_de0_sys_rsp_xbar_mux_001</b>
+        <br/>altera_merlin_multiplexer v11.1</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>demo_de0_sys_cmd_xbar_demux_002</b>
+        <br/>altera_merlin_demultiplexer v11.1</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>demo_de0_sys_cmd_xbar_mux_013</b>
+        <br/>altera_merlin_multiplexer v11.1</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>demo_de0_sys_rsp_xbar_demux_013</b>
+        <br/>altera_merlin_demultiplexer v11.1</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>altera_merlin_width_adapter</b>
+        <br/>altera_merlin_width_adapter v11.1</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>altera_avalon_st_handshake_clock_crosser</b>
+        <br/>altera_avalon_st_handshake_clock_crosser v11.1</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>demo_de0_sys_irq_mapper</b>
+        <br/>altera_irq_mapper v11.1</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>altera_tristate_controller_translator</b>
+        <br/>altera_tristate_controller_translator v11.1</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td><b>altera_tristate_controller_aggregator</b>
+        <br/>altera_tristate_controller_aggregator v11.1</td>
+       <td></td>
+      </tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+  <div style="width:100% ;  height:10px"> </div>
+  <div class="label">Generation Messages</div>
+  <div style="white-space:pre ; font-family:courier">2012.08.24.21:42:49 [Debug] demo_de0_sys_tb.demo_de0_sys_inst.altpll_0: Timing: VAL:1/0.026s ELA:1/0.006s
+2012.08.24.21:42:28 [Debug] demo_de0_sys_tb.demo_de0_sys_inst.altera_nios2_qsys: When a generate simulation callback is defined a synthesis generation callback should also be defined
+2012.08.24.21:42:49 [Debug] demo_de0_sys_tb.demo_de0_sys_inst.nios2_qsys_0: Timing: VAL:1/0.039s ELA:1/0.005s
+2012.08.24.21:42:49 [Info] demo_de0_sys_tb.demo_de0_sys_inst.sysid_qsys_0: System ID will no longer be automatically assigned.
+2012.08.24.21:42:49 [Info] demo_de0_sys_tb.demo_de0_sys_inst.sysid_qsys_0: Time stamp will be automatically updated when this component is generated.
+2012.08.24.21:42:49 [Debug] demo_de0_sys_tb.demo_de0_sys_inst.sysid_qsys_0: Timing: VAL:2/0.000s/0.001s
+2012.08.24.21:42:49 [Info] demo_de0_sys_tb.demo_de0_sys_inst.ram_0: Memory will be initialized from ram_0.hex
+2012.08.24.21:42:49 [Debug] demo_de0_sys_tb.demo_de0_sys_inst.rom_0.clk: Timing: ELA:4/0.000s/0.000s
+2012.08.24.21:42:49 [Debug] demo_de0_sys_tb.demo_de0_sys_inst.rom_0.reset: Timing: ELA:5/0.000s/0.001s
+2012.08.24.21:42:49 [Debug] demo_de0_sys_tb.demo_de0_sys_inst.rom_0.tdt: Timing: ELA:8/0.001s/0.002s
+2012.08.24.21:42:49 [Debug] demo_de0_sys_tb.demo_de0_sys_inst.rom_0.slave_translator: Timing: ELA:10/0.003s/0.004s
+2012.08.24.21:42:49 [Debug] demo_de0_sys_tb.demo_de0_sys_inst.rom_0.tda: Timing: ELA:8/0.003s/0.003s
+2012.08.24.21:42:49 [Debug] demo_de0_sys_tb.demo_de0_sys_inst.rom_0: Timing: COM:2/0.004s/0.005s
+2012.08.24.21:42:49 [Debug] demo_de0_sys_tb.demo_de0_sys_inst.flash_0: Timing: ELA:1/0.003s
+2012.08.24.21:42:49 [Info] demo_de0_sys_tb.demo_de0_sys_inst.fifo_0: For Avalon-ST and Avalon-MM combinations, data width is 32 bits.
+2012.08.24.21:42:49 [Debug] demo_de0_sys_tb.demo_de0_sys_inst.m2vdec_0: Timing: QME:1/2.450s
+2012.08.24.21:42:49 [Info] demo_de0_sys_tb.demo_de0_sys_inst.pio_0: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+2012.08.24.21:42:49 [Info] demo_de0_sys_tb.demo_de0_sys_inst_clk_bfm: Elaborate: altera_clock_source
+2012.08.24.21:42:49 [Info] demo_de0_sys_tb.demo_de0_sys_inst_clk_bfm:            $Revision: #1 $
+2012.08.24.21:42:49 [Info] demo_de0_sys_tb.demo_de0_sys_inst_clk_bfm:            $Date: 2011/11/10 $
+2012.08.24.21:42:32 [Debug] demo_de0_sys_tb.altera_avalon_clock_source: Setting TOP_LEVEL_HDL_MODULE has no effect when a generation callback is defined
+2012.08.24.21:42:32 [Debug] demo_de0_sys_tb.altera_avalon_clock_source: If TOP_LEVEL_HDL_MODULE is defined then TOP_LEVEL_HDL_FILE should indicate which file that module is found in
+2012.08.24.21:42:32 [Debug] demo_de0_sys_tb.altera_avalon_clock_source: When a generate simulation callback is defined a synthesis generation callback should also be defined
+2012.08.24.21:42:49 [Debug] demo_de0_sys_tb.demo_de0_sys_inst_clk_bfm: Timing: VAL:1/0.001s ELA:1/0.000s
+2012.08.24.21:42:49 [Info] demo_de0_sys_tb.demo_de0_sys_inst_reset_bfm: Elaborate: altera_reset_source
+2012.08.24.21:42:49 [Info] demo_de0_sys_tb.demo_de0_sys_inst_reset_bfm:            $Revision: #1 $
+2012.08.24.21:42:49 [Info] demo_de0_sys_tb.demo_de0_sys_inst_reset_bfm:            $Date: 2011/11/10 $
+2012.08.24.21:42:49 [Info] demo_de0_sys_tb.demo_de0_sys_inst_reset_bfm: Reset is negatively asserted.
+2012.08.24.21:42:32 [Debug] demo_de0_sys_tb.altera_avalon_reset_source: Setting TOP_LEVEL_HDL_MODULE has no effect when a generation callback is defined
+2012.08.24.21:42:32 [Debug] demo_de0_sys_tb.altera_avalon_reset_source: If TOP_LEVEL_HDL_MODULE is defined then TOP_LEVEL_HDL_FILE should indicate which file that module is found in
+2012.08.24.21:42:32 [Debug] demo_de0_sys_tb.altera_avalon_reset_source: When a generate simulation callback is defined a synthesis generation callback should also be defined
+2012.08.24.21:42:49 [Debug] demo_de0_sys_tb.demo_de0_sys_inst_reset_bfm: Timing: VAL:1/0.000s ELA:1/0.001s
+2012.08.24.21:42:49 [Debug] demo_de0_sys_tb.demo_de0_sys_inst_pll_phasedone_bfm: Timing: ELA:1/0.000s
+2012.08.24.21:42:49 [Debug] demo_de0_sys_tb.demo_de0_sys_inst_pll_locked_bfm: Timing: ELA:1/0.001s
+2012.08.24.21:42:49 [Debug] demo_de0_sys_tb.demo_de0_sys_inst_pll_areset_bfm: Timing: ELA:1/0.000s
+2012.08.24.21:42:49 [Debug] demo_de0_sys_tb.demo_de0_sys_inst_hd_bfm: Timing: ELA:1/0.001s
+2012.08.24.21:42:49 [Debug] demo_de0_sys_tb.demo_de0_sys_inst_lcd_bfm: Timing: ELA:1/0.000s
+2012.08.24.21:42:49 [Debug] demo_de0_sys_tb.demo_de0_sys_inst_sdcard_bfm: Timing: ELA:1/0.000s
+2012.08.24.21:42:49 [Debug] demo_de0_sys_tb.demo_de0_sys_inst_sw_bfm: Timing: ELA:1/0.000s
+2012.08.24.21:42:49 [Debug] demo_de0_sys_tb.flash_0_tcb_translator: One of TOP_LEVEL_HDL_MODULE, a generation callback, a compose callback or instantiate_in_system_module = false should be set
+2012.08.24.21:42:49 [Debug] demo_de0_sys_tb.flash_0_tcb_translator: Timing: ELA:1/0.001s
+2012.08.24.21:42:49 [Debug] demo_de0_sys_tb.rom_0_external_mem_bfm: Timing: ELA:1/0.001s QME:1/2.233s
+2012.08.24.21:42:49 [Info] demo_de0_sys_tb.rom_0_external_mem_bfm_clk_bfm: Elaborate: altera_clock_source
+2012.08.24.21:42:49 [Info] demo_de0_sys_tb.rom_0_external_mem_bfm_clk_bfm:            $Revision: #1 $
+2012.08.24.21:42:49 [Info] demo_de0_sys_tb.rom_0_external_mem_bfm_clk_bfm:            $Date: 2011/11/10 $
+2012.08.24.21:42:32 [Debug] demo_de0_sys_tb.altera_avalon_clock_source: Setting TOP_LEVEL_HDL_MODULE has no effect when a generation callback is defined
+2012.08.24.21:42:32 [Debug] demo_de0_sys_tb.altera_avalon_clock_source: If TOP_LEVEL_HDL_MODULE is defined then TOP_LEVEL_HDL_FILE should indicate which file that module is found in
+2012.08.24.21:42:32 [Debug] demo_de0_sys_tb.altera_avalon_clock_source: When a generate simulation callback is defined a synthesis generation callback should also be defined
+2012.08.24.21:42:49 [Debug] demo_de0_sys_tb.rom_0_external_mem_bfm_clk_bfm: Timing: VAL:1/0.000s ELA:1/0.001s
+2012.08.24.21:42:49 [Debug] demo_de0_sys_tb.sdram_0_my_partner: Timing: VAL:1/0.000s ELA:1/0.000s
+2012.08.24.21:42:49 [Info] demo_de0_sys_tb.sdram_0_my_partner_clk_bfm: Elaborate: altera_clock_source
+2012.08.24.21:42:49 [Info] demo_de0_sys_tb.sdram_0_my_partner_clk_bfm:            $Revision: #1 $
+2012.08.24.21:42:49 [Info] demo_de0_sys_tb.sdram_0_my_partner_clk_bfm:            $Date: 2011/11/10 $
+2012.08.24.21:42:32 [Debug] demo_de0_sys_tb.altera_avalon_clock_source: Setting TOP_LEVEL_HDL_MODULE has no effect when a generation callback is defined
+2012.08.24.21:42:32 [Debug] demo_de0_sys_tb.altera_avalon_clock_source: If TOP_LEVEL_HDL_MODULE is defined then TOP_LEVEL_HDL_FILE should indicate which file that module is found in
+2012.08.24.21:42:32 [Debug] demo_de0_sys_tb.altera_avalon_clock_source: When a generate simulation callback is defined a synthesis generation callback should also be defined
+2012.08.24.21:42:49 [Debug] demo_de0_sys_tb.sdram_0_my_partner_clk_bfm: Timing: VAL:1/0.000s ELA:1/0.000s
+2012.08.24.21:42:49 [Info] demo_de0_sys_tb: Generating <b>demo_de0_sys_tb</b> "<b>demo_de0_sys_tb</b>" for SIM_VERILOG
+2012.08.24.21:42:49 [Debug] demo_de0_sys_tb: queue size: 0 starting:demo_de0_sys_tb "demo_de0_sys_tb"
+2012.08.24.21:42:50 [Debug] Transform: PipelineBridgeSwap
+2012.08.24.21:42:50 [Info] pipeline_bridge_swap_transform: After transform: <b>15</b> modules, <b>15</b> connections
+2012.08.24.21:42:50 [Debug] Transform: ClockCrossingBridgeSwap
+2012.08.24.21:42:50 [Debug] Transform: QsysBetaIPSwap
+2012.08.24.21:42:50 [Debug] Transform: CustomInstructionTransform
+2012.08.24.21:42:50 [Info] No custom instruction connections, skipping transform 
+2012.08.24.21:42:50 [Debug] Transform: TristateConduitUpgradeTransform
+2012.08.24.21:42:50 [Debug] Transform: TranslatorTransform
+2012.08.24.21:42:50 [Info] No Avalon connections, skipping transform 
+2012.08.24.21:42:50 [Debug] Transform: DomainTransform
+2012.08.24.21:42:50 [Debug] Transform: RouterTransform
+2012.08.24.21:42:50 [Debug] Transform: TrafficLimiterTransform
+2012.08.24.21:42:50 [Debug] Transform: BurstTransform
+2012.08.24.21:42:50 [Debug] Transform: ResetAdaptation
+2012.08.24.21:42:50 [Debug] Transform: NetworkToSwitchTransform
+2012.08.24.21:42:50 [Debug] Transform: WidthTransform
+2012.08.24.21:42:50 [Debug] Transform: RouterTableTransform
+2012.08.24.21:42:50 [Debug] Transform: ClockCrossingTransform
+2012.08.24.21:42:50 [Debug] Transform: PipelineTransform
+2012.08.24.21:42:50 [Debug] Transform: TrafficLimiterUpdateTransform
+2012.08.24.21:42:50 [Debug] Transform: InterruptMapperTransform
+2012.08.24.21:42:50 [Debug] Transform: InterruptSyncTransform
+2012.08.24.21:42:50 [Debug] Transform: InterruptFanoutTransform
+2012.08.24.21:42:50 [Debug] demo_de0_sys_tb: "<b>demo_de0_sys_tb</b>" reuses <b>demo_de0_sys</b> "<b>submodules/demo_de0_sys</b>"
+2012.08.24.21:42:51 [Debug] demo_de0_sys_tb: "<b>demo_de0_sys_tb</b>" reuses <b>altera_avalon_clock_source</b> "<b>submodules/altera_avalon_clock_source</b>"
+2012.08.24.21:42:51 [Debug] demo_de0_sys_tb: "<b>demo_de0_sys_tb</b>" reuses <b>altera_avalon_reset_source</b> "<b>submodules/altera_avalon_reset_source</b>"
+2012.08.24.21:42:51 [Debug] demo_de0_sys_tb: "<b>demo_de0_sys_tb</b>" reuses <b>altera_conduit_bfm</b> "<b>submodules/altera_conduit_bfm</b>"
+2012.08.24.21:42:51 [Debug] demo_de0_sys_tb: "<b>demo_de0_sys_tb</b>" reuses <b>altera_conduit_bfm</b> "<b>submodules/altera_conduit_bfm</b>"
+2012.08.24.21:42:51 [Debug] demo_de0_sys_tb: "<b>demo_de0_sys_tb</b>" reuses <b>altera_conduit_bfm</b> "<b>submodules/altera_conduit_bfm_0002</b>"
+2012.08.24.21:42:51 [Debug] demo_de0_sys_tb: "<b>demo_de0_sys_tb</b>" reuses <b>altera_conduit_bfm</b> "<b>submodules/altera_conduit_bfm_0003</b>"
+2012.08.24.21:42:51 [Debug] demo_de0_sys_tb: "<b>demo_de0_sys_tb</b>" reuses <b>altera_conduit_bfm</b> "<b>submodules/altera_conduit_bfm_0004</b>"
+2012.08.24.21:42:51 [Debug] demo_de0_sys_tb: "<b>demo_de0_sys_tb</b>" reuses <b>altera_conduit_bfm</b> "<b>submodules/altera_conduit_bfm_0005</b>"
+2012.08.24.21:42:51 [Debug] demo_de0_sys_tb: "<b>demo_de0_sys_tb</b>" reuses <b>altera_conduit_bfm</b> "<b>submodules/altera_conduit_bfm_0006</b>"
+2012.08.24.21:42:51 [Debug] demo_de0_sys_tb: "<b>demo_de0_sys_tb</b>" reuses <b>altera_tristate_conduit_bridge_translator</b> "<b>submodules/altera_tristate_conduit_bridge_translator</b>"
+2012.08.24.21:42:51 [Debug] demo_de0_sys_tb: "<b>demo_de0_sys_tb</b>" reuses <b>altera_external_memory_bfm</b> "<b>submodules/altera_external_memory_bfm</b>"
+2012.08.24.21:42:51 [Debug] demo_de0_sys_tb: "<b>demo_de0_sys_tb</b>" reuses <b>altera_avalon_clock_source</b> "<b>submodules/altera_avalon_clock_source</b>"
+2012.08.24.21:42:51 [Debug] demo_de0_sys_tb: "<b>demo_de0_sys_tb</b>" reuses <b>altera_sdram_partner_module</b> "<b>submodules/altera_sdram_partner_module</b>"
+2012.08.24.21:42:51 [Debug] demo_de0_sys_tb: "<b>demo_de0_sys_tb</b>" reuses <b>altera_avalon_clock_source</b> "<b>submodules/altera_avalon_clock_source</b>"
+2012.08.24.21:42:51 [Debug] demo_de0_sys_tb: queue size: 14 starting:demo_de0_sys "submodules/demo_de0_sys"
+2012.08.24.21:42:51 [Debug] Transform: PipelineBridgeSwap
+2012.08.24.21:42:51 [Info] pipeline_bridge_swap_transform: After transform: <b>17</b> modules, <b>76</b> connections
+2012.08.24.21:42:51 [Debug] Transform: ClockCrossingBridgeSwap
+2012.08.24.21:42:51 [Debug] Transform: QsysBetaIPSwap
+2012.08.24.21:42:51 [Debug] Transform: CustomInstructionTransform
+2012.08.24.21:42:51 [Info] No custom instruction connections, skipping transform 
+2012.08.24.21:42:51 [Debug] Transform: TristateConduitUpgradeTransform
+2012.08.24.21:42:51 [Debug] Transform: TranslatorTransform
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Info] merlin_translator_transform: After transform: <b>35</b> modules, <b>148</b> connections
+2012.08.24.21:42:51 [Debug] Transform: DomainTransform
+2012.08.24.21:42:51 [Debug] Transform merlin_domain_transform not run on matched interfaces nios2_qsys_0.instruction_master and nios2_qsys_0_instruction_master_translator.avalon_anti_master_0
+2012.08.24.21:42:51 [Debug] Transform merlin_domain_transform not run on matched interfaces nios2_qsys_0.data_master and nios2_qsys_0_data_master_translator.avalon_anti_master_0
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Debug] Transform merlin_domain_transform not run on matched interfaces nios2_qsys_0_jtag_debug_module_translator.avalon_anti_slave_0 and nios2_qsys_0.jtag_debug_module
+2012.08.24.21:42:51 [Debug] Transform merlin_domain_transform not run on matched interfaces ram_0_s1_translator.avalon_anti_slave_0 and ram_0.s1
+2012.08.24.21:42:51 [Debug] Transform merlin_domain_transform not run on matched interfaces rom_0_uas_translator.avalon_anti_slave_0 and rom_0.uas
+2012.08.24.21:42:51 [Debug] Transform merlin_domain_transform not run on matched interfaces sysid_qsys_0_control_slave_translator.avalon_anti_slave_0 and sysid_qsys_0.control_slave
+2012.08.24.21:42:51 [Debug] Transform merlin_domain_transform not run on matched interfaces altpll_0_pll_slave_translator.avalon_anti_slave_0 and altpll_0.pll_slave
+2012.08.24.21:42:51 [Debug] Transform merlin_domain_transform not run on matched interfaces fifo_0_in_translator.avalon_anti_slave_0 and fifo_0.in
+2012.08.24.21:42:51 [Debug] Transform merlin_domain_transform not run on matched interfaces fifo_0_in_csr_translator.avalon_anti_slave_0 and fifo_0.in_csr
+2012.08.24.21:42:51 [Debug] Transform merlin_domain_transform not run on matched interfaces m2vdec_0_control_translator.avalon_anti_slave_0 and m2vdec_0.control
+2012.08.24.21:42:51 [Debug] Transform merlin_domain_transform not run on matched interfaces hexdisp_0_ctrl_translator.avalon_anti_slave_0 and hexdisp_0.ctrl
+2012.08.24.21:42:51 [Debug] Transform merlin_domain_transform not run on matched interfaces m2vdd_hx8347a_0_ctrl_translator.avalon_anti_slave_0 and m2vdd_hx8347a_0.ctrl
+2012.08.24.21:42:51 [Debug] Transform merlin_domain_transform not run on matched interfaces timer_0_s1_translator.avalon_anti_slave_0 and timer_0.s1
+2012.08.24.21:42:51 [Debug] Transform merlin_domain_transform not run on matched interfaces spi_0_spi_control_port_translator.avalon_anti_slave_0 and spi_0.spi_control_port
+2012.08.24.21:42:51 [Debug] Transform merlin_domain_transform not run on matched interfaces pio_0_s1_translator.avalon_anti_slave_0 and pio_0.s1
+2012.08.24.21:42:51 [Debug] Transform merlin_domain_transform not run on matched interfaces m2vdd_hx8347a_0.fbuf and m2vdd_hx8347a_0_fbuf_translator.avalon_anti_master_0
+2012.08.24.21:42:51 [Debug] Transform merlin_domain_transform not run on matched interfaces m2vdec_0.fbuf and m2vdec_0_fbuf_translator.avalon_anti_master_0
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Debug] Transform merlin_domain_transform not run on matched interfaces sdram_0_s1_translator.avalon_anti_slave_0 and sdram_0.s1
+2012.08.24.21:42:51 [Info] merlin_domain_transform: After transform: <b>70</b> modules, <b>380</b> connections
+2012.08.24.21:42:51 [Debug] Transform: RouterTransform
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:51 [Progress] min: 0
+2012.08.24.21:42:51 [Progress] max: 1
+2012.08.24.21:42:51 [Progress] current: 1
+2012.08.24.21:42:52 [Progress] min: 0
+2012.08.24.21:42:52 [Progress] max: 1
+2012.08.24.21:42:52 [Progress] current: 1
+2012.08.24.21:42:52 [Progress] min: 0
+2012.08.24.21:42:52 [Progress] max: 1
+2012.08.24.21:42:52 [Progress] current: 1
+2012.08.24.21:42:52 [Progress] min: 0
+2012.08.24.21:42:52 [Progress] max: 1
+2012.08.24.21:42:52 [Progress] current: 1
+2012.08.24.21:42:52 [Progress] min: 0
+2012.08.24.21:42:52 [Progress] max: 1
+2012.08.24.21:42:52 [Progress] current: 1
+2012.08.24.21:42:52 [Progress] min: 0
+2012.08.24.21:42:52 [Progress] max: 1
+2012.08.24.21:42:52 [Progress] current: 1
+2012.08.24.21:42:52 [Progress] min: 0
+2012.08.24.21:42:52 [Progress] max: 1
+2012.08.24.21:42:52 [Progress] current: 1
+2012.08.24.21:42:52 [Progress] min: 0
+2012.08.24.21:42:52 [Progress] max: 1
+2012.08.24.21:42:52 [Progress] current: 1
+2012.08.24.21:42:52 [Progress] min: 0
+2012.08.24.21:42:52 [Progress] max: 1
+2012.08.24.21:42:52 [Progress] current: 1
+2012.08.24.21:42:52 [Progress] min: 0
+2012.08.24.21:42:52 [Progress] max: 1
+2012.08.24.21:42:52 [Progress] current: 1
+2012.08.24.21:42:52 [Progress] min: 0
+2012.08.24.21:42:52 [Progress] max: 1
+2012.08.24.21:42:52 [Progress] current: 1
+2012.08.24.21:42:52 [Progress] min: 0
+2012.08.24.21:42:52 [Progress] max: 1
+2012.08.24.21:42:52 [Progress] current: 1
+2012.08.24.21:42:52 [Progress] min: 0
+2012.08.24.21:42:52 [Progress] max: 1
+2012.08.24.21:42:52 [Progress] current: 1
+2012.08.24.21:42:52 [Info] merlin_router_transform: After transform: <b>88</b> modules, <b>452</b> connections
+2012.08.24.21:42:52 [Debug] Transform: TrafficLimiterTransform
+2012.08.24.21:42:52 [Debug] Transform: BurstTransform
+2012.08.24.21:42:52 [Progress] min: 0
+2012.08.24.21:42:52 [Progress] max: 1
+2012.08.24.21:42:52 [Progress] current: 1
+2012.08.24.21:42:52 [Info] merlin_burst_transform: After transform: <b>89</b> modules, <b>456</b> connections
+2012.08.24.21:42:52 [Debug] Transform: ResetAdaptation
+2012.08.24.21:42:52 [Progress] min: 0
+2012.08.24.21:42:52 [Progress] max: 1
+2012.08.24.21:42:52 [Progress] current: 1
+2012.08.24.21:42:52 [Progress] min: 0
+2012.08.24.21:42:52 [Progress] max: 1
+2012.08.24.21:42:52 [Progress] current: 1
+2012.08.24.21:42:52 [Info] reset_adaptation_transform: After transform: <b>91</b> modules, <b>358</b> connections
+2012.08.24.21:42:52 [Debug] Transform: NetworkToSwitchTransform
+2012.08.24.21:42:52 [Progress] min: 0
+2012.08.24.21:42:52 [Progress] max: 1
+2012.08.24.21:42:52 [Progress] current: 1
+2012.08.24.21:42:52 [Progress] min: 0
+2012.08.24.21:42:52 [Progress] max: 1
+2012.08.24.21:42:52 [Progress] current: 1
+2012.08.24.21:42:52 [Progress] min: 0
+2012.08.24.21:42:52 [Progress] max: 1
+2012.08.24.21:42:52 [Progress] current: 1
+2012.08.24.21:42:52 [Progress] min: 0
+2012.08.24.21:42:52 [Progress] max: 1
+2012.08.24.21:42:52 [Progress] current: 1
+2012.08.24.21:42:52 [Progress] min: 0
+2012.08.24.21:42:52 [Progress] max: 1
+2012.08.24.21:42:52 [Progress] current: 1
+2012.08.24.21:42:52 [Progress] min: 0
+2012.08.24.21:42:52 [Progress] max: 1
+2012.08.24.21:42:52 [Progress] current: 1
+2012.08.24.21:42:52 [Progress] min: 0
+2012.08.24.21:42:52 [Progress] max: 1
+2012.08.24.21:42:52 [Progress] current: 1
+2012.08.24.21:42:52 [Progress] min: 0
+2012.08.24.21:42:52 [Progress] max: 1
+2012.08.24.21:42:52 [Progress] current: 1
+2012.08.24.21:42:52 [Progress] min: 0
+2012.08.24.21:42:52 [Progress] max: 1
+2012.08.24.21:42:52 [Progress] current: 1
+2012.08.24.21:42:52 [Progress] min: 0
+2012.08.24.21:42:52 [Progress] max: 1
+2012.08.24.21:42:52 [Progress] current: 1
+2012.08.24.21:42:52 [Progress] min: 0
+2012.08.24.21:42:52 [Progress] max: 1
+2012.08.24.21:42:52 [Progress] current: 1
+2012.08.24.21:42:52 [Progress] min: 0
+2012.08.24.21:42:52 [Progress] max: 1
+2012.08.24.21:42:52 [Progress] current: 1
+2012.08.24.21:42:52 [Progress] min: 0
+2012.08.24.21:42:52 [Progress] max: 1
+2012.08.24.21:42:52 [Progress] current: 1
+2012.08.24.21:42:52 [Progress] min: 0
+2012.08.24.21:42:52 [Progress] max: 1
+2012.08.24.21:42:52 [Progress] current: 1
+2012.08.24.21:42:52 [Progress] min: 0
+2012.08.24.21:42:52 [Progress] max: 1
+2012.08.24.21:42:52 [Progress] current: 1
+2012.08.24.21:42:52 [Progress] min: 0
+2012.08.24.21:42:52 [Progress] max: 1
+2012.08.24.21:42:52 [Progress] current: 1
+2012.08.24.21:42:52 [Progress] min: 0
+2012.08.24.21:42:52 [Progress] max: 1
+2012.08.24.21:42:52 [Progress] current: 1
+2012.08.24.21:42:52 [Progress] min: 0
+2012.08.24.21:42:52 [Progress] max: 1
+2012.08.24.21:42:52 [Progress] current: 1
+2012.08.24.21:42:52 [Progress] min: 0
+2012.08.24.21:42:52 [Progress] max: 1
+2012.08.24.21:42:52 [Progress] current: 1
+2012.08.24.21:42:52 [Progress] min: 0
+2012.08.24.21:42:52 [Progress] max: 1
+2012.08.24.21:42:52 [Progress] current: 1
+2012.08.24.21:42:52 [Progress] min: 0
+2012.08.24.21:42:52 [Progress] max: 1
+2012.08.24.21:42:52 [Progress] current: 1
+2012.08.24.21:42:52 [Progress] min: 0
+2012.08.24.21:42:52 [Progress] max: 1
+2012.08.24.21:42:52 [Progress] current: 1
+2012.08.24.21:42:52 [Progress] min: 0
+2012.08.24.21:42:52 [Progress] max: 1
+2012.08.24.21:42:52 [Progress] current: 1
+2012.08.24.21:42:52 [Progress] min: 0
+2012.08.24.21:42:52 [Progress] max: 1
+2012.08.24.21:42:52 [Progress] current: 1
+2012.08.24.21:42:52 [Progress] min: 0
+2012.08.24.21:42:52 [Progress] max: 1
+2012.08.24.21:42:52 [Progress] current: 1
+2012.08.24.21:42:52 [Progress] min: 0
+2012.08.24.21:42:52 [Progress] max: 1
+2012.08.24.21:42:52 [Progress] current: 1
+2012.08.24.21:42:52 [Progress] min: 0
+2012.08.24.21:42:52 [Progress] max: 1
+2012.08.24.21:42:52 [Progress] current: 1
+2012.08.24.21:42:52 [Progress] min: 0
+2012.08.24.21:42:52 [Progress] max: 1
+2012.08.24.21:42:52 [Progress] current: 1
+2012.08.24.21:42:52 [Progress] min: 0
+2012.08.24.21:42:52 [Progress] max: 1
+2012.08.24.21:42:52 [Progress] current: 1
+2012.08.24.21:42:52 [Progress] min: 0
+2012.08.24.21:42:52 [Progress] max: 1
+2012.08.24.21:42:52 [Progress] current: 1
+2012.08.24.21:42:52 [Progress] min: 0
+2012.08.24.21:42:52 [Progress] max: 1
+2012.08.24.21:42:52 [Progress] current: 1
+2012.08.24.21:42:52 [Progress] min: 0
+2012.08.24.21:42:52 [Progress] max: 1
+2012.08.24.21:42:52 [Progress] current: 1
+2012.08.24.21:42:52 [Progress] min: 0
+2012.08.24.21:42:52 [Progress] max: 1
+2012.08.24.21:42:52 [Progress] current: 1
+2012.08.24.21:42:52 [Progress] min: 0
+2012.08.24.21:42:52 [Progress] max: 1
+2012.08.24.21:42:52 [Progress] current: 1
+2012.08.24.21:42:52 [Progress] min: 0
+2012.08.24.21:42:52 [Progress] max: 1
+2012.08.24.21:42:52 [Progress] current: 1
+2012.08.24.21:42:52 [Progress] min: 0
+2012.08.24.21:42:52 [Progress] max: 1
+2012.08.24.21:42:52 [Progress] current: 1
+2012.08.24.21:42:52 [Info] merlin_network_to_switch_transform: After transform: <b>125</b> modules, <b>430</b> connections
+2012.08.24.21:42:52 [Debug] Transform: WidthTransform
+2012.08.24.21:42:52 [Progress] min: 0
+2012.08.24.21:42:52 [Progress] max: 1
+2012.08.24.21:42:52 [Progress] current: 1
+2012.08.24.21:42:52 [Progress] min: 0
+2012.08.24.21:42:52 [Progress] max: 1
+2012.08.24.21:42:52 [Progress] current: 1
+2012.08.24.21:42:52 [Info] merlin_width_transform: After transform: <b>127</b> modules, <b>436</b> connections
+2012.08.24.21:42:52 [Debug] Transform: RouterTableTransform
+2012.08.24.21:42:52 [Debug] Transform: ClockCrossingTransform
+2012.08.24.21:42:52 [Info] Inserting clock-crossing logic between cmd_xbar_demux_001.src4 and cmd_xbar_mux_004.sink0
+2012.08.24.21:42:52 [Progress] min: 0
+2012.08.24.21:42:52 [Progress] max: 1
+2012.08.24.21:42:52 [Progress] current: 1
+2012.08.24.21:42:52 [Info] Inserting clock-crossing logic between rsp_xbar_demux_004.src0 and rsp_xbar_mux_001.sink4
+2012.08.24.21:42:52 [Progress] min: 0
+2012.08.24.21:42:52 [Progress] max: 1
+2012.08.24.21:42:52 [Progress] current: 1
+2012.08.24.21:42:52 [Info] com_altera_sopcmodel_transforms_avalon_ClockCrossingTransform: After transform: <b>129</b> modules, <b>446</b> connections
+2012.08.24.21:42:52 [Debug] Transform: PipelineTransform
+2012.08.24.21:42:52 [Debug] Transform: TrafficLimiterUpdateTransform
+2012.08.24.21:42:52 [Debug] Transform: InterruptMapperTransform
+2012.08.24.21:42:52 [Progress] min: 0
+2012.08.24.21:42:52 [Progress] max: 1
+2012.08.24.21:42:52 [Progress] current: 1
+2012.08.24.21:42:52 [Info] merlin_interrupt_mapper_transform: After transform: <b>130</b> modules, <b>449</b> connections
+2012.08.24.21:42:52 [Debug] Transform: InterruptSyncTransform
+2012.08.24.21:42:52 [Debug] Transform: InterruptFanoutTransform
+2012.08.24.21:42:53 [Warning] system: "No matching role found for spi_0:spi_control_port:endofpacket (endofpacket)"
+2012.08.24.21:42:53 [Warning] system: "No matching role found for spi_0:spi_control_port:dataavailable (dataavailable)"
+2012.08.24.21:42:53 [Warning] system: "No matching role found for spi_0:spi_control_port:readyfordata (readyfordata)"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altpll</b> "<b>submodules/demo_de0_sys_altpll_0</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_nios2_qsys</b> "<b>submodules/demo_de0_sys_nios2_qsys_0</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_avalon_sysid_qsys</b> "<b>submodules/demo_de0_sys_sysid_qsys_0</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_avalon_onchip_memory2</b> "<b>submodules/demo_de0_sys_ram_0</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_generic_tristate_controller</b> "<b>submodules/demo_de0_sys_rom_0</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_tristate_conduit_bridge</b> "<b>submodules/demo_de0_sys_flash_0</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_avalon_fifo</b> "<b>submodules/demo_de0_sys_fifo_0</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>m2vdec</b> "<b>submodules/m2vdec</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>seg7led_static</b> "<b>submodules/seg7led_static</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>m2vdd_hx8347a</b> "<b>submodules/m2vdd_hx8347a</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_avalon_new_sdram_controller</b> "<b>submodules/demo_de0_sys_sdram_0</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>data_format_adapter</b> "<b>submodules/demo_de0_sys_data_format_adapter</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>timing_adapter</b> "<b>submodules/demo_de0_sys_timing_adapter</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_avalon_timer</b> "<b>submodules/demo_de0_sys_timer_0</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_avalon_spi</b> "<b>submodules/demo_de0_sys_spi_0</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_avalon_pio</b> "<b>submodules/demo_de0_sys_pio_0</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_master_translator</b> "<b>submodules/altera_merlin_master_translator</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_master_translator</b> "<b>submodules/altera_merlin_master_translator</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_slave_translator</b> "<b>submodules/altera_merlin_slave_translator</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_slave_translator</b> "<b>submodules/altera_merlin_slave_translator</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_slave_translator</b> "<b>submodules/altera_merlin_slave_translator</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_slave_translator</b> "<b>submodules/altera_merlin_slave_translator</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_slave_translator</b> "<b>submodules/altera_merlin_slave_translator</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_slave_translator</b> "<b>submodules/altera_merlin_slave_translator</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_slave_translator</b> "<b>submodules/altera_merlin_slave_translator</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_slave_translator</b> "<b>submodules/altera_merlin_slave_translator</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_slave_translator</b> "<b>submodules/altera_merlin_slave_translator</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_slave_translator</b> "<b>submodules/altera_merlin_slave_translator</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_slave_translator</b> "<b>submodules/altera_merlin_slave_translator</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_slave_translator</b> "<b>submodules/altera_merlin_slave_translator</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_slave_translator</b> "<b>submodules/altera_merlin_slave_translator</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_master_translator</b> "<b>submodules/altera_merlin_master_translator</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_master_translator</b> "<b>submodules/altera_merlin_master_translator</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_slave_translator</b> "<b>submodules/altera_merlin_slave_translator</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_slave_agent</b> "<b>submodules/altera_merlin_slave_agent</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_avalon_sc_fifo</b> "<b>submodules/altera_avalon_sc_fifo</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_slave_agent</b> "<b>submodules/altera_merlin_slave_agent</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_avalon_sc_fifo</b> "<b>submodules/altera_avalon_sc_fifo</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_slave_agent</b> "<b>submodules/altera_merlin_slave_agent</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_avalon_sc_fifo</b> "<b>submodules/altera_avalon_sc_fifo</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_slave_agent</b> "<b>submodules/altera_merlin_slave_agent</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_avalon_sc_fifo</b> "<b>submodules/altera_avalon_sc_fifo</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_avalon_sc_fifo</b> "<b>submodules/altera_avalon_sc_fifo</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_slave_agent</b> "<b>submodules/altera_merlin_slave_agent</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_avalon_sc_fifo</b> "<b>submodules/altera_avalon_sc_fifo</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_slave_agent</b> "<b>submodules/altera_merlin_slave_agent</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_avalon_sc_fifo</b> "<b>submodules/altera_avalon_sc_fifo</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_slave_agent</b> "<b>submodules/altera_merlin_slave_agent</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_avalon_sc_fifo</b> "<b>submodules/altera_avalon_sc_fifo</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_slave_agent</b> "<b>submodules/altera_merlin_slave_agent</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_avalon_sc_fifo</b> "<b>submodules/altera_avalon_sc_fifo</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_slave_agent</b> "<b>submodules/altera_merlin_slave_agent</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_avalon_sc_fifo</b> "<b>submodules/altera_avalon_sc_fifo</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_slave_agent</b> "<b>submodules/altera_merlin_slave_agent</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_avalon_sc_fifo</b> "<b>submodules/altera_avalon_sc_fifo</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_master_agent</b> "<b>submodules/altera_merlin_master_agent</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_slave_agent</b> "<b>submodules/altera_merlin_slave_agent</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_avalon_sc_fifo</b> "<b>submodules/altera_avalon_sc_fifo</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_slave_agent</b> "<b>submodules/altera_merlin_slave_agent</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_avalon_sc_fifo</b> "<b>submodules/altera_avalon_sc_fifo</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_slave_agent</b> "<b>submodules/altera_merlin_slave_agent</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_avalon_sc_fifo</b> "<b>submodules/altera_avalon_sc_fifo</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_master_agent</b> "<b>submodules/altera_merlin_master_agent</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_master_agent</b> "<b>submodules/altera_merlin_master_agent</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_master_agent</b> "<b>submodules/altera_merlin_master_agent</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_slave_agent</b> "<b>submodules/altera_merlin_slave_agent</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_avalon_sc_fifo</b> "<b>submodules/altera_avalon_sc_fifo</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_router</b> "<b>submodules/demo_de0_sys_addr_router</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_router</b> "<b>submodules/demo_de0_sys_addr_router_001</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_router</b> "<b>submodules/demo_de0_sys_id_router</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_router</b> "<b>submodules/demo_de0_sys_id_router</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_router</b> "<b>submodules/demo_de0_sys_id_router_002</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_router</b> "<b>submodules/demo_de0_sys_id_router_003</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_router</b> "<b>submodules/demo_de0_sys_id_router_003</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_router</b> "<b>submodules/demo_de0_sys_id_router_003</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_router</b> "<b>submodules/demo_de0_sys_id_router_003</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_router</b> "<b>submodules/demo_de0_sys_id_router_003</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_router</b> "<b>submodules/demo_de0_sys_id_router_003</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_router</b> "<b>submodules/demo_de0_sys_id_router_003</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_router</b> "<b>submodules/demo_de0_sys_id_router_003</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_router</b> "<b>submodules/demo_de0_sys_id_router_003</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_router</b> "<b>submodules/demo_de0_sys_id_router_003</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_router</b> "<b>submodules/demo_de0_sys_addr_router_002</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_router</b> "<b>submodules/demo_de0_sys_addr_router_002</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_router</b> "<b>submodules/demo_de0_sys_id_router_013</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_burst_adapter</b> "<b>submodules/altera_merlin_burst_adapter</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_reset_controller</b> "<b>submodules/altera_reset_controller</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_reset_controller</b> "<b>submodules/altera_reset_controller</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_demultiplexer</b> "<b>submodules/demo_de0_sys_cmd_xbar_demux</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_demultiplexer</b> "<b>submodules/demo_de0_sys_cmd_xbar_demux_001</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_multiplexer</b> "<b>submodules/demo_de0_sys_cmd_xbar_mux</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_multiplexer</b> "<b>submodules/demo_de0_sys_cmd_xbar_mux</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_multiplexer</b> "<b>submodules/demo_de0_sys_cmd_xbar_mux</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_demultiplexer</b> "<b>submodules/demo_de0_sys_rsp_xbar_demux</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_demultiplexer</b> "<b>submodules/demo_de0_sys_rsp_xbar_demux</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_demultiplexer</b> "<b>submodules/demo_de0_sys_rsp_xbar_demux</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_demultiplexer</b> "<b>submodules/demo_de0_sys_rsp_xbar_demux_003</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_demultiplexer</b> "<b>submodules/demo_de0_sys_rsp_xbar_demux_003</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_demultiplexer</b> "<b>submodules/demo_de0_sys_rsp_xbar_demux_003</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_demultiplexer</b> "<b>submodules/demo_de0_sys_rsp_xbar_demux_003</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_demultiplexer</b> "<b>submodules/demo_de0_sys_rsp_xbar_demux_003</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_demultiplexer</b> "<b>submodules/demo_de0_sys_rsp_xbar_demux_003</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_demultiplexer</b> "<b>submodules/demo_de0_sys_rsp_xbar_demux_003</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_demultiplexer</b> "<b>submodules/demo_de0_sys_rsp_xbar_demux_003</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_demultiplexer</b> "<b>submodules/demo_de0_sys_rsp_xbar_demux_003</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_demultiplexer</b> "<b>submodules/demo_de0_sys_rsp_xbar_demux_003</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_multiplexer</b> "<b>submodules/demo_de0_sys_rsp_xbar_mux</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_multiplexer</b> "<b>submodules/demo_de0_sys_rsp_xbar_mux_001</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_demultiplexer</b> "<b>submodules/demo_de0_sys_cmd_xbar_demux_002</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_demultiplexer</b> "<b>submodules/demo_de0_sys_cmd_xbar_demux_002</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_multiplexer</b> "<b>submodules/demo_de0_sys_cmd_xbar_mux_013</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_demultiplexer</b> "<b>submodules/demo_de0_sys_rsp_xbar_demux_013</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_width_adapter</b> "<b>submodules/altera_merlin_width_adapter</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_merlin_width_adapter</b> "<b>submodules/altera_merlin_width_adapter</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_avalon_st_handshake_clock_crosser</b> "<b>submodules/altera_avalon_st_handshake_clock_crosser</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_avalon_st_handshake_clock_crosser</b> "<b>submodules/altera_avalon_st_handshake_clock_crosser</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_inst: "<b>demo_de0_sys_inst</b>" reuses <b>altera_irq_mapper</b> "<b>submodules/demo_de0_sys_irq_mapper</b>"
+2012.08.24.21:42:53 [Info] demo_de0_sys_inst: "<b>demo_de0_sys_tb</b>" instantiated <b>demo_de0_sys</b> "<b>demo_de0_sys_inst</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_tb: queue size: 130 starting:altera_avalon_clock_source "submodules/altera_avalon_clock_source"
+2012.08.24.21:42:53 [Info] demo_de0_sys_inst_clk_bfm: "<b>demo_de0_sys_tb</b>" instantiated <b>altera_avalon_clock_source</b> "<b>demo_de0_sys_inst_clk_bfm</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_tb: queue size: 129 starting:altera_avalon_reset_source "submodules/altera_avalon_reset_source"
+2012.08.24.21:42:53 [Info] demo_de0_sys_inst_reset_bfm: "<b>demo_de0_sys_tb</b>" instantiated <b>altera_avalon_reset_source</b> "<b>demo_de0_sys_inst_reset_bfm</b>"
+2012.08.24.21:42:53 [Info] Reusing file <b>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/verbosity_pkg.sv</b>
+2012.08.24.21:42:53 [Debug] demo_de0_sys_tb: queue size: 128 starting:altera_conduit_bfm "submodules/altera_conduit_bfm"
+2012.08.24.21:42:53 [Info] demo_de0_sys_inst_pll_phasedone_bfm: "<b>demo_de0_sys_tb</b>" instantiated <b>altera_conduit_bfm</b> "<b>demo_de0_sys_inst_pll_phasedone_bfm</b>"
+2012.08.24.21:42:53 [Info] Reusing file <b>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/verbosity_pkg.sv</b>
+2012.08.24.21:42:53 [Debug] demo_de0_sys_tb: queue size: 126 starting:altera_conduit_bfm "submodules/altera_conduit_bfm_0002"
+2012.08.24.21:42:53 [Info] demo_de0_sys_inst_pll_areset_bfm: "<b>demo_de0_sys_tb</b>" instantiated <b>altera_conduit_bfm</b> "<b>demo_de0_sys_inst_pll_areset_bfm</b>"
+2012.08.24.21:42:53 [Info] Reusing file <b>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/verbosity_pkg.sv</b>
+2012.08.24.21:42:53 [Debug] demo_de0_sys_tb: queue size: 125 starting:altera_conduit_bfm "submodules/altera_conduit_bfm_0003"
+2012.08.24.21:42:53 [Info] demo_de0_sys_inst_hd_bfm: "<b>demo_de0_sys_tb</b>" instantiated <b>altera_conduit_bfm</b> "<b>demo_de0_sys_inst_hd_bfm</b>"
+2012.08.24.21:42:53 [Info] Reusing file <b>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/verbosity_pkg.sv</b>
+2012.08.24.21:42:53 [Debug] demo_de0_sys_tb: queue size: 124 starting:altera_conduit_bfm "submodules/altera_conduit_bfm_0004"
+2012.08.24.21:42:53 [Info] demo_de0_sys_inst_lcd_bfm: "<b>demo_de0_sys_tb</b>" instantiated <b>altera_conduit_bfm</b> "<b>demo_de0_sys_inst_lcd_bfm</b>"
+2012.08.24.21:42:53 [Info] Reusing file <b>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/verbosity_pkg.sv</b>
+2012.08.24.21:42:53 [Debug] demo_de0_sys_tb: queue size: 123 starting:altera_conduit_bfm "submodules/altera_conduit_bfm_0005"
+2012.08.24.21:42:53 [Info] demo_de0_sys_inst_sdcard_bfm: "<b>demo_de0_sys_tb</b>" instantiated <b>altera_conduit_bfm</b> "<b>demo_de0_sys_inst_sdcard_bfm</b>"
+2012.08.24.21:42:53 [Info] Reusing file <b>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/verbosity_pkg.sv</b>
+2012.08.24.21:42:53 [Debug] demo_de0_sys_tb: queue size: 122 starting:altera_conduit_bfm "submodules/altera_conduit_bfm_0006"
+2012.08.24.21:42:53 [Info] demo_de0_sys_inst_sw_bfm: "<b>demo_de0_sys_tb</b>" instantiated <b>altera_conduit_bfm</b> "<b>demo_de0_sys_inst_sw_bfm</b>"
+2012.08.24.21:42:53 [Info] Reusing file <b>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/verbosity_pkg.sv</b>
+2012.08.24.21:42:53 [Debug] demo_de0_sys_tb: queue size: 121 starting:altera_tristate_conduit_bridge_translator "submodules/altera_tristate_conduit_bridge_translator"
+2012.08.24.21:42:53 [Info] flash_0_tcb_translator: "<b>demo_de0_sys_tb</b>" instantiated <b>altera_tristate_conduit_bridge_translator</b> "<b>flash_0_tcb_translator</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_tb: queue size: 120 starting:altera_external_memory_bfm "submodules/altera_external_memory_bfm"
+2012.08.24.21:42:53 [Info] rom_0_external_mem_bfm: "<b>demo_de0_sys_tb</b>" instantiated <b>altera_external_memory_bfm</b> "<b>rom_0_external_mem_bfm</b>"
+2012.08.24.21:42:53 [Debug] demo_de0_sys_tb: queue size: 118 starting:altera_sdram_partner_module "submodules/altera_sdram_partner_module"
+2012.08.24.21:42:53 [Info] sdram_0_my_partner: Starting RTL generation for partner module 'altera_sdram_partner_module'
+2012.08.24.21:42:53 [Info] sdram_0_my_partner:   Generation command is [exec /opt/altera/11.1sp2/quartus/linux/perl/bin/perl -I /opt/altera/11.1sp2/quartus/common/ip/altera/common/perl/5.8.3 -I /opt/altera/11.1sp2/quartus/sopc_builder/bin/europa -I /opt/altera/11.1sp2/quartus/sopc_builder/bin/perl_lib -I /opt/altera/11.1sp2/quartus/sopc_builder/bin -I /opt/altera/11.1sp2/ip/altera/alt_mem_if/alt_mem_if_mem_models/altera_sdram_partner_module/ -I /opt/altera/11.1sp2/quartus/../ip/altera/sopc_builder_ip/altera_sdram_partner_module -- /opt/altera/11.1sp2/ip/altera/alt_mem_if/alt_mem_if_mem_models/altera_sdram_partner_module//em_altera_sodimm.pl --output_dir=/tmp/alt5576_5925425208035119622.dir/0056_sopcgen/ --quartus_dir=/opt/altera/11.1sp2/quartus --language=verilog --sdram_data_width=16 --sdram_bank_width=2 --sdram_col_width=8 --sdram_row_width=12 --sdram_num_chipselects=1 --module_name=altera_sdram_partner_module --cas_latency=3]
+2012.08.24.21:42:54 [Info] sdram_0_my_partner: # 2012.08.24 21:42:54 (*) Starting SDRAM Simulation Partner Module generation
+2012.08.24.21:42:54 [Info] sdram_0_my_partner: Done RTL generation for module 'altera_sdram_partner_module'
+2012.08.24.21:42:54 [Info] sdram_0_my_partner: "<b>demo_de0_sys_tb</b>" instantiated <b>altera_sdram_partner_module</b> "<b>sdram_0_my_partner</b>"
+2012.08.24.21:42:54 [Debug] demo_de0_sys_tb: queue size: 116 starting:altpll "submodules/demo_de0_sys_altpll_0"
+2012.08.24.21:42:54 [Debug] set ALTERA_HW_TCL_KEEP_TEMP_FILES=1 to retain temp files
+2012.08.24.21:42:54 [Debug] Command: /opt/altera/11.1sp2/quartus/bin/quartus_map not_a_project --generate_hdl_interface=/tmp/alt5576_5925425208035119622.dir/0057_sopcgen/demo_de0_sys_altpll_0.v --source=/tmp/alt5576_5925425208035119622.dir/0057_sopcgen/demo_de0_sys_altpll_0.v --set=HDL_INTERFACE_OUTPUT_PATH=/tmp/alt5576_5925425208035119622.dir/0058_sopcqmap/
+2012.08.24.21:42:56 [Debug] Command took 1.929s
+2012.08.24.21:42:56 [Info] altpll_0: Generating Verilog simulation model
+2012.08.24.21:42:56 [Debug] set ALTERA_HW_TCL_KEEP_TEMP_FILES=1 to retain temp files
+2012.08.24.21:42:56 [Debug] Command: /opt/altera/11.1sp2/quartus/bin/quartus_map /tmp/alt5576_5925425208035119622.dir/0059_sopcqmap/demo_de0_sys_altpll_0.v --source=/tmp/alt5576_5925425208035119622.dir/0059_sopcqmap/demo_de0_sys_altpll_0.v --simgen --simgen_parameter=CBX_HDL_LANGUAGE=VERILOG,SIMGEN_RAND_POWERUP_FFS=OFF,SIMGEN_OBFUSCATE=OFF,SIMGEN_MAX_TULIP_COUNT=0 --family=Cyclone III
+2012.08.24.21:42:58 [Warning] Parallel compilation is not licensed and has been disabled
+2012.08.24.21:42:58 [Debug] Command took 2.040s
+2012.08.24.21:42:58 [Info] altpll_0: Generated simulation model demo_de0_sys_altpll_0.vo
+2012.08.24.21:42:58 [Info] altpll_0: "<b>demo_de0_sys_inst</b>" instantiated <b>altpll</b> "<b>altpll_0</b>"
+2012.08.24.21:42:58 [Debug] demo_de0_sys_tb: queue size: 115 starting:altera_nios2_qsys "submodules/demo_de0_sys_nios2_qsys_0"
+2012.08.24.21:42:58 [Info] nios2_qsys_0: Starting RTL generation for module 'demo_de0_sys_nios2_qsys_0'
+2012.08.24.21:42:58 [Info] nios2_qsys_0:   Generation command is [exec /opt/altera/11.1sp2/quartus/../ip/altera/nios2_ip/altera_nios2/eperl -I /opt/altera/11.1sp2/quartus/common/ip/altera/common/perl/5.8.3 -I /opt/altera/11.1sp2/quartus/sopc_builder/bin/europa -I /opt/altera/11.1sp2/quartus/sopc_builder/bin/perl_lib -I /opt/altera/11.1sp2/quartus/sopc_builder/bin -I /opt/altera/11.1sp2/quartus/../ip/altera/nios2_ip/altera_nios2/cpu_lib -I /opt/altera/11.1sp2/quartus/../ip/altera/nios2_ip/altera_nios2/nios_lib -I /opt/altera/11.1sp2/quartus/../ip/altera/nios2_ip/altera_nios2 -I /opt/altera/11.1sp2/quartus/../ip/altera/nios2_ip/altera_nios2 -- /opt/altera/11.1sp2/quartus/../ip/altera/nios2_ip/altera_nios2/generate_rtl.epl --name=demo_de0_sys_nios2_qsys_0 --dir=/tmp/alt5576_5925425208035119622.dir/0061_nios2_qsys_0_gen/ --quartus_dir=/opt/altera/11.1sp2/quartus --verilog --config=/tmp/alt5576_5925425208035119622.dir/0061_nios2_qsys_0_gen//demo_de0_sys_nios2_qsys_0_processor_configuration.pl  --do_build_sim=1    --sim_dir=/tmp/alt5576_5925425208035119622.dir/0061_nios2_qsys_0_gen/    --bogus  ]
+2012.08.24.21:43:01 [Info] nios2_qsys_0: # 2012.08.24 21:42:58 (*) Starting Nios II generation
+2012.08.24.21:43:01 [Info] nios2_qsys_0: # 2012.08.24 21:42:58 (*)   No license required to generate encrypted Nios II/e.
+2012.08.24.21:43:01 [Info] nios2_qsys_0: # 2012.08.24 21:42:58 (*)   Elaborating CPU configuration settings
+2012.08.24.21:43:01 [Info] nios2_qsys_0: # 2012.08.24 21:42:58 (*)   Creating all objects for CPU
+2012.08.24.21:43:01 [Info] nios2_qsys_0: # 2012.08.24 21:42:59 (*)   Creating '/tmp/alt5576_5925425208035119622.dir/0061_nios2_qsys_0_gen//demo_de0_sys_nios2_qsys_0.do'
+2012.08.24.21:43:01 [Info] nios2_qsys_0: # 2012.08.24 21:42:59 (*)   Generating RTL from CPU objects
+2012.08.24.21:43:01 [Info] nios2_qsys_0: # 2012.08.24 21:42:59 (*)   Creating plain-text RTL
+2012.08.24.21:43:01 [Info] nios2_qsys_0: # 2012.08.24 21:43:01 (*) Done Nios II generation
+2012.08.24.21:43:01 [Info] nios2_qsys_0: Done RTL generation for module 'demo_de0_sys_nios2_qsys_0'
+2012.08.24.21:43:01 [Info] nios2_qsys_0: "<b>demo_de0_sys_inst</b>" instantiated <b>altera_nios2_qsys</b> "<b>nios2_qsys_0</b>"
+2012.08.24.21:43:01 [Debug] demo_de0_sys_tb: queue size: 114 starting:altera_avalon_sysid_qsys "submodules/demo_de0_sys_sysid_qsys_0"
+2012.08.24.21:43:01 [Info] sysid_qsys_0: Generating Verilog simulation model
+2012.08.24.21:43:01 [Debug] set ALTERA_HW_TCL_KEEP_TEMP_FILES=1 to retain temp files
+2012.08.24.21:43:01 [Debug] Command: /opt/altera/11.1sp2/quartus/bin/quartus_map /tmp/alt5576_5925425208035119622.dir/0063_sopcqmap/demo_de0_sys_sysid_qsys_0.v --source=/tmp/alt5576_5925425208035119622.dir/0063_sopcqmap/demo_de0_sys_sysid_qsys_0.v --simgen --simgen_parameter=CBX_HDL_LANGUAGE=VERILOG,SIMGEN_RAND_POWERUP_FFS=OFF,SIMGEN_OBFUSCATE=OFF,SIMGEN_MAX_TULIP_COUNT=0 --family=Cyclone III
+2012.08.24.21:43:03 [Warning] Parallel compilation is not licensed and has been disabled
+2012.08.24.21:43:03 [Debug] Command took 2.043s
+2012.08.24.21:43:03 [Info] sysid_qsys_0: Generated simulation model demo_de0_sys_sysid_qsys_0.vo
+2012.08.24.21:43:03 [Info] sysid_qsys_0: "<b>demo_de0_sys_inst</b>" instantiated <b>altera_avalon_sysid_qsys</b> "<b>sysid_qsys_0</b>"
+2012.08.24.21:43:03 [Debug] demo_de0_sys_tb: queue size: 113 starting:altera_avalon_onchip_memory2 "submodules/demo_de0_sys_ram_0"
+2012.08.24.21:43:03 [Info] Starting classic module elaboration.
+2012.08.24.21:43:03 [Progress] "/opt/altera/11.1sp2/quartus/linux/jre/bin/java" -Xmx512M -classpath "/opt/altera/11.1sp2/quartus/sopc_builder/bin/sopc_builder.jar:/opt/altera/11.1sp2/quartus/sopc_builder/bin/PinAssigner.jar:/opt/altera/11.1sp2/quartus/sopc_builder/bin/sopc_wizard.jar:/opt/altera/11.1sp2/quartus/sopc_builder/bin/jptf.jar" sopc_builder.sopc_builder  -d"/opt/altera/11.1sp2/quartus/sopc_builder" -notalkback=1 -projectnameyysystem.qpf -projectpath/tmp/alt5576_5925425208035119622.dir/0065_sopclgen  --no_splash --refresh /tmp/alt5576_5925425208035119622.dir/0065_sopclgen/yysystem.v --quartus_dir="/opt/altera/11.1sp2/quartus" --sopc_perl="/opt/altera/11.1sp2/quartus/linux/perl" --sopc_lib_path="++/opt/altera/11.1sp2/quartus/../ip/altera/sopc_builder_ip+/opt/altera/11.1sp2/quartus/../ip/altera/nios2_ip"
+2012.08.24.21:43:06 [Info] Finished elaborating classic module.
+2012.08.24.21:43:06 [Progress] Executing: /opt/altera/11.1sp2/quartus//sopc_builder/bin/sopc_builder --classic --generate /tmp/alt5576_5925425208035119622.dir/0065_sopclgen/yysystem.ptf
+2012.08.24.21:43:06 [Info] Running sopc_builder...
+2012.08.24.21:43:07 [Progress] "/opt/altera/11.1sp2/quartus//linux/jre/bin/java" -Xmx512M -classpath "/opt/altera/11.1sp2/quartus//sopc_builder/bin/sopc_builder.jar:/opt/altera/11.1sp2/quartus//sopc_builder/bin/PinAssigner.jar:/opt/altera/11.1sp2/quartus//sopc_builder/bin/sopc_wizard.jar:/opt/altera/11.1sp2/quartus//sopc_builder/bin/jptf.jar" sopc_builder.sopc_builder  -d"/opt/altera/11.1sp2/quartus//sopc_builder" -notalkback=1 -projectnameyysystem.qpf -projectpath/tmp/alt5576_5925425208035119622.dir/0065_sopclgen  --generate /tmp/alt5576_5925425208035119622.dir/0065_sopclgen/yysystem.v --quartus_dir="/opt/altera/11.1sp2/quartus/" --sopc_perl="/opt/altera/11.1sp2/quartus//linux/perl" --sopc_lib_path="++/opt/altera/11.1sp2/quartus//../ip/altera/sopc_builder_ip+/opt/altera/11.1sp2/quartus//../ip/altera/nios2_ip"
+2012.08.24.21:43:09 [Progress] .
+2012.08.24.21:43:11 [Progress] # 2012.08.24 21:43:11 (*) Success: sopc_builder finished.
+2012.08.24.21:43:11 [Info] ram_0: "<b>demo_de0_sys_inst</b>" instantiated <b>altera_avalon_onchip_memory2</b> "<b>ram_0</b>"
+2012.08.24.21:43:11 [Debug] demo_de0_sys_tb: queue size: 112 starting:altera_generic_tristate_controller "submodules/demo_de0_sys_rom_0"
+2012.08.24.21:43:11 [Info] rom_0: Running transform <b>AvalonTransform</b>
+2012.08.24.21:43:11 [Debug] Transform: PipelineBridgeSwap
+2012.08.24.21:43:11 [Info] pipeline_bridge_swap_transform: After transform: <b>5</b> modules, <b>10</b> connections
+2012.08.24.21:43:11 [Debug] Transform: ClockCrossingBridgeSwap
+2012.08.24.21:43:11 [Debug] Transform: QsysBetaIPSwap
+2012.08.24.21:43:11 [Debug] Transform: CustomInstructionTransform
+2012.08.24.21:43:11 [Info] No custom instruction connections, skipping transform 
+2012.08.24.21:43:11 [Debug] Transform: TristateConduitUpgradeTransform
+2012.08.24.21:43:11 [Debug] Transform: TranslatorTransform
+2012.08.24.21:43:11 [Debug] Transform merlin_translator_transform not run on matched interfaces tdt.avalon_universal_master_0 and slave_translator.avalon_universal_slave_0
+2012.08.24.21:43:11 [Debug] Transform merlin_translator_transform not run on matched interfaces slave_translator.avalon_anti_slave_0 and tda.avalon_slave_0
+2012.08.24.21:43:11 [Debug] Transform: DomainTransform
+2012.08.24.21:43:11 [Debug] Transform merlin_domain_transform not run on matched interfaces tdt.avalon_universal_master_0 and slave_translator.avalon_universal_slave_0
+2012.08.24.21:43:11 [Debug] Transform merlin_domain_transform not run on matched interfaces slave_translator.avalon_anti_slave_0 and tda.avalon_slave_0
+2012.08.24.21:43:11 [Debug] Transform: RouterTransform
+2012.08.24.21:43:11 [Debug] Transform: TrafficLimiterTransform
+2012.08.24.21:43:11 [Debug] Transform: BurstTransform
+2012.08.24.21:43:11 [Debug] Transform: ResetAdaptation
+2012.08.24.21:43:11 [Debug] Transform: NetworkToSwitchTransform
+2012.08.24.21:43:11 [Debug] Transform: WidthTransform
+2012.08.24.21:43:11 [Debug] Transform: RouterTableTransform
+2012.08.24.21:43:11 [Debug] Transform: ClockCrossingTransform
+2012.08.24.21:43:11 [Debug] Transform: TrafficLimiterUpdateTransform
+2012.08.24.21:43:11 [Debug] Transform: InterruptMapperTransform
+2012.08.24.21:43:11 [Debug] Transform: InterruptSyncTransform
+2012.08.24.21:43:11 [Debug] Transform: InterruptFanoutTransform
+2012.08.24.21:43:11 [Info] rom_0: Running transform <b>AvalonTransform</b> took 0.065s
+2012.08.24.21:43:11 [Debug] rom_0: "<b>rom_0</b>" reuses <b>altera_tristate_controller_translator</b> "<b>submodules/altera_tristate_controller_translator</b>"
+2012.08.24.21:43:11 [Debug] rom_0: "<b>rom_0</b>" reuses <b>altera_merlin_slave_translator</b> "<b>submodules/altera_merlin_slave_translator</b>"
+2012.08.24.21:43:11 [Debug] rom_0: "<b>rom_0</b>" reuses <b>altera_tristate_controller_aggregator</b> "<b>submodules/altera_tristate_controller_aggregator</b>"
+2012.08.24.21:43:11 [Info] rom_0: "<b>demo_de0_sys_inst</b>" instantiated <b>altera_generic_tristate_controller</b> "<b>rom_0</b>"
+2012.08.24.21:43:11 [Debug] demo_de0_sys_tb: queue size: 114 starting:altera_tristate_conduit_bridge "submodules/demo_de0_sys_flash_0"
+2012.08.24.21:43:11 [Info] flash_0: "<b>demo_de0_sys_inst</b>" instantiated <b>altera_tristate_conduit_bridge</b> "<b>flash_0</b>"
+2012.08.24.21:43:11 [Debug] demo_de0_sys_tb: queue size: 113 starting:altera_avalon_fifo "submodules/demo_de0_sys_fifo_0"
+2012.08.24.21:43:11 [Info] Starting classic module elaboration.
+2012.08.24.21:43:11 [Progress] "/opt/altera/11.1sp2/quartus/linux/jre/bin/java" -Xmx512M -classpath "/opt/altera/11.1sp2/quartus/sopc_builder/bin/sopc_builder.jar:/opt/altera/11.1sp2/quartus/sopc_builder/bin/PinAssigner.jar:/opt/altera/11.1sp2/quartus/sopc_builder/bin/sopc_wizard.jar:/opt/altera/11.1sp2/quartus/sopc_builder/bin/jptf.jar" sopc_builder.sopc_builder  -d"/opt/altera/11.1sp2/quartus/sopc_builder" -notalkback=1 -projectnameyysystem.qpf -projectpath/tmp/alt5576_5925425208035119622.dir/0067_sopclgen  --no_splash --refresh /tmp/alt5576_5925425208035119622.dir/0067_sopclgen/yysystem.v --quartus_dir="/opt/altera/11.1sp2/quartus" --sopc_perl="/opt/altera/11.1sp2/quartus/linux/perl" --sopc_lib_path="++/opt/altera/11.1sp2/quartus/../ip/altera/sopc_builder_ip+/opt/altera/11.1sp2/quartus/../ip/altera/nios2_ip"
+2012.08.24.21:43:13 [Info] Finished elaborating classic module.
+2012.08.24.21:43:13 [Progress] Executing: /opt/altera/11.1sp2/quartus//sopc_builder/bin/sopc_builder --classic --generate /tmp/alt5576_5925425208035119622.dir/0067_sopclgen/yysystem.ptf
+2012.08.24.21:43:13 [Info] Running sopc_builder...
+2012.08.24.21:43:13 [Progress] "/opt/altera/11.1sp2/quartus//linux/jre/bin/java" -Xmx512M -classpath "/opt/altera/11.1sp2/quartus//sopc_builder/bin/sopc_builder.jar:/opt/altera/11.1sp2/quartus//sopc_builder/bin/PinAssigner.jar:/opt/altera/11.1sp2/quartus//sopc_builder/bin/sopc_wizard.jar:/opt/altera/11.1sp2/quartus//sopc_builder/bin/jptf.jar" sopc_builder.sopc_builder  -d"/opt/altera/11.1sp2/quartus//sopc_builder" -notalkback=1 -projectnameyysystem.qpf -projectpath/tmp/alt5576_5925425208035119622.dir/0067_sopclgen  --generate /tmp/alt5576_5925425208035119622.dir/0067_sopclgen/yysystem.v --quartus_dir="/opt/altera/11.1sp2/quartus/" --sopc_perl="/opt/altera/11.1sp2/quartus//linux/perl" --sopc_lib_path="++/opt/altera/11.1sp2/quartus//../ip/altera/sopc_builder_ip+/opt/altera/11.1sp2/quartus//../ip/altera/nios2_ip"
+2012.08.24.21:43:15 [Progress] .
+2012.08.24.21:43:16 [Progress] # 2012.08.24 21:43:16 (*) Success: sopc_builder finished.
+2012.08.24.21:43:17 [Info] fifo_0: "<b>demo_de0_sys_inst</b>" instantiated <b>altera_avalon_fifo</b> "<b>fifo_0</b>"
+2012.08.24.21:43:17 [Debug] demo_de0_sys_tb: queue size: 112 starting:m2vdec "submodules/m2vdec"
+2012.08.24.21:42:29 [Debug] set ALTERA_HW_TCL_KEEP_TEMP_FILES=1 to retain temp files
+2012.08.24.21:42:29 [Debug] Command: /opt/altera/11.1sp2/quartus/bin/quartus_sh -t /tmp/alt5576_5925425208035119622.dir/0044_sopcqmap/not_a_project_setup.tcl
+2012.08.24.21:42:29 [Debug] Command: /opt/altera/11.1sp2/quartus/bin/quartus_map not_a_project --generate_hdl_interface=/home/shuta/projects/m2v_dec_impl/rtl/m2vdec.v --set=HDL_INTERFACE_OUTPUT_PATH=/tmp/alt5576_5925425208035119622.dir/0044_sopcqmap/
+2012.08.24.21:42:29 [Debug] Command took 0.640s
+2012.08.24.21:42:31 [Debug] Command took 1.806s
+2012.08.24.21:43:17 [Debug] set ALTERA_HW_TCL_KEEP_TEMP_FILES=1 to retain temp files
+2012.08.24.21:43:17 [Debug] Command: /opt/altera/11.1sp2/quartus/bin/quartus_sh -t /tmp/alt5576_5925425208035119622.dir/0068_sopcqmap/not_a_project_setup.tcl
+2012.08.24.21:43:17 [Debug] Command: /opt/altera/11.1sp2/quartus/bin/quartus_map not_a_project --generate_hdl_interface=/home/shuta/projects/m2v_dec_impl/rtl/m2vdec.v --set=HDL_INTERFACE_OUTPUT_PATH=/tmp/alt5576_5925425208035119622.dir/0068_sopcqmap/ --set=HDL_INTERFACE_INSTANCE_NAME=inst --set=HDL_INTERFACE_INSTANCE_ENTITY=m2vdec "--set=HDL_INTERFACE_INSTANCE_PARAMETERS=MEM_WIDTH=D\"23\"\;MVH_WIDTH=D\"16\"\;MVV_WIDTH=D\"15\"\;MBX_WIDTH=D\"6\"\;MBY_WIDTH=D\"5\"\;MBX_ADDER=D\"6\"\;"
+2012.08.24.21:43:17 [Debug] Command took 0.612s
+2012.08.24.21:43:19 [Debug] Command took 1.741s
+2012.08.24.21:43:19 [Info] m2vdec_0: "<b>demo_de0_sys_inst</b>" instantiated <b>m2vdec</b> "<b>m2vdec_0</b>"
+2012.08.24.21:43:19 [Debug] demo_de0_sys_tb: queue size: 111 starting:seg7led_static "submodules/seg7led_static"
+2012.08.24.21:43:19 [Debug] set ALTERA_HW_TCL_KEEP_TEMP_FILES=1 to retain temp files
+2012.08.24.21:43:19 [Debug] Command: /opt/altera/11.1sp2/quartus/bin/quartus_map not_a_project --generate_hdl_interface=/home/shuta/projects/hdl_ip/seg7led/seg7led_static.v --source=/home/shuta/projects/hdl_ip/seg7led/seg7led_static.v --set=HDL_INTERFACE_OUTPUT_PATH=/tmp/alt5576_5925425208035119622.dir/0069_sopcqmap/
+2012.08.24.21:43:21 [Debug] Command took 1.873s
+2012.08.24.21:43:21 [Debug] set ALTERA_HW_TCL_KEEP_TEMP_FILES=1 to retain temp files
+2012.08.24.21:43:21 [Debug] Command: /opt/altera/11.1sp2/quartus/bin/quartus_map not_a_project --generate_hdl_interface=/home/shuta/projects/hdl_ip/seg7led/seg7led_static.v --source=/home/shuta/projects/hdl_ip/seg7led/seg7led_static.v --set=HDL_INTERFACE_OUTPUT_PATH=/tmp/alt5576_5925425208035119622.dir/0070_sopcqmap/ --set=HDL_INTERFACE_INSTANCE_NAME=inst --set=HDL_INTERFACE_INSTANCE_ENTITY=seg7led_static "--set=HDL_INTERFACE_INSTANCE_PARAMETERS=DIGITS=D\"4\"\;ACTIVE_LOW=D\"0\"\;"
+2012.08.24.21:43:23 [Debug] Command took 1.874s
+2012.08.24.21:43:23 [Info] hexdisp_0: "<b>demo_de0_sys_inst</b>" instantiated <b>seg7led_static</b> "<b>hexdisp_0</b>"
+2012.08.24.21:43:23 [Debug] demo_de0_sys_tb: queue size: 110 starting:m2vdd_hx8347a "submodules/m2vdd_hx8347a"
+2012.08.24.21:43:23 [Debug] set ALTERA_HW_TCL_KEEP_TEMP_FILES=1 to retain temp files
+2012.08.24.21:43:23 [Debug] Command: /opt/altera/11.1sp2/quartus/bin/quartus_sh -t /tmp/alt5576_5925425208035119622.dir/0071_sopcqmap/not_a_project_setup.tcl
+2012.08.24.21:43:23 [Debug] Command: /opt/altera/11.1sp2/quartus/bin/quartus_map not_a_project --generate_hdl_interface=/home/shuta/projects/m2v_dec_impl/rtl/m2vdd_hx8347a.v --set=HDL_INTERFACE_OUTPUT_PATH=/tmp/alt5576_5925425208035119622.dir/0071_sopcqmap/
+2012.08.24.21:43:23 [Debug] Command took 0.579s
+2012.08.24.21:43:25 [Debug] Command took 1.721s
+2012.08.24.21:43:25 [Debug] set ALTERA_HW_TCL_KEEP_TEMP_FILES=1 to retain temp files
+2012.08.24.21:43:25 [Debug] Command: /opt/altera/11.1sp2/quartus/bin/quartus_sh -t /tmp/alt5576_5925425208035119622.dir/0072_sopcqmap/not_a_project_setup.tcl
+2012.08.24.21:43:25 [Debug] Command: /opt/altera/11.1sp2/quartus/bin/quartus_map not_a_project --generate_hdl_interface=/home/shuta/projects/m2v_dec_impl/rtl/m2vdd_hx8347a.v --set=HDL_INTERFACE_OUTPUT_PATH=/tmp/alt5576_5925425208035119622.dir/0072_sopcqmap/ --set=HDL_INTERFACE_INSTANCE_NAME=inst --set=HDL_INTERFACE_INSTANCE_ENTITY=m2vdd_hx8347a "--set=HDL_INTERFACE_INSTANCE_PARAMETERS=MEM_WIDTH=D\"23\"\;MBX_WIDTH=D\"6\"\;MBY_WIDTH=D\"5\"\;"
+2012.08.24.21:43:26 [Debug] Command took 0.583s
+2012.08.24.21:43:27 [Debug] Command took 1.709s
+2012.08.24.21:43:27 [Info] m2vdd_hx8347a_0: "<b>demo_de0_sys_inst</b>" instantiated <b>m2vdd_hx8347a</b> "<b>m2vdd_hx8347a_0</b>"
+2012.08.24.21:43:27 [Info] Reusing file <b>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/m2vfbagen.v</b>
+2012.08.24.21:43:27 [Debug] demo_de0_sys_tb: queue size: 109 starting:altera_avalon_new_sdram_controller "submodules/demo_de0_sys_sdram_0"
+2012.08.24.21:43:27 [Info] Starting classic module elaboration.
+2012.08.24.21:43:27 [Progress] "/opt/altera/11.1sp2/quartus/linux/jre/bin/java" -Xmx512M -classpath "/opt/altera/11.1sp2/quartus/sopc_builder/bin/sopc_builder.jar:/opt/altera/11.1sp2/quartus/sopc_builder/bin/PinAssigner.jar:/opt/altera/11.1sp2/quartus/sopc_builder/bin/sopc_wizard.jar:/opt/altera/11.1sp2/quartus/sopc_builder/bin/jptf.jar" sopc_builder.sopc_builder  -d"/opt/altera/11.1sp2/quartus/sopc_builder" -notalkback=1 -projectnameyysystem.qpf -projectpath/tmp/alt5576_5925425208035119622.dir/0073_sopclgen  --no_splash --refresh /tmp/alt5576_5925425208035119622.dir/0073_sopclgen/yysystem.v --quartus_dir="/opt/altera/11.1sp2/quartus" --sopc_perl="/opt/altera/11.1sp2/quartus/linux/perl" --sopc_lib_path="++/opt/altera/11.1sp2/quartus/../ip/altera/sopc_builder_ip+/opt/altera/11.1sp2/quartus/../ip/altera/nios2_ip"
+2012.08.24.21:43:51 [Info] Finished elaborating classic module.
+2012.08.24.21:43:51 [Progress] Executing: /opt/altera/11.1sp2/quartus//sopc_builder/bin/sopc_builder --classic --generate /tmp/alt5576_5925425208035119622.dir/0073_sopclgen/yysystem.ptf
+2012.08.24.21:43:51 [Info] Running sopc_builder...
+2012.08.24.21:43:51 [Progress] "/opt/altera/11.1sp2/quartus//linux/jre/bin/java" -Xmx512M -classpath "/opt/altera/11.1sp2/quartus//sopc_builder/bin/sopc_builder.jar:/opt/altera/11.1sp2/quartus//sopc_builder/bin/PinAssigner.jar:/opt/altera/11.1sp2/quartus//sopc_builder/bin/sopc_wizard.jar:/opt/altera/11.1sp2/quartus//sopc_builder/bin/jptf.jar" sopc_builder.sopc_builder  -d"/opt/altera/11.1sp2/quartus//sopc_builder" -notalkback=1 -projectnameyysystem.qpf -projectpath/tmp/alt5576_5925425208035119622.dir/0073_sopclgen  --generate /tmp/alt5576_5925425208035119622.dir/0073_sopclgen/yysystem.v --quartus_dir="/opt/altera/11.1sp2/quartus/" --sopc_perl="/opt/altera/11.1sp2/quartus//linux/perl" --sopc_lib_path="++/opt/altera/11.1sp2/quartus//../ip/altera/sopc_builder_ip+/opt/altera/11.1sp2/quartus//../ip/altera/nios2_ip"
+2012.08.24.21:43:53 [Progress] .
+2012.08.24.21:43:53 [Progress] .
+2012.08.24.21:43:53 [Progress] # 2012.08.24 21:43:53 (*) Running Test Generator Program for demo_de0_sys_sdram_0
+2012.08.24.21:43:54 [Progress] # 2012.08.24 21:43:54 (*) Success: sopc_builder finished.
+2012.08.24.21:43:55 [Info] sdram_0: "<b>demo_de0_sys_inst</b>" instantiated <b>altera_avalon_new_sdram_controller</b> "<b>sdram_0</b>"
+2012.08.24.21:43:55 [Debug] demo_de0_sys_tb: queue size: 108 starting:data_format_adapter "submodules/demo_de0_sys_data_format_adapter"
+2012.08.24.21:43:55 [Info] data_format_adapter: Starting generation. 
+2012.08.24.21:43:55 [Info] data_format_adapter_state_ram: Starting generation. 
+2012.08.24.21:43:55 [Info] data_format_adapter_data_ram: Starting generation. 
+2012.08.24.21:43:55 [Info] data_format_adapter: "<b>demo_de0_sys_inst</b>" instantiated <b>data_format_adapter</b> "<b>data_format_adapter</b>"
+2012.08.24.21:43:55 [Debug] demo_de0_sys_tb: queue size: 107 starting:timing_adapter "submodules/demo_de0_sys_timing_adapter"
+2012.08.24.21:43:55 [Info] timing_adapter: Starting generation. 
+2012.08.24.21:43:55 [Info] timing_adapter_fifo: Starting generation. 
+2012.08.24.21:43:55 [Info] timing_adapter: "<b>demo_de0_sys_inst</b>" instantiated <b>timing_adapter</b> "<b>timing_adapter</b>"
+2012.08.24.21:43:55 [Debug] demo_de0_sys_tb: queue size: 106 starting:altera_avalon_timer "submodules/demo_de0_sys_timer_0"
+2012.08.24.21:43:55 [Info] Starting classic module elaboration.
+2012.08.24.21:43:55 [Progress] "/opt/altera/11.1sp2/quartus/linux/jre/bin/java" -Xmx512M -classpath "/opt/altera/11.1sp2/quartus/sopc_builder/bin/sopc_builder.jar:/opt/altera/11.1sp2/quartus/sopc_builder/bin/PinAssigner.jar:/opt/altera/11.1sp2/quartus/sopc_builder/bin/sopc_wizard.jar:/opt/altera/11.1sp2/quartus/sopc_builder/bin/jptf.jar" sopc_builder.sopc_builder  -d"/opt/altera/11.1sp2/quartus/sopc_builder" -notalkback=1 -projectnameyysystem.qpf -projectpath/tmp/alt5576_5925425208035119622.dir/0074_sopclgen  --no_splash --refresh /tmp/alt5576_5925425208035119622.dir/0074_sopclgen/yysystem.v --quartus_dir="/opt/altera/11.1sp2/quartus" --sopc_perl="/opt/altera/11.1sp2/quartus/linux/perl" --sopc_lib_path="++/opt/altera/11.1sp2/quartus/../ip/altera/sopc_builder_ip+/opt/altera/11.1sp2/quartus/../ip/altera/nios2_ip"
+2012.08.24.21:43:58 [Info] Finished elaborating classic module.
+2012.08.24.21:43:58 [Progress] Executing: /opt/altera/11.1sp2/quartus//sopc_builder/bin/sopc_builder --classic --generate /tmp/alt5576_5925425208035119622.dir/0074_sopclgen/yysystem.ptf
+2012.08.24.21:43:58 [Info] Running sopc_builder...
+2012.08.24.21:43:58 [Progress] "/opt/altera/11.1sp2/quartus//linux/jre/bin/java" -Xmx512M -classpath "/opt/altera/11.1sp2/quartus//sopc_builder/bin/sopc_builder.jar:/opt/altera/11.1sp2/quartus//sopc_builder/bin/PinAssigner.jar:/opt/altera/11.1sp2/quartus//sopc_builder/bin/sopc_wizard.jar:/opt/altera/11.1sp2/quartus//sopc_builder/bin/jptf.jar" sopc_builder.sopc_builder  -d"/opt/altera/11.1sp2/quartus//sopc_builder" -notalkback=1 -projectnameyysystem.qpf -projectpath/tmp/alt5576_5925425208035119622.dir/0074_sopclgen  --generate /tmp/alt5576_5925425208035119622.dir/0074_sopclgen/yysystem.v --quartus_dir="/opt/altera/11.1sp2/quartus/" --sopc_perl="/opt/altera/11.1sp2/quartus//linux/perl" --sopc_lib_path="++/opt/altera/11.1sp2/quartus//../ip/altera/sopc_builder_ip+/opt/altera/11.1sp2/quartus//../ip/altera/nios2_ip"
+2012.08.24.21:44:00 [Progress] .
+2012.08.24.21:44:01 [Progress] # 2012.08.24 21:44:00 (*) Success: sopc_builder finished.
+2012.08.24.21:44:01 [Info] timer_0: "<b>demo_de0_sys_inst</b>" instantiated <b>altera_avalon_timer</b> "<b>timer_0</b>"
+2012.08.24.21:44:01 [Debug] demo_de0_sys_tb: queue size: 105 starting:altera_avalon_spi "submodules/demo_de0_sys_spi_0"
+2012.08.24.21:44:01 [Info] Starting classic module elaboration.
+2012.08.24.21:44:01 [Progress] "/opt/altera/11.1sp2/quartus/linux/jre/bin/java" -Xmx512M -classpath "/opt/altera/11.1sp2/quartus/sopc_builder/bin/sopc_builder.jar:/opt/altera/11.1sp2/quartus/sopc_builder/bin/PinAssigner.jar:/opt/altera/11.1sp2/quartus/sopc_builder/bin/sopc_wizard.jar:/opt/altera/11.1sp2/quartus/sopc_builder/bin/jptf.jar" sopc_builder.sopc_builder  -d"/opt/altera/11.1sp2/quartus/sopc_builder" -notalkback=1 -projectnameyysystem.qpf -projectpath/tmp/alt5576_5925425208035119622.dir/0075_sopclgen  --no_splash --refresh /tmp/alt5576_5925425208035119622.dir/0075_sopclgen/yysystem.v --quartus_dir="/opt/altera/11.1sp2/quartus" --sopc_perl="/opt/altera/11.1sp2/quartus/linux/perl" --sopc_lib_path="++/opt/altera/11.1sp2/quartus/../ip/altera/sopc_builder_ip+/opt/altera/11.1sp2/quartus/../ip/altera/nios2_ip"
+2012.08.24.21:44:05 [Info] Finished elaborating classic module.
+2012.08.24.21:44:05 [Progress] Executing: /opt/altera/11.1sp2/quartus//sopc_builder/bin/sopc_builder --classic --generate /tmp/alt5576_5925425208035119622.dir/0075_sopclgen/yysystem.ptf
+2012.08.24.21:44:05 [Info] Running sopc_builder...
+2012.08.24.21:44:05 [Progress] "/opt/altera/11.1sp2/quartus//linux/jre/bin/java" -Xmx512M -classpath "/opt/altera/11.1sp2/quartus//sopc_builder/bin/sopc_builder.jar:/opt/altera/11.1sp2/quartus//sopc_builder/bin/PinAssigner.jar:/opt/altera/11.1sp2/quartus//sopc_builder/bin/sopc_wizard.jar:/opt/altera/11.1sp2/quartus//sopc_builder/bin/jptf.jar" sopc_builder.sopc_builder  -d"/opt/altera/11.1sp2/quartus//sopc_builder" -notalkback=1 -projectnameyysystem.qpf -projectpath/tmp/alt5576_5925425208035119622.dir/0075_sopclgen  --generate /tmp/alt5576_5925425208035119622.dir/0075_sopclgen/yysystem.v --quartus_dir="/opt/altera/11.1sp2/quartus/" --sopc_perl="/opt/altera/11.1sp2/quartus//linux/perl" --sopc_lib_path="++/opt/altera/11.1sp2/quartus//../ip/altera/sopc_builder_ip+/opt/altera/11.1sp2/quartus//../ip/altera/nios2_ip"
+2012.08.24.21:44:06 [Progress] .
+2012.08.24.21:44:07 [Progress] # 2012.08.24 21:44:07 (*) Success: sopc_builder finished.
+2012.08.24.21:44:08 [Info] spi_0: "<b>demo_de0_sys_inst</b>" instantiated <b>altera_avalon_spi</b> "<b>spi_0</b>"
+2012.08.24.21:44:08 [Debug] demo_de0_sys_tb: queue size: 104 starting:altera_avalon_pio "submodules/demo_de0_sys_pio_0"
+2012.08.24.21:44:08 [Info] Starting classic module elaboration.
+2012.08.24.21:44:08 [Progress] "/opt/altera/11.1sp2/quartus/linux/jre/bin/java" -Xmx512M -classpath "/opt/altera/11.1sp2/quartus/sopc_builder/bin/sopc_builder.jar:/opt/altera/11.1sp2/quartus/sopc_builder/bin/PinAssigner.jar:/opt/altera/11.1sp2/quartus/sopc_builder/bin/sopc_wizard.jar:/opt/altera/11.1sp2/quartus/sopc_builder/bin/jptf.jar" sopc_builder.sopc_builder  -d"/opt/altera/11.1sp2/quartus/sopc_builder" -notalkback=1 -projectnameyysystem.qpf -projectpath/tmp/alt5576_5925425208035119622.dir/0076_sopclgen  --no_splash --refresh /tmp/alt5576_5925425208035119622.dir/0076_sopclgen/yysystem.v --quartus_dir="/opt/altera/11.1sp2/quartus" --sopc_perl="/opt/altera/11.1sp2/quartus/linux/perl" --sopc_lib_path="++/opt/altera/11.1sp2/quartus/../ip/altera/sopc_builder_ip+/opt/altera/11.1sp2/quartus/../ip/altera/nios2_ip"
+2012.08.24.21:44:13 [Info] Finished elaborating classic module.
+2012.08.24.21:44:13 [Progress] Executing: /opt/altera/11.1sp2/quartus//sopc_builder/bin/sopc_builder --classic --generate /tmp/alt5576_5925425208035119622.dir/0076_sopclgen/yysystem.ptf
+2012.08.24.21:44:13 [Info] Running sopc_builder...
+2012.08.24.21:44:14 [Progress] "/opt/altera/11.1sp2/quartus//linux/jre/bin/java" -Xmx512M -classpath "/opt/altera/11.1sp2/quartus//sopc_builder/bin/sopc_builder.jar:/opt/altera/11.1sp2/quartus//sopc_builder/bin/PinAssigner.jar:/opt/altera/11.1sp2/quartus//sopc_builder/bin/sopc_wizard.jar:/opt/altera/11.1sp2/quartus//sopc_builder/bin/jptf.jar" sopc_builder.sopc_builder  -d"/opt/altera/11.1sp2/quartus//sopc_builder" -notalkback=1 -projectnameyysystem.qpf -projectpath/tmp/alt5576_5925425208035119622.dir/0076_sopclgen  --generate /tmp/alt5576_5925425208035119622.dir/0076_sopclgen/yysystem.v --quartus_dir="/opt/altera/11.1sp2/quartus/" --sopc_perl="/opt/altera/11.1sp2/quartus//linux/perl" --sopc_lib_path="++/opt/altera/11.1sp2/quartus//../ip/altera/sopc_builder_ip+/opt/altera/11.1sp2/quartus//../ip/altera/nios2_ip"
+2012.08.24.21:44:15 [Progress] .
+2012.08.24.21:44:16 [Progress] # 2012.08.24 21:44:16 (*) Success: sopc_builder finished.
+2012.08.24.21:44:16 [Info] pio_0: "<b>demo_de0_sys_inst</b>" instantiated <b>altera_avalon_pio</b> "<b>pio_0</b>"
+2012.08.24.21:44:16 [Debug] demo_de0_sys_tb: queue size: 103 starting:altera_merlin_master_translator "submodules/altera_merlin_master_translator"
+2012.08.24.21:44:16 [Info] nios2_qsys_0_instruction_master_translator: "<b>demo_de0_sys_inst</b>" instantiated <b>altera_merlin_master_translator</b> "<b>nios2_qsys_0_instruction_master_translator</b>"
+2012.08.24.21:44:16 [Debug] demo_de0_sys_tb: queue size: 101 starting:altera_merlin_slave_translator "submodules/altera_merlin_slave_translator"
+2012.08.24.21:44:16 [Info] nios2_qsys_0_jtag_debug_module_translator: "<b>demo_de0_sys_inst</b>" instantiated <b>altera_merlin_slave_translator</b> "<b>nios2_qsys_0_jtag_debug_module_translator</b>"
+2012.08.24.21:44:16 [Debug] demo_de0_sys_tb: queue size: 85 starting:altera_merlin_slave_agent "submodules/altera_merlin_slave_agent"
+2012.08.24.21:44:16 [Info] fifo_0_in_csr_translator_avalon_universal_slave_0_agent: "<b>demo_de0_sys_inst</b>" instantiated <b>altera_merlin_slave_agent</b> "<b>fifo_0_in_csr_translator_avalon_universal_slave_0_agent</b>"
+2012.08.24.21:44:16 [Debug] demo_de0_sys_tb: queue size: 84 starting:altera_avalon_sc_fifo "submodules/altera_avalon_sc_fifo"
+2012.08.24.21:44:16 [Info] fifo_0_in_csr_translator_avalon_universal_slave_0_agent_rsp_fifo: "<b>demo_de0_sys_inst</b>" instantiated <b>altera_avalon_sc_fifo</b> "<b>fifo_0_in_csr_translator_avalon_universal_slave_0_agent_rsp_fifo</b>"
+2012.08.24.21:44:16 [Debug] demo_de0_sys_tb: queue size: 64 starting:altera_merlin_master_agent "submodules/altera_merlin_master_agent"
+2012.08.24.21:44:16 [Info] nios2_qsys_0_instruction_master_translator_avalon_universal_master_0_agent: "<b>demo_de0_sys_inst</b>" instantiated <b>altera_merlin_master_agent</b> "<b>nios2_qsys_0_instruction_master_translator_avalon_universal_master_0_agent</b>"
+2012.08.24.21:44:16 [Debug] demo_de0_sys_tb: queue size: 52 starting:altera_merlin_router "submodules/demo_de0_sys_addr_router"
+2012.08.24.21:44:16 [Info] addr_router: "<b>demo_de0_sys_inst</b>" instantiated <b>altera_merlin_router</b> "<b>addr_router</b>"
+2012.08.24.21:44:16 [Debug] demo_de0_sys_tb: queue size: 51 starting:altera_merlin_router "submodules/demo_de0_sys_addr_router_001"
+2012.08.24.21:44:16 [Info] addr_router_001: "<b>demo_de0_sys_inst</b>" instantiated <b>altera_merlin_router</b> "<b>addr_router_001</b>"
+2012.08.24.21:44:16 [Debug] demo_de0_sys_tb: queue size: 50 starting:altera_merlin_router "submodules/demo_de0_sys_id_router"
+2012.08.24.21:44:16 [Info] id_router: "<b>demo_de0_sys_inst</b>" instantiated <b>altera_merlin_router</b> "<b>id_router</b>"
+2012.08.24.21:44:16 [Debug] demo_de0_sys_tb: queue size: 48 starting:altera_merlin_router "submodules/demo_de0_sys_id_router_002"
+2012.08.24.21:44:16 [Info] id_router_002: "<b>demo_de0_sys_inst</b>" instantiated <b>altera_merlin_router</b> "<b>id_router_002</b>"
+2012.08.24.21:44:16 [Debug] demo_de0_sys_tb: queue size: 47 starting:altera_merlin_router "submodules/demo_de0_sys_id_router_003"
+2012.08.24.21:44:16 [Info] id_router_003: "<b>demo_de0_sys_inst</b>" instantiated <b>altera_merlin_router</b> "<b>id_router_003</b>"
+2012.08.24.21:44:16 [Debug] demo_de0_sys_tb: queue size: 37 starting:altera_merlin_router "submodules/demo_de0_sys_addr_router_002"
+2012.08.24.21:44:16 [Info] addr_router_002: "<b>demo_de0_sys_inst</b>" instantiated <b>altera_merlin_router</b> "<b>addr_router_002</b>"
+2012.08.24.21:44:16 [Debug] demo_de0_sys_tb: queue size: 35 starting:altera_merlin_router "submodules/demo_de0_sys_id_router_013"
+2012.08.24.21:44:16 [Info] id_router_013: "<b>demo_de0_sys_inst</b>" instantiated <b>altera_merlin_router</b> "<b>id_router_013</b>"
+2012.08.24.21:44:16 [Debug] demo_de0_sys_tb: queue size: 34 starting:altera_merlin_burst_adapter "submodules/altera_merlin_burst_adapter"
+2012.08.24.21:44:16 [Info] burst_adapter: "<b>demo_de0_sys_inst</b>" instantiated <b>altera_merlin_burst_adapter</b> "<b>burst_adapter</b>"
+2012.08.24.21:44:16 [Debug] demo_de0_sys_tb: queue size: 33 starting:altera_reset_controller "submodules/altera_reset_controller"
+2012.08.24.21:44:16 [Info] rst_controller: "<b>demo_de0_sys_inst</b>" instantiated <b>altera_reset_controller</b> "<b>rst_controller</b>"
+2012.08.24.21:44:16 [Debug] demo_de0_sys_tb: queue size: 31 starting:altera_merlin_demultiplexer "submodules/demo_de0_sys_cmd_xbar_demux"
+2012.08.24.21:44:16 [Info] cmd_xbar_demux: "<b>demo_de0_sys_inst</b>" instantiated <b>altera_merlin_demultiplexer</b> "<b>cmd_xbar_demux</b>"
+2012.08.24.21:44:16 [Debug] demo_de0_sys_tb: queue size: 30 starting:altera_merlin_demultiplexer "submodules/demo_de0_sys_cmd_xbar_demux_001"
+2012.08.24.21:44:16 [Info] cmd_xbar_demux_001: "<b>demo_de0_sys_inst</b>" instantiated <b>altera_merlin_demultiplexer</b> "<b>cmd_xbar_demux_001</b>"
+2012.08.24.21:44:16 [Debug] demo_de0_sys_tb: queue size: 29 starting:altera_merlin_multiplexer "submodules/demo_de0_sys_cmd_xbar_mux"
+2012.08.24.21:44:16 [Info] cmd_xbar_mux: "<b>demo_de0_sys_inst</b>" instantiated <b>altera_merlin_multiplexer</b> "<b>cmd_xbar_mux</b>"
+2012.08.24.21:44:16 [Debug] demo_de0_sys_tb: queue size: 26 starting:altera_merlin_demultiplexer "submodules/demo_de0_sys_rsp_xbar_demux"
+2012.08.24.21:44:16 [Info] rsp_xbar_demux: "<b>demo_de0_sys_inst</b>" instantiated <b>altera_merlin_demultiplexer</b> "<b>rsp_xbar_demux</b>"
+2012.08.24.21:44:16 [Debug] demo_de0_sys_tb: queue size: 23 starting:altera_merlin_demultiplexer "submodules/demo_de0_sys_rsp_xbar_demux_003"
+2012.08.24.21:44:16 [Info] rsp_xbar_demux_003: "<b>demo_de0_sys_inst</b>" instantiated <b>altera_merlin_demultiplexer</b> "<b>rsp_xbar_demux_003</b>"
+2012.08.24.21:44:16 [Debug] demo_de0_sys_tb: queue size: 13 starting:altera_merlin_multiplexer "submodules/demo_de0_sys_rsp_xbar_mux"
+2012.08.24.21:44:17 [Info] rsp_xbar_mux: "<b>demo_de0_sys_inst</b>" instantiated <b>altera_merlin_multiplexer</b> "<b>rsp_xbar_mux</b>"
+2012.08.24.21:44:17 [Info] Reusing file <b>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/altera_merlin_arbitrator.sv</b>
+2012.08.24.21:44:17 [Debug] demo_de0_sys_tb: queue size: 12 starting:altera_merlin_multiplexer "submodules/demo_de0_sys_rsp_xbar_mux_001"
+2012.08.24.21:44:17 [Info] rsp_xbar_mux_001: "<b>demo_de0_sys_inst</b>" instantiated <b>altera_merlin_multiplexer</b> "<b>rsp_xbar_mux_001</b>"
+2012.08.24.21:44:17 [Info] Reusing file <b>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/altera_merlin_arbitrator.sv</b>
+2012.08.24.21:44:17 [Debug] demo_de0_sys_tb: queue size: 11 starting:altera_merlin_demultiplexer "submodules/demo_de0_sys_cmd_xbar_demux_002"
+2012.08.24.21:44:17 [Info] cmd_xbar_demux_002: "<b>demo_de0_sys_inst</b>" instantiated <b>altera_merlin_demultiplexer</b> "<b>cmd_xbar_demux_002</b>"
+2012.08.24.21:44:17 [Debug] demo_de0_sys_tb: queue size: 9 starting:altera_merlin_multiplexer "submodules/demo_de0_sys_cmd_xbar_mux_013"
+2012.08.24.21:44:17 [Info] cmd_xbar_mux_013: "<b>demo_de0_sys_inst</b>" instantiated <b>altera_merlin_multiplexer</b> "<b>cmd_xbar_mux_013</b>"
+2012.08.24.21:44:17 [Info] Reusing file <b>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/altera_merlin_arbitrator.sv</b>
+2012.08.24.21:44:17 [Debug] demo_de0_sys_tb: queue size: 8 starting:altera_merlin_demultiplexer "submodules/demo_de0_sys_rsp_xbar_demux_013"
+2012.08.24.21:44:17 [Info] rsp_xbar_demux_013: "<b>demo_de0_sys_inst</b>" instantiated <b>altera_merlin_demultiplexer</b> "<b>rsp_xbar_demux_013</b>"
+2012.08.24.21:44:17 [Debug] demo_de0_sys_tb: queue size: 7 starting:altera_merlin_width_adapter "submodules/altera_merlin_width_adapter"
+2012.08.24.21:44:17 [Info] width_adapter: "<b>demo_de0_sys_inst</b>" instantiated <b>altera_merlin_width_adapter</b> "<b>width_adapter</b>"
+2012.08.24.21:44:17 [Info] Reusing file <b>/home/shuta/projects/m2v_dec_impl/quartus/demo_de0_sys/testbench/demo_de0_sys_tb/simulation/submodules/altera_merlin_burst_uncompressor.sv</b>
+2012.08.24.21:44:17 [Debug] demo_de0_sys_tb: queue size: 5 starting:altera_avalon_st_handshake_clock_crosser "submodules/altera_avalon_st_handshake_clock_crosser"
+2012.08.24.21:44:17 [Info] crosser: "<b>demo_de0_sys_inst</b>" instantiated <b>altera_avalon_st_handshake_clock_crosser</b> "<b>crosser</b>"
+2012.08.24.21:44:17 [Debug] demo_de0_sys_tb: queue size: 3 starting:altera_irq_mapper "submodules/demo_de0_sys_irq_mapper"
+2012.08.24.21:44:17 [Info] irq_mapper: "<b>demo_de0_sys_inst</b>" instantiated <b>altera_irq_mapper</b> "<b>irq_mapper</b>"
+2012.08.24.21:44:17 [Debug] demo_de0_sys_tb: queue size: 2 starting:altera_tristate_controller_translator "submodules/altera_tristate_controller_translator"
+2012.08.24.21:44:17 [Info] tdt: "<b>rom_0</b>" instantiated <b>altera_tristate_controller_translator</b> "<b>tdt</b>"
+2012.08.24.21:44:17 [Debug] demo_de0_sys_tb: queue size: 0 starting:altera_tristate_controller_aggregator "submodules/altera_tristate_controller_aggregator"
+2012.08.24.21:44:17 [Info] tda: "<b>rom_0</b>" instantiated <b>altera_tristate_controller_aggregator</b> "<b>tda</b>"
+2012.08.24.21:44:17 [Info] demo_de0_sys_tb: Done <b>demo_de0_sys_tb</b>" with 58 modules, 237 files, 3235659 bytes
+</div>
+  <div style="width:100% ; background:#eee ; height:10px"> </div>
+ </body>
+</html>

@@ -1,0 +1,47 @@
+//IP Functional Simulation Model
+//VERSION_BEGIN 11.1SP2 cbx_mgl 2012:01:25:21:26:09:SJ cbx_simgen 2012:01:25:21:25:27:SJ  VERSION_END
+// synthesis VERILOG_INPUT_VERSION VERILOG_2001
+// altera message_off 10463
+
+
+
+// Copyright (C) 1991-2011 Altera Corporation
+// Your use of Altera Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Altera Program License 
+// Subscription Agreement, Altera MegaCore Function License 
+// Agreement, or other applicable license agreement, including, 
+// without limitation, that your use is for the sole purpose of 
+// programming logic devices manufactured by Altera and sold by 
+// Altera or its authorized distributors.  Please refer to the 
+// applicable agreement for further details.
+
+// You may only use these simulation model output files for simulation
+// purposes and expressly not for synthesis or any other purposes (in which
+// event Altera disclaims all warranties of any kind).
+
+
+//synopsys translate_off
+
+//synthesis_resources = 
+`timescale 1 ps / 1 ps
+module  demo_de0_sys_sysid_qsys_0
+	( 
+	address,
+	clock,
+	readdata,
+	reset_n) /* synthesis synthesis_clearbox=1 */;
+	input   address;
+	input   clock;
+	output   [31:0]  readdata;
+	input   reset_n;
+
+
+	assign
+		readdata = {1'b0, address, 1'b0, address, {6{1'b0}}, address, 1'b1, 1'b0, address, {2{1'b1}}, (~ address), {3{address}}, 1'b0, {2{address}}, (~ address), 1'b1, address, {2{1'b0}}, address, 1'b0, (~ address), address};
+endmodule //demo_de0_sys_sysid_qsys_0
+//synopsys translate_on
+//VALID FILE
