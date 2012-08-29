@@ -118,9 +118,9 @@ wire fptr_fetch_wait_w;
 wire [(MBXY_WIDTH-1):0] frmbyx_w;
 wire [(MEM_WIDTH-1):0] fb_fraddr_w;
 
-assign xraa_w = &rxcnt_r[1:0] ? {s3_mb_x, s3_block[0] & ~s3_block[2], 4'd0} : {xref_r, 2'b0};
-assign xrab_w = &rxcnt_r[1:0] ? s3_mv_h : {{(MVH_WIDTH-4){1'b0}}, (s3_block[2] ? 4'd8 : 4'd4)};
-assign xrac_w = &rxcnt_r[1:0] & s3_block[2] & s3_mv_h[MVH_WIDTH-1];
+assign xraa_w = &rxcnt_r[2] ? {s3_mb_x, s3_block[0] & ~s3_block[2], 4'd0} : {xref_r, 2'b0};
+assign xrab_w = &rxcnt_r[2] ? s3_mv_h : {{(MVH_WIDTH-4){1'b0}}, (s3_block[2] ? 4'd8 : 4'd4)};
+assign xrac_w = &rxcnt_r[2] & s3_block[2] & s3_mv_h[MVH_WIDTH-1];
 assign xrar_w = xraa_w + xrab_w + xrac_w;
 assign yraa_w = (state_r == ST_CALCREF) ? {s3_mb_y, s3_block[1], 4'd0} : {yref_r, 1'b0};
 assign yrab_w = (state_r == ST_CALCREF) ? s3_mv_v : {{(MVV_WIDTH-3){1'b0}}, (s3_block[2] ? 3'd4 : 3'd2)};
@@ -146,12 +146,12 @@ always @(posedge clk or negedge reset_n)
 
 always @(posedge clk or negedge reset_n)
 	if(~reset_n)
-		rxcnt_r <= 3'd3;
+		rxcnt_r <= 3'd4;
 	else if(softreset || state_r == ST_MIX || state_r == ST_IDLE)
-		rxcnt_r <= 3'd3;
-	else if((rxcnt_r[2] & ~rycnt_r[3] & ~fbuf_waitrequest) || state_r == ST_CALCREF || state_r == ST_PREFETCH)
+		rxcnt_r <= 3'd4;
+	else if((rxcnt_r[2] & ~rycnt_r[3] & ~fbuf_waitrequest) || state_r == ST_CALCREF)
 		rxcnt_r <= 3'd0;
-	else if(~fbuf_waitrequest)
+	else if(~fbuf_waitrequest || state_r == ST_PREFETCH)
 		rxcnt_r <= rxcnt_r + 1'b1;
 
 always @(posedge clk or negedge reset_n)
@@ -159,7 +159,7 @@ always @(posedge clk or negedge reset_n)
 		yref_r <= 0;
 	else if(softreset)
 		yref_r <= 0;
-	else if(state_r == ST_CALCREF || (state_r == ST_FETCH && &rxcnt_r[1:0] && ~fbuf_waitrequest))
+	else if(state_r == ST_CALCREF || (state_r == ST_FETCH && &rxcnt_r[2] && ~fbuf_waitrequest))
 		yref_r <= yrar_w[(MBY_WIDTH+4):1];
 
 always @(posedge clk or negedge reset_n)
@@ -524,6 +524,7 @@ assign {last_fpaddrb_w, next_fpaddrb_w} = {1'b0, fptr_addrb_r} + 1'b1;
 
 always @*
 	case(state_r)
+	ST_PREMIX,
 	ST_MIX:		fptr_addra_w = {1'b0, mwmbyx_w};
 	ST_PREFETCH,
 	ST_FETCH:	fptr_addra_w = {1'b1, frmbyx_w};

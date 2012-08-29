@@ -25,6 +25,7 @@ module m2vside1 #(
 	input  [4:0] s0_mb_qscode,
 
 	// from m2vctrl
+	input        pre_block_start,
 	input        block_start,
 
 	// to all modules
@@ -32,8 +33,7 @@ module m2vside1 #(
 	output       sa_qstype,
 	output       sa_iframe,
 
-	output       s0_enable,
-
+	// to m2visdq, m2vside2
 	output [(MVH_WIDTH-1):0] s1_mv_h,
 	output [(MVV_WIDTH-1):0] s1_mv_v,
 	output [(MBX_WIDTH-1):0] s1_mb_x,
@@ -125,7 +125,7 @@ assign s0_enable = s0_enable_r;
 // }}}
 
 //--------------------------------------------------------------------------------
-// Stage 1 (Latched by block_start pules)
+// Stage 1 (Latched by pre_block_start pules)
 //
 reg [(MVH_WIDTH-1):0] s1_mv_h_r;
 reg [(MVV_WIDTH-1):0] s1_mv_v_r;
@@ -149,7 +149,7 @@ always @(posedge clk or negedge reset_n)
 		s1_block_r     <= 3'd0;
 		s1_coded_r     <= 1'b0;
 		s1_enable_r    <= 1'b0;
-	end else if(block_start) begin
+	end else if(pre_block_start) begin
 		s1_mv_h_r      <= s0_mv_h_r;
 		s1_mv_v_r      <= s0_mv_v_r;
 		s1_mb_x_r      <= s0_mb_x_r;

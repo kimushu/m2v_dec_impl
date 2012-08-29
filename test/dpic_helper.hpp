@@ -7,7 +7,6 @@
 
 #include <svdpi.h>
 #include <iostream>
-#include <sstream>
 
 //--------------------------------------------------------------------------------
 // Sign bit extender
@@ -37,6 +36,7 @@ struct _svLogicVecValWrapper
 	U bval() const { return _v.bval & mask(); }
 	bool has_z() const { return (~aval() & bval()) != 0; }
 	bool has_x() const { return (aval() & bval()) != 0; }
+	bool has_zx() const { return bval() != 0; }
 	operator T() const { return aval(); }
 	operator const svLogicVecVal*() const { return &_v; }
 	operator svLogicVecVal*() { return &_v; }
@@ -63,6 +63,7 @@ struct _svLogicWrapper
 	U bval() const { return (_v >> 1) & 1; }
 	bool has_z() const { return (~aval() & bval()) != 0; }
 	bool has_x() const { return (aval() & bval()) != 0; }
+	bool has_zx() const { return bval() != 0; }
 	operator T() const { return aval(); }
 	operator const svLogic*() const { return &_v; }
 	operator svLogic*() { return &_v; }
@@ -129,18 +130,6 @@ struct svSigned<1> : _svLogicWrapper<int32_t>
 };
 
 typedef svSigned<32> svInt;
-
-//--------------------------------------------------------------------------------
-// Extension for stringstream (line reading)
-//
-inline std::stringstream& setnewline(std::stringstream& ss, std::istream& is)
-{
-	std::string line;
-	std::getline(is, line);
-	ss.str(line);
-	ss.clear();
-	return ss;
-}
 
 #endif	/* !_DPIC_HELPER_HPP_ */
 

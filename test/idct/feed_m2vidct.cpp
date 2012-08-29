@@ -1,10 +1,10 @@
 //================================================================================
-// Feeder for test_m2visdq
+// Feeder for test_m2vidct
 //================================================================================
 
 #include <dpic_helper.hpp>
 #include <tb_common.hpp>
-#include "test_m2visdq.h"
+#include "test_m2vidct.h"
 #include <string>
 #include <fstream>
 #include <stdlib.h>
@@ -80,7 +80,6 @@ int feed_block(svLogic* finished)
 		setnewline(ss, side) >> name >> s1_coded;
 		if(name != "coded") break;
 
-		pre_block_start();
 		set_sideinfo(sv_1, s1_coded, s1_mb_intra, s1_mb_qscode,
 						sa_qstype, sa_dcprec);
 		block_start();

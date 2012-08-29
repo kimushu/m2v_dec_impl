@@ -47,6 +47,7 @@ endtask
 
 task wait_reset_done;
 begin
+	@(negedge reset_n);
 	@(posedge reset_n);
 	@(posedge clk);
 end

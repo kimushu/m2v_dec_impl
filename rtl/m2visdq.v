@@ -15,7 +15,7 @@ module m2visdq(
 	input         block_end,
 
 	// from m2vside1
-	input         s0_enable,
+	input         s1_enable,
 	input         s1_coded,
 	input         s1_mb_intra,
 	input   [4:0] s1_mb_qscode,
@@ -164,7 +164,7 @@ always @(posedge clk or negedge reset_n)
 	else if(softreset)
 		empty_r <= 1'b1;
 	else if(block_start)
-		empty_r <= ~s0_enable;
+		empty_r <= ~s1_enable;
 
 always @(posedge clk or negedge reset_n)
 	if(~reset_n)
@@ -211,7 +211,7 @@ always @(posedge clk or negedge reset_n)
 		end_blk_r <= 1'b0;
 	else if(softreset)
 		end_blk_r <= 1'b0;
-	else if(block_end || (block_start & ~s0_enable) || (start_blk_1d_r & ~s1_coded))
+	else if(block_end || (block_start & ~s1_enable) || (start_blk_1d_r & ~s1_coded))
 		end_blk_r <= 1'b1;
 	else if(state_r == ST_IDLE)
 		end_blk_r <= 1'b0;

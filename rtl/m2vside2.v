@@ -10,9 +10,11 @@ module m2vside2 #(
 	MBX_WIDTH = 6,
 	MBY_WIDTH = 5
 ) (
+	// common
 	input        clk,
 	input        reset_n,
 
+	// from m2vside1
 	input [(MVH_WIDTH-1):0] s1_mv_h,
 	input [(MVV_WIDTH-1):0] s1_mv_v,
 	input [(MBX_WIDTH-1):0] s1_mb_x,
@@ -22,8 +24,11 @@ module m2vside2 #(
 	input        s1_coded,
 	input        s1_enable,
 
+	// from m2vctrl
+	input        pre_block_start,
 	input        block_start,
 
+	// to m2vidct, m2vside3
 	output [(MVH_WIDTH-1):0] s2_mv_h,
 	output [(MVV_WIDTH-1):0] s2_mv_v,
 	output [(MBX_WIDTH-1):0] s2_mb_x,

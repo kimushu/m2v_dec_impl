@@ -1,72 +1,56 @@
 //================================================================================
-// Testbench for m2visdq
+// Testbench for m2vidct
 //================================================================================
 `timescale 1ns / 1ps
 
 `define CLOCK_PERIOD	10
 
-module test_m2visdq;
+module test_m2vidct;
 
 `include "../common.vh"
 
-wire        ready_isdq_w;
+wire        ready_idct_w;
 reg         block_start_r;
-reg         block_end_r;
-
-reg         s1_enable_r;
-reg         s1_coded_r;
-reg         s1_mb_intra_r;
-reg   [4:0] s1_mb_qscode_r;
-reg         sa_qstype_r;
-reg   [1:0] sa_dcprec_r;
 
 reg         s2_enable_r;
 reg         s2_coded_r;
 
-reg   [5:0] run_r;
-reg         level_sign_r;
-reg  [10:0] level_data_r;
-reg         rl_valid_r;
-reg         qm_valid_r;
-reg         qm_custom_r;
-reg         qm_intra_r;
-reg   [7:0] qm_value_r;
+reg         s3_enable_r;
+reg         s3_coded_r;
 
-wire        coef_sign_w;
-wire [11:0] coef_data_w;
-reg         coef_next_r;
+reg         s4_enable_r;
+reg         s4_coded_r;
+
+wire        coef_next_w;
+reg         coef_sign_r;
+reg  [11:0] coef_data_r;
+
+reg         pixel_coded_r;
+reg   [4:0] pixel_addr_r;
+wire  [8:0] pixel_data0_w;
+wire  [8:0] pixel_data1_w;
 
 always @(negedge reset_n) begin
 	block_start_r <= 1'b0;
-	block_end_r <= 1'b0;
-
-	s1_enable_r <= 1'bx;
-	s1_coded_r <= 1'bx;
-	s1_mb_intra_r <= 1'bx;
-	s1_mb_qscode_r <= 5'bx;
-	sa_qstype_r <= 1'bx;
-	sa_dcprec_r <= 2'bx;
 
 	s2_enable_r <= 1'bx;
 	s2_coded_r <= 1'bx;
 
-	run_r <= 6'bx;
-	level_sign_r <= 1'bx;
-	level_data_r <= 11'bx;
-	rl_valid_r <= 1'b0;
-	qm_valid_r <= 1'b0;
-	qm_custom_r <= 1'bx;
-	qm_intra_r <= 1'bx;
-	qm_value_r <= 8'bx;
+	s3_enable_r <= 1'b0;
+	s3_coded_r <= 1'b0;
 
-	coef_next_r <= 1'b0;
+	coef_sign_r <= 1'bx;
+	coef_data_r <= 12'bx;
+
+	pixel_coded_r <= 1'bx;
+	pixel_addr_r <= 5'bx;
 end
 
-export "DPI-C" task read_ready_isdq;
-task read_ready_isdq;
-	output ready_isdq;
+export "DPI-C" task read_ready_idct;
+task read_ready_idct;
+	output ready_idct;
 begin
-	ready_isdq = ready_isdq_w;
+	ready_idct = ready_idct_w;
 end
 endtask
 
@@ -74,8 +58,10 @@ export "DPI-C" task pre_block_start;
 task pre_block_start;
 begin
 	@(posedge clk);
-	s2_enable_r <= s1_enable_r;
-	s2_coded_r <= s1_coded_r;
+	s3_enable_r <= s2_enable_r;
+	s3_coded_r <= s2_coded_r;
+	s4_enable_r <= s4_enable_r;
+	s4_coded_r <= s4_coded_r;
 end
 endtask
 
@@ -85,15 +71,6 @@ begin
 	block_start_r <= 1'b1;
 	@(posedge clk);
 	block_start_r <= 1'b0;
-end
-endtask
-
-export "DPI-C" task block_end;
-task block_end;
-begin
-	block_end_r <= 1'b1;
-	@(posedge clk);
-	block_end_r <= 1'b0;
 end
 endtask
 
@@ -217,34 +194,28 @@ initial begin
 	end
 end
 
-m2visdq u_dut(
-	.clk          (clk),
-	.reset_n      (reset_n),
-	.softreset    (softreset),
+m2vidct u_dut(
+	.clk         (clk),
+	.reset_n     (reset_n),
+	.softreset   (softreset),
 
-	.ready_isdq   (ready_isdq_w),
-	.block_start  (block_start_r),
-	.block_end    (block_end_r),
+	.ready_idct  (ready_idct_w),
+	.block_start (block_start_r),
 
-	.s1_enable    (s1_enable_r),
-	.s1_coded     (s1_coded_r),
-	.s1_mb_intra  (s1_mb_intra_r),
-	.s1_mb_qscode (s1_mb_qscode_r),
-	.sa_qstype    (sa_qstype_r),
-	.sa_dcprec    (sa_dcprec_r),
+	.s2_enable   (s2_enable_r),
+	.s2_coded    (s2_coded_r),
 
-	.run          (run_r),
-	.level_sign   (level_sign_r),
-	.level_data   (level_data_r),
-	.rl_valid     (rl_valid_r),
-	.qm_valid     (qm_valid_r),
-	.qm_custom    (qm_custom_r),
-	.qm_intra     (qm_intra_r),
-	.qm_value     (qm_value_r),
+	.s3_enable   (s3_enable_r),
+	.s3_coded    (s3_coded_r),
 
-	.coef_sign    (coef_sign_w),
-	.coef_data    (coef_data_w),
-	.coef_next    (coef_next_r)
+	.coef_next   (coef_next_w),
+	.coef_sign   (coef_sign_r),
+	.coef_data   (coef_data_r),
+
+	.pixel_coded (pixel_coded_r),
+	.pixel_addr  (pixel_addr_r),
+	.pixel_data0 (pixel_data0_w),
+	.pixel_data1 (pixel_data1_w)
 );
 
 endmodule

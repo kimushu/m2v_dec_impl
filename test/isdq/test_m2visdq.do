@@ -6,29 +6,29 @@ add wave -noupdate /test_m2visdq/u_dut/softreset
 add wave -noupdate /test_m2visdq/u_dut/ready_isdq
 add wave -noupdate /test_m2visdq/u_dut/block_start
 add wave -noupdate /test_m2visdq/u_dut/block_end
-add wave -noupdate /test_m2visdq/u_dut/s0_enable
+add wave -noupdate /test_m2visdq/u_dut/s1_enable
 add wave -noupdate /test_m2visdq/u_dut/s1_coded
 add wave -noupdate /test_m2visdq/u_dut/s1_mb_intra
 add wave -noupdate /test_m2visdq/u_dut/s1_mb_qscode
 add wave -noupdate /test_m2visdq/u_dut/sa_qstype
 add wave -noupdate /test_m2visdq/u_dut/sa_dcprec
-add wave -noupdate /test_m2visdq/u_dut/run
+add wave -noupdate -radix unsigned /test_m2visdq/u_dut/run
 add wave -noupdate /test_m2visdq/u_dut/level_sign
-add wave -noupdate /test_m2visdq/u_dut/level_data
+add wave -noupdate -radix unsigned /test_m2visdq/u_dut/level_data
 add wave -noupdate /test_m2visdq/u_dut/rl_valid
 add wave -noupdate /test_m2visdq/u_dut/qm_valid
 add wave -noupdate /test_m2visdq/u_dut/qm_custom
 add wave -noupdate /test_m2visdq/u_dut/qm_intra
 add wave -noupdate /test_m2visdq/u_dut/qm_value
 add wave -noupdate /test_m2visdq/u_dut/coef_sign
-add wave -noupdate /test_m2visdq/u_dut/coef_data
+add wave -noupdate -radix unsigned /test_m2visdq/u_dut/coef_data
 add wave -noupdate /test_m2visdq/u_dut/coef_next
 add wave -noupdate /test_m2visdq/u_dut/state_r
 add wave -noupdate /test_m2visdq/u_dut/cust_qm_ni_r
 add wave -noupdate /test_m2visdq/u_dut/cust_qm_i_r
-add wave -noupdate /test_m2visdq/u_dut/qscale_r
-add wave -noupdate /test_m2visdq/u_dut/wpos_r
-add wave -noupdate /test_m2visdq/u_dut/rpos_r
+add wave -noupdate -radix unsigned /test_m2visdq/u_dut/qscale_r
+add wave -noupdate -radix unsigned /test_m2visdq/u_dut/wpos_r
+add wave -noupdate -radix unsigned /test_m2visdq/u_dut/rpos_r
 add wave -noupdate /test_m2visdq/u_dut/wpage_r
 add wave -noupdate /test_m2visdq/u_dut/empty_r
 add wave -noupdate /test_m2visdq/u_dut/cvalid_r
@@ -55,7 +55,7 @@ add wave -noupdate /test_m2visdq/u_dut/mult_result_w
 add wave -noupdate /test_m2visdq/u_dut/clipped_w
 add wave -noupdate -radix ascii /test_m2visdq/u_dut/state_name
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {2517 ps} 0}
+WaveRestoreCursors {{Cursor 1} {1710000 ps} 0}
 configure wave -namecolwidth 150
 configure wave -valuecolwidth 100
 configure wave -justifyvalue left
@@ -70,4 +70,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ps
 update
-WaveRestoreZoom {0 ps} {10500 ns}
+WaveRestoreZoom {1209900 ps} {2419597 ps}

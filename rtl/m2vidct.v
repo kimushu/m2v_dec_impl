@@ -4,19 +4,29 @@
 //================================================================================
 
 module m2vidct(
+	// common
 	input         clk,
 	input         reset_n,
 	input         softreset,
 
+	// from m2vctrl
 	output        ready_idct,
 	input         block_start,
-	input         s1_enable,
-	input         s2_enable,
 
+	// from m2vside2
+	input         s2_enable,
+	input         s2_coded,
+
+	// from m2vside3
+	input         s3_enable,
+	input         s3_coded,
+
+	// from m2visdq
 	output        coef_next,
 	input         coef_sign,
 	input  [11:0] coef_data,
 
+	// to m2vmc
 	input         pixel_coded,
 	input   [4:0] pixel_addr,
 	output  [8:0] pixel_data0,
@@ -50,7 +60,7 @@ always @(posedge clk or negedge reset_n)
 		busy_r <= 1'b0;
 	else if(softreset || final_w)
 		busy_r <= 1'b0;
-	else if(block_start && (s1_enable | s2_enable))
+	else if(block_start && ((s2_enable & s2_coded) | (s3_enable & s3_coded)))
 		busy_r <= 1'b1;
 
 assign ready_idct = ~busy_r;
