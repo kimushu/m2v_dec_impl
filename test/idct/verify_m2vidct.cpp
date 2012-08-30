@@ -1,15 +1,16 @@
 //================================================================================
-// Verifier for test_m2visdq
+// Verifier for test_m2vidct
 //================================================================================
 
 #include <dpic_helper.hpp>
-#include "test_m2visdq.h"
+#include <tb_common.hpp>
+#include "test_m2vidct.h"
 #include <string>
 #include <fstream>
 #include <stdlib.h>
 using namespace std;
 
-static ifstream isdq_out;
+static ifstream idct_out;
 bool verifying = false;
 
 int start_verifying(const char* ref_dir)
@@ -17,7 +18,7 @@ int start_verifying(const char* ref_dir)
 	int wait;
 	svUnsigned<1> ready_isdq;
 
-	if(!open_refdata(isdq_out, ref_dir, "isdq_out.txt"))
+	if(!open_refdata(isdq_out, ref_dir, "idct_out.txt"))
 		return 1;
 
 	wait_reset_done();

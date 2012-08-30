@@ -10,7 +10,10 @@
 #include <stdlib.h>
 using namespace std;
 
-ifstream side, rl;
+extern bool verifying;
+
+static ifstream side, rl;
+static int feed_stall;
 
 int start_feeding(const char* ref_dir)
 {
@@ -28,10 +31,11 @@ int start_feeding(const char* ref_dir)
 		if(ready_isdq.aval()) break;
 	}
 
+	feed_stall = 0;
 	return 0;
 }
 
-int feed_block(svLogic* finished)
+static int feed_block(svUnsigned<1>& finished)
 {
 	string name;
 	stringstream ss;
@@ -47,42 +51,52 @@ int feed_block(svLogic* finished)
 	svUnsigned<6> run;
 	svUnsigned<1> level_sign;
 	svUnsigned<11> level_data;
-	svUnsigned<1>& _finished = *(svUnsigned<1>*)finished;
 
-	*_finished = 0;
-	while(1)
+	finished = 0;
+
+	if(feed_stall > 0)
+	{
+		pre_block_start();
+		set_sideinfo_blk(sv_0, sv_0);
+		block_start();
+		--feed_stall;
+	}
+	else
 	{
 		if(side.eof())
 		{
-			*_finished = 1;
+			finished = 1;
 			return 0;
 		}
 
+		pre_block_start();
+
 		// get next block's side information
 		setnewline(ss, side) >> name >> blk;
-		if(name != "blk") break;
+		if(name != "blk") goto syntax_error;
 		if(blk == 0)
 		{
 			setnewline(ss, side) >> name >> sa_dcprec;
-			if(name != "idp") break;
+			if(name != "idp") goto syntax_error;
 			setnewline(ss, side) >> name >> sa_qstype;
-			if(name != "qst") break;
+			if(name != "qst") goto syntax_error;
 			setnewline(ss, side);	// if
 			setnewline(ss, side);	// mbx
 			setnewline(ss, side);	// mby
 			setnewline(ss, side);	// mvh
 			setnewline(ss, side);	// mvv
 			setnewline(ss, side) >> name >> s1_mb_qscode;
-			if(name != "mbqsc") break;
+			if(name != "mbqsc") goto syntax_error;
 			setnewline(ss, side) >> name >> s1_mb_intra;
-			if(name != "intra") break;
+			if(name != "intra") goto syntax_error;
+
+			set_sideinfo_mb(s1_mb_intra, s1_mb_qscode, sa_qstype, sa_dcprec);
 		}
 		setnewline(ss, side) >> name >> s1_coded;
-		if(name != "coded") break;
+		if(name != "coded") goto syntax_error;
 
-		pre_block_start();
-		set_sideinfo(sv_1, s1_coded, s1_mb_intra, s1_mb_qscode,
-						sa_qstype, sa_dcprec);
+		set_sideinfo_blk(sv_1, s1_coded);
+
 		block_start();
 
 		if(s1_coded.aval())
@@ -101,15 +115,20 @@ int feed_block(svLogic* finished)
 
 			block_end();
 		}
-
-		extern bool verifying;
-		while(verifying) posedge_clk();
-
-		wait = (rand() % 10);
-		for(; wait >= 0; --wait) posedge_clk();
 	}
 
+	while(verifying) posedge_clk();
+	wait = (rand() % 10);
+	for(; wait >= 0; --wait) posedge_clk();
+	return 0;
+
+syntax_error:
 	printf("# Error: Invalid reference data syntax\n");
 	return 1;
+}
+
+int feed_block(svLogic* finished)
+{
+	return feed_block(*((svUnsigned<1>*)finished));
 }
 

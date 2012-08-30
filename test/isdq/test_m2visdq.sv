@@ -97,21 +97,27 @@ begin
 end
 endtask
 
-export "DPI-C" task set_sideinfo;
-task set_sideinfo;
-	input       s1_enable;
-	input       s1_coded;
+export "DPI-C" task set_sideinfo_mb;
+task set_sideinfo_mb;
 	input       s1_mb_intra;
 	input [4:0] s1_mb_qscode;
 	input       sa_qstype;
 	input [1:0] sa_dcprec;
 begin
-	s1_enable_r <= s1_enable;
-	s1_coded_r <= s1_coded;
 	s1_mb_intra_r <= s1_mb_intra;
 	s1_mb_qscode_r <= s1_mb_qscode;
 	sa_qstype_r <= sa_qstype;
 	sa_dcprec_r <= sa_dcprec;
+end
+endtask
+
+export "DPI-C" task set_sideinfo_blk;
+task set_sideinfo_blk;
+	input       s1_enable;
+	input       s1_coded;
+begin
+	s1_enable_r <= s1_enable;
+	s1_coded_r <= s1_coded;
 end
 endtask
 
