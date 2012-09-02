@@ -9,19 +9,27 @@
 #include <fstream>
 #include <sstream>
 
-inline std::stringstream& setnewline(std::stringstream& ss, std::istream& is)
+inline std::stringstream& setnewline(std::istream& is, std::stringstream& ss)
 {
 	std::string line;
-	do { std::getline(is, line); } while(line[0] == '#');
+	getline(is, line);
 	ss.str(line);
 	ss.clear();
 	return ss;
+}
+
+inline std::istream& skipline(std::istream& is)
+{
+	std::string line;
+	getline(is, line);
+	return is;
 }
 
 inline bool open_refdata(std::ifstream& is, const char* ref_dir, const char* file_name)
 {
 	using namespace std;
 	string path(string(ref_dir) + "/" + file_name);
+	is.close();
 	is.open(path.c_str());
 	if(!is)
 	{

@@ -12,17 +12,19 @@ WORK_DIR  = $(TEST_ROOT)/work
 OBJ_DIR   = ./obj
 DUMP_DIR  = ./dump
 REF_DIR   = $(TEST_ROOT)/ref
+SIM_TOOL  = modelsim
 
 vpath %.v $(RTL_DIR)
 
 # Environments
 include $(TEST_ROOT)/altera.mk
+#include $(TEST_ROOT)/$(SIM_TOOL).mk
 Q ?= @
 VLFLAGS += -lint -quiet +incdir+$(RTL_DIR) +define+SIM=1
 VSFLAGS = -lib $(WORK_DIR) $(addprefix -L ,$(VS_LIBS)) \
 			-GREF_DIR=\"$(REF_DIR)\" -GDUMP_DIR=\"$(DUMP_DIR)\" \
 			-sv_root $(OBJ_DIR)
-CXXFLAGS += -m32 -pthread -O2 -Wall -fPIC \
+CXXFLAGS += -m32 -pthread -O2 -Wall -fPIC -g \
 			-I$(TEST_ROOT) -I$(dir $(shell which vlog))../include
 
 include $(TEST_ROOT)/modules.mk
@@ -116,7 +118,7 @@ SIM_CMD = vsim $(VSFLAGS) $(addprefix -sv_lib ,$(MODULES_DPI_C)) $(MODULES_DPI_C
 
 .PHONY: sim wave
 sim: env compile mif dir.ref
-	$(Q)$(SIM_CMD) -do "run -all; quit -force"
+	$(Q)$(SIM_CMD) -c -do "run -all; quit -force"
 
 wave: env compile mif dir.ref
 	$(Q)vsim -do "proc load_tb {} {$(SIM_CMD); do $(firstword $(MODULES_DPI_C)).do}; load_tb"

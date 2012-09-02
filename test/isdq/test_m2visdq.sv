@@ -205,7 +205,7 @@ initial begin
 end
 
 import "DPI-C" context task start_verifying(string);
-import "DPI-C" context task verify_block();
+import "DPI-C" context task verify_block(s2_enable, s2_coded);
 reg verify_finished;
 integer verify_count;
 initial begin
@@ -214,11 +214,9 @@ initial begin
 	verify_count = 0;
 	while(~verify_finished) begin
 		while(~block_start_r) @(posedge clk);
-		if(s2_enable_r & s2_coded_r) begin
-			verify_block();
-			verify_count += 1;
-			if(feed_finished && feed_count == verify_count) verify_finished = 1'b1;
-		end
+		verify_block(s2_enable_r, s2_coded_r);
+		verify_count += 1;
+		if(feed_finished && feed_count == verify_count) verify_finished = 1'b1;
 		@(posedge clk);
 	end
 end

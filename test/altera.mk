@@ -2,8 +2,8 @@
 # Altera environments
 #================================================================================
 
-QUARTUS_BIN := $(dir $(shell which quartus 2> /dev/null))
-ALTERA_ROOT  = $(QUARTUS_BIN)../..
+QUARTUS_BIN := $(patsubst %/,%,$(dir $(shell which quartus 2> /dev/null)))
+ALTERA_ROOT  = $(QUARTUS_BIN)/../..
 SOPC_ROOT    = $(ALTERA_ROOT)/ip/altera/sopc_builder_ip
 VS_LIBS     += altera_mf_ver lpm_ver
 

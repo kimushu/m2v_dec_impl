@@ -11,9 +11,9 @@
 using namespace std;
 
 static ifstream isdq_out;
-bool verifying = false;
+bool verifying;
 
-int start_verifying(const char* ref_dir)
+DPI_LINK_DECL int start_verifying(const char* ref_dir)
 {
 	int wait;
 	svUnsigned<1> ready_isdq;
@@ -32,24 +32,34 @@ int start_verifying(const char* ref_dir)
 
 	if(!ready_isdq.aval())
 	{
-		printf("# Error: Software reset time is too long!\n");
+		cout << "# Error: Software reset time is too long!" << endl;
 		return 1;
 	}
 
+	verifying = false;
 	return 0;
 }
 
-int verify_block()
+static int verify_block(svUnsigned<1> s2_enable, svUnsigned<1> s2_coded)
 {
 	int i;
 
 	if(!isdq_out) return 0;
+
+	if(!(s2_enable & s2_coded)) return 0;
 
 	svUnsigned<1> coef_sign;
 	svUnsigned<12> coef_data;
 	stringstream ss;
 	int read;
 	int expected[64];
+
+	while(isdq_out.peek() == '#')
+	{
+		string line;
+		getline(isdq_out, line);
+		cout << "# Info: [verify] " << line << endl;
+	}
 
 	// load '64 expected values' with transpositioning
 	for(i = 0; i < 64; ++i)
@@ -58,10 +68,10 @@ int verify_block()
 		{
 			if(isdq_out.eof())
 			{
-				printf("# Error: cannot read expected value data!\n");
+				cout << "# Error: cannot read expected value data!" << endl;
 				return 1;
 			}
-			setnewline(ss, isdq_out);
+			setnewline(isdq_out, ss);
 		}
 		ss >> expected[(i % 8) * 8 + (i / 8)];
 	}
@@ -76,12 +86,12 @@ int verify_block()
 
 		if(coef_sign.has_zx())
 		{
-			printf("# Error: coef_sign is X or Z!\n");
+			cout << "# Error: coef_sign is X or Z!" << endl;
 			return 1;
 		}
 		if(coef_data.has_zx())
 		{
-			printf("# Error: coef_data contains X or Z!\n");
+			cout << "# Error: coef_data contains X or Z!" << endl;
 			return 1;
 		}
 
@@ -90,13 +100,18 @@ int verify_block()
 
 		if(read != expected[i / 2])
 		{
-			printf("# Error: Verify failed! (Index: %d, Read: %d, Expected: %d)\n",
-					i, read, expected[i / 2]);
+			cout << "# Error: Verify failed! (Index: " << i << ", Read: " << read <<
+					", Expected: " << expected[i / 2] << ")" << endl;
 			return 1;
 		}
 	}
 	verifying = false;
 
 	return 0;
+}
+
+DPI_LINK_DECL int verify_block(svLogic s2_enable, svLogic s2_coded)
+{
+	return verify_block(svUnsigned<1>(s2_enable), svUnsigned<1>(s2_coded));
 }
 

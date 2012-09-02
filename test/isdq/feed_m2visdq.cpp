@@ -15,7 +15,7 @@ extern bool verifying;
 static ifstream side, rl;
 static int feed_stall;
 
-int start_feeding(const char* ref_dir)
+DPI_LINK_DECL int start_feeding(const char* ref_dir)
 {
 	svUnsigned<1> ready_isdq;
 
@@ -31,6 +31,8 @@ int start_feeding(const char* ref_dir)
 		if(ready_isdq.aval()) break;
 	}
 
+	set_sideinfo_blk(sv_0, sv_0);
+	posedge_clk();
 	feed_stall = 0;
 	return 0;
 }
@@ -40,8 +42,8 @@ static int feed_block(svUnsigned<1>& finished)
 	string name;
 	stringstream ss;
 
+	int num;
 	int wait;
-	int blk;
 	int level;
 	svUnsigned<1> s1_coded;
 	svUnsigned<1> s1_mb_intra;
@@ -71,28 +73,53 @@ static int feed_block(svUnsigned<1>& finished)
 
 		pre_block_start();
 
-		// get next block's side information
-		setnewline(ss, side) >> name >> blk;
-		if(name != "blk") goto syntax_error;
-		if(blk == 0)
+		// get side information
+		while(1)
 		{
-			setnewline(ss, side) >> name >> sa_dcprec;
-			if(name != "idp") goto syntax_error;
-			setnewline(ss, side) >> name >> sa_qstype;
-			if(name != "qst") goto syntax_error;
-			setnewline(ss, side);	// if
-			setnewline(ss, side);	// mbx
-			setnewline(ss, side);	// mby
-			setnewline(ss, side);	// mvh
-			setnewline(ss, side);	// mvv
-			setnewline(ss, side) >> name >> s1_mb_qscode;
-			if(name != "mbqsc") goto syntax_error;
-			setnewline(ss, side) >> name >> s1_mb_intra;
-			if(name != "intra") goto syntax_error;
+			while(side.peek() == '#')
+			{
+				string line;
+				getline(side, line);
+				cout << "# Info: [feed] " << line << endl;
+			}
 
-			set_sideinfo_mb(s1_mb_intra, s1_mb_qscode, sa_qstype, sa_dcprec);
+			setnewline(side, ss) >> name >> num;
+			if(name == "BLK")
+			{
+				break;
+			}
+			else if(name == "PIC")
+			{
+				setnewline(side, ss) >> name >> sa_dcprec;
+				if(name != "idp") goto syntax_error;
+				setnewline(side, ss) >> name >> sa_qstype;
+				if(name != "qst") goto syntax_error;
+				setnewline(side, ss);	// if
+			}
+			else if(name == "MB")
+			{
+				setnewline(side, ss);	// mbx
+				setnewline(side, ss);	// mby
+				setnewline(side, ss);	// mvh
+				setnewline(side, ss);	// mvv
+				setnewline(side, ss) >> name >> s1_mb_qscode;
+				if(name != "mbqsc") goto syntax_error;
+				setnewline(side, ss) >> name >> s1_mb_intra;
+				if(name != "intra") goto syntax_error;
+				set_sideinfo_mb(s1_mb_intra, s1_mb_qscode, sa_qstype, sa_dcprec);
+			}
+			else if(name == "PICE")
+			{
+				feed_stall = 3;
+				return 0;
+			}
+			else
+			{
+				goto syntax_error;
+			}
 		}
-		setnewline(ss, side) >> name >> s1_coded;
+
+		setnewline(side, ss) >> name >> s1_coded;
 		if(name != "coded") goto syntax_error;
 
 		set_sideinfo_blk(sv_1, s1_coded);
@@ -106,7 +133,8 @@ static int feed_block(svUnsigned<1>& finished)
 			{
 				wait = rand() % 10;
 				for(; wait >= 0; --wait) posedge_clk();
-				setnewline(ss, rl) >> run >> level;
+				while(rl.peek() == '#') skipline(rl);
+				setnewline(rl, ss) >> run >> level;
 				if(level == 0) break;
 				level_sign = (level < 0) ? 1 : 0;
 				level_data = (level < 0) ? -level : level;
@@ -117,17 +145,17 @@ static int feed_block(svUnsigned<1>& finished)
 		}
 	}
 
-	while(verifying) posedge_clk();
+	do { posedge_clk(); } while(verifying);
 	wait = (rand() % 10);
 	for(; wait >= 0; --wait) posedge_clk();
 	return 0;
 
 syntax_error:
-	printf("# Error: Invalid reference data syntax\n");
+	cout << "# Error: Invalid reference data syntax" << endl;
 	return 1;
 }
 
-int feed_block(svLogic* finished)
+DPI_LINK_DECL int feed_block(svLogic* finished)
 {
 	return feed_block(*((svUnsigned<1>*)finished));
 }
