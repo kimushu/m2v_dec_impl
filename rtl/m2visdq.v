@@ -164,7 +164,7 @@ always @(posedge clk or negedge reset_n)
 	else if(softreset)
 		empty_r <= 1'b1;
 	else if(block_start)
-		empty_r <= ~s1_enable;
+		empty_r <= ~(s1_enable & s1_coded);
 
 always @(posedge clk or negedge reset_n)
 	if(~reset_n)
@@ -332,7 +332,9 @@ m2visdq_dmem u_dmem(
 );
 
 assign coef_sign = dmem_doutb_w[12];
-assign coef_data = {dmem_doutb_w[11:1], dmem_doutb_w[0] ^ (mismatch_r & lastcoef_r)};
+assign coef_data = (dmem_doutb_w[12] & lastcoef_r & ~mismatch_r) ?
+					{dmem_doutb_w[11:1] + 11'd1, 1'b0} :
+					{dmem_doutb_w[11:1], lastcoef_r ? mismatch_r : dmem_doutb_w[0]};
 
 endmodule
 // vim:set foldmethod=marker:
