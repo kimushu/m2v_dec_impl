@@ -90,11 +90,12 @@ static int feed_block(svUnsigned<1>& finished)
 			}
 			else if(name == "PIC")
 			{
-				setnewline(side, ss) >> name >> sa_dcprec;
-				if(name != "idp") goto syntax_error;
 				setnewline(side, ss) >> name >> sa_qstype;
 				if(name != "qst") goto syntax_error;
+				setnewline(side, ss) >> name >> sa_dcprec;
+				if(name != "idp") goto syntax_error;
 				setnewline(side, ss);	// if
+				set_sideinfo_pic(sa_qstype, sa_dcprec);
 			}
 			else if(name == "MB")
 			{
@@ -106,7 +107,7 @@ static int feed_block(svUnsigned<1>& finished)
 				if(name != "mbqsc") goto syntax_error;
 				setnewline(side, ss) >> name >> s1_mb_intra;
 				if(name != "intra") goto syntax_error;
-				set_sideinfo_mb(s1_mb_intra, s1_mb_qscode, sa_qstype, sa_dcprec);
+				set_sideinfo_mb(s1_mb_intra, s1_mb_qscode);
 			}
 			else if(name == "PICE")
 			{

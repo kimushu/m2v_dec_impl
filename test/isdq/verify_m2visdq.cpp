@@ -27,10 +27,10 @@ DPI_LINK_DECL int start_verifying(const char* ref_dir)
 	{
 		read_ready_isdq(ready_isdq);
 		posedge_clk();
-		if(ready_isdq.aval()) break;
+		if(ready_isdq) break;
 	}
 
-	if(!ready_isdq.aval())
+	if(!ready_isdq)
 	{
 		cout << "# Error: Software reset time is too long!" << endl;
 		return 1;
