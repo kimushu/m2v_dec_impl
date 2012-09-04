@@ -116,12 +116,12 @@ env: env.altera
 # Execute simulation
 SIM_CMD = vsim $(VSFLAGS) $(addprefix -sv_lib ,$(MODULES_DPI_C)) $(MODULES_DPI_C)
 
-.PHONY: sim wave
-sim: env compile mif dir.ref
-	$(Q)$(SIM_CMD) -c -do "run -all; quit -force"
+.PHONY: test wave
+test: env compile mif dir.ref
+	$(Q)LANG=C $(SIM_CMD) -c -do "run -all; quit -force"
 
 wave: env compile mif dir.ref
-	$(Q)vsim -do "proc load_tb {} {$(SIM_CMD); do $(firstword $(MODULES_DPI_C)).do}; load_tb"
+	$(Q)LANG=C vsim -do "proc load_tb {} {$(SIM_CMD); do $(firstword $(MODULES_DPI_C)).do}; load_tb"
 
 # Cleanup
 .PHONY: clean.common

@@ -27,8 +27,8 @@ DPI_LINK_DECL int start_feeding(const char* ref_dir)
 	while(1)
 	{
 		posedge_clk();
-		read_ready_isdq(ready_isdq);
-		if(ready_isdq.aval()) break;
+		read_ready_isdq(ready_isdq.plogic());
+		if(ready_isdq.val()) break;
 	}
 
 	set_sideinfo_blk(sv_0, sv_0);
@@ -53,6 +53,7 @@ static int feed_block(svUnsigned<1>& finished)
 	svUnsigned<6> run;
 	svUnsigned<1> level_sign;
 	svUnsigned<11> level_data;
+	svUnsigned<1> ready_isdq;
 
 	finished = 0;
 
@@ -95,7 +96,7 @@ static int feed_block(svUnsigned<1>& finished)
 				setnewline(side, ss) >> name >> sa_dcprec;
 				if(name != "idp") goto syntax_error;
 				setnewline(side, ss);	// if
-				set_sideinfo_pic(sa_qstype, sa_dcprec);
+				set_sideinfo_pic(sa_qstype.logic(), sa_dcprec.logic());
 			}
 			else if(name == "MB")
 			{
@@ -107,7 +108,7 @@ static int feed_block(svUnsigned<1>& finished)
 				if(name != "mbqsc") goto syntax_error;
 				setnewline(side, ss) >> name >> s1_mb_intra;
 				if(name != "intra") goto syntax_error;
-				set_sideinfo_mb(s1_mb_intra, s1_mb_qscode);
+				set_sideinfo_mb(s1_mb_intra.logic(), s1_mb_qscode.logic());
 			}
 			else if(name == "PICE")
 			{
@@ -123,11 +124,11 @@ static int feed_block(svUnsigned<1>& finished)
 		setnewline(side, ss) >> name >> s1_coded;
 		if(name != "coded") goto syntax_error;
 
-		set_sideinfo_blk(sv_1, s1_coded);
+		set_sideinfo_blk(sv_1, s1_coded.logic());
 
 		block_start();
 
-		if(s1_coded.aval())
+		if(s1_coded.val())
 		{
 			// feed rl-pairs
 			while(1)
@@ -139,14 +140,20 @@ static int feed_block(svUnsigned<1>& finished)
 				if(level == 0) break;
 				level_sign = (level < 0) ? 1 : 0;
 				level_data = (level < 0) ? -level : level;
-				feed_rlpair(run, level_sign, level_data);
+				feed_rlpair(run.logic(), level_sign.logic(), level_data.logic());
 			}
 
 			block_end();
 		}
 	}
 
-	do { posedge_clk(); } while(verifying);
+	do
+	{
+		posedge_clk();
+		read_ready_isdq(ready_isdq.plogic());
+	}
+	while(verifying || !ready_isdq.val());
+
 	wait = (rand() % 10);
 	for(; wait >= 0; --wait) posedge_clk();
 	return 0;

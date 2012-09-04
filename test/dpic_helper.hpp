@@ -7,6 +7,8 @@
 
 #include <svdpi.h>
 #include <iostream>
+#include <string>
+#include <sstream>
 
 //--------------------------------------------------------------------------------
 // Sign bit extender
@@ -33,18 +35,26 @@ struct _svLogicVecValWrapper
 	typedef _svLogicVecValWrapper<W, T> S;
 	typedef svLogicVecVal L;
 	U mask() const { return (W == 32) ? ~0 : ((1 << (W & 31)) - 1); }
-	T aval() const { return _svSignExtender<W, T>::extend(_v.aval & mask()); }
+	U aval() const { return _v.aval & mask(); }
 	U bval() const { return _v.bval & mask(); }
+	T val() const { return _svSignExtender<W, T>::extend(aval()); }
 	bool has_z() const { return (~aval() & bval()) != 0; }
 	bool has_x() const { return (aval() & bval()) != 0; }
 	bool has_zx() const { return bval() != 0; }
-	operator T() const { return aval() & ~bval(); }
-	operator const L*() const { return &_v; }
-	operator L*() { return &_v; }
-	const L& logic() const { return &_v; }
-	L& logic() { return &_v; }
+	const L* logic() const { return &_v; }
+	L* plogic() { return &_v; }
 	S& set_z() { _v.aval = 0; _v.bval = mask(); return *this; }
 	S& set_x() { _v.aval = _v.bval = mask(); return *this; }
+	std::string bin() const
+	{
+		std::stringstream ss;
+		ss << W << "'b";
+		for(int i = (W - 1); i >= 0; --i)
+			ss << ((_v.bval & (1U << i)) ?
+				("z\000x" + (((_v.aval >> i) & 1)) * 2) :
+				("0\0001" + (((_v.aval >> i) & 1)) * 2));
+		return ss.str();
+	}
 protected:
 	void let(T v) { _v.aval = v & mask(); _v.bval = 0; }
 	_svLogicVecValWrapper() { _v.aval = 0; _v.bval = mask(); }
@@ -62,17 +72,17 @@ struct _svLogicWrapper
 	typedef _svLogicWrapper<T> S;
 	typedef svLogic L;
 	U mask() const { return 1; }
-	T aval() const { return _svSignExtender<1, T>::extend(_v & 1); }
-	U bval() const { return (_v >> 1) & 1; }
+	U aval() const { return _v & mask(); }
+	U bval() const { return (_v >> 1) & mask(); }
+	T val() const { return _svSignExtender<1, T>::extend(aval()); }
 	bool has_z() const { return (~aval() & bval()) != 0; }
 	bool has_x() const { return (aval() & bval()) != 0; }
 	bool has_zx() const { return bval() != 0; }
-	operator T() const { return aval() & ~bval(); }
-	operator const L*() const { return &_v; }
-	operator L*() { return &_v; }
-	const L& logic() const { return _v; }
+	const L logic() const { return _v; }
+	L* plogic() { return &_v; }
 	S& set_z() { _v = sv_z; return *this; }
 	S& set_x() { _v = sv_x; return *this; }
+	std::string bin() const { return "1'b0\0001'b1\0001'bz\0001'bx" + (5 * _v); }
 protected:
 	void let(T v) { _v = v & 1; }
 	_svLogicWrapper() { _v = sv_z; }
@@ -94,7 +104,7 @@ struct svUnsigned : _svLogicVecValWrapper<W, uint32_t>
 	friend std::istream& operator >>(std::istream& is, self_t& self)
 		{ word_t v; is >> v; self.let(v); return is; }
 	friend std::ostream& operator <<(std::ostream& os, const self_t& self)
-		{ return (os << (word_t)self); }
+		{ return (os << self.val()); }
 	explicit svUnsigned(const typename super_t::L& v) : super_t(v) {}
 	svUnsigned() {}
 };
@@ -109,7 +119,7 @@ struct svUnsigned<1> : _svLogicWrapper<uint32_t>
 	friend std::istream& operator >>(std::istream& is, self_t& self)
 		{ word_t v; is >> v; self.let(v); return is; }
 	friend std::ostream& operator <<(std::ostream& os, const self_t& self)
-		{ return (os << (word_t)self); }
+		{ return (os << self.val()); }
 	explicit svUnsigned(const typename super_t::L& v) : super_t(v) {}
 	svUnsigned() {}
 };
@@ -127,7 +137,7 @@ struct svSigned : _svLogicVecValWrapper<W, int32_t>
 	friend std::istream& operator >>(std::istream& is, self_t& self)
 		{ word_t v; is >> v; self.let(v); return is; }
 	friend std::ostream& operator <<(std::ostream& os, const self_t& self)
-		{ return (os << (word_t)self); }
+		{ return self.has_zx() ? (os << self.bin()) : (os << self.val()); }
 	explicit svSigned(const typename super_t::L& v) : super_t(v) {}
 	svSigned() {}
 };
@@ -142,7 +152,7 @@ struct svSigned<1> : _svLogicWrapper<int32_t>
 	friend std::istream& operator >>(std::istream& is, self_t& self)
 		{ word_t v; is >> v; self.let(v); return is; }
 	friend std::ostream& operator <<(std::ostream& os, const self_t& self)
-		{ return (os << (word_t)self); }
+		{ return self.has_zx() ? (os << self.bin()) : (os << self.val()); }
 	explicit svSigned(const typename super_t::L& v) : super_t(v) {}
 	svSigned() {}
 };
