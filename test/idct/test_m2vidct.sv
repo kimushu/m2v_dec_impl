@@ -60,8 +60,8 @@ begin
 	@(posedge clk);
 	s3_enable_r <= s2_enable_r;
 	s3_coded_r <= s2_coded_r;
-	s4_enable_r <= s4_enable_r;
-	s4_coded_r <= s4_coded_r;
+	s4_enable_r <= s3_enable_r;
+	s4_coded_r <= s3_coded_r;
 end
 endtask
 
@@ -74,8 +74,8 @@ begin
 end
 endtask
 
-export "DPI-C" task set_sideinfo;
-task set_sideinfo;
+export "DPI-C" task set_sideinfo_blk;
+task set_sideinfo_blk;
 	input       s2_enable;
 	input       s2_coded;
 begin
@@ -94,6 +94,14 @@ begin
 end
 endtask
 
+export "DPI-C" task get_coef_next;
+task get_coef_next;
+	output coef_next;
+begin
+	coef_next = coef_next_w;
+end
+endtask
+
 export "DPI-C" task set_pixel_addr;
 task set_pixel_addr;
 	input       pixel_coded;
@@ -104,8 +112,8 @@ begin
 end
 endtask
 
-export "DPI-C" task get_pixel_values;
-task get_pixel_values;
+export "DPI-C" task get_pixel_data;
+task get_pixel_data;
 	output [8:0] pixel_data0;
 	output [8:0] pixel_data1;
 begin
@@ -130,7 +138,7 @@ initial begin
 end
 
 import "DPI-C" context task start_verifying(string);
-import "DPI-C" context task verify_block(input s4_coded);
+import "DPI-C" context task verify_block(input s4_enable, input s4_coded);
 reg verify_finished;
 integer verify_count;
 initial begin
@@ -139,11 +147,9 @@ initial begin
 	verify_count = 0;
 	while(~verify_finished) begin
 		while(~block_start_r) @(posedge clk);
-		if(s4_enable_r) begin
-			verify_block(s4_coded_r);
-			verify_count += 1;
-			if(feed_finished && feed_count == verify_count) verify_finished = 1'b1;
-		end
+		verify_block(s4_enable_r, s4_coded_r);
+		verify_count += 1;
+		if(feed_finished && feed_count == verify_count) verify_finished = 1'b1;
 		@(posedge clk);
 	end
 end

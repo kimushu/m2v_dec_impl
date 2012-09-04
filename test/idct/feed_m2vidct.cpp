@@ -10,10 +10,12 @@
 #include <stdlib.h>
 using namespace std;
 
+extern bool verifying;
+
 static ifstream side, isdq_out;
 static int feed_stall;
 
-int start_feeding(const char* ref_dir)
+DPI_LINK_DECL int start_feeding(const char* ref_dir)
 {
 	svUnsigned<1> ready_idct;
 
@@ -25,10 +27,12 @@ int start_feeding(const char* ref_dir)
 	while(1)
 	{
 		posedge_clk();
-		read_ready_idct(ready_idct);
-		if(ready_idct.aval()) break;
+		read_ready_idct(ready_idct.plogic());
+		if(ready_idct.val()) break;
 	}
 
+	set_sideinfo_blk(sv_0, sv_0);
+	posedge_clk();
 	feed_stall = 0;
 	return 0;
 }
@@ -38,71 +42,142 @@ static int feed_block(svUnsigned<1>& finished)
 	string name;
 	stringstream ss;
 
-	int blk;
+	int num;
 	int wait;
+	int i;
+	int coefs[64];
 	svUnsigned<1> s2_coded;
-	svUnsigned<1> s3_coded;
+	svUnsigned<1> coef_next;
+	svUnsigned<1> coef_sign;
+	svUnsigned<12> coef_data;
+	svUnsigned<1> ready_idct;
+
 	finished = 0;
 
 	if(feed_stall > 0)
 	{
-		set_sideinfo(sv_0, sv_0);
+		pre_block_start();
+		set_sideinfo_blk(sv_0, sv_0);
 		block_start();
 		--feed_stall;
-		return 0;
 	}
-
-	if(side.eof())
+	else
 	{
-		finished = 1;
-		return 0;
+		if(side.eof())
+		{
+			finished = 1;
+			return 0;
+		}
+
+		pre_block_start();
+
+		// get side information
+		while(1)
+		{
+			while(side.peek() == '#')
+			{
+				string line;
+				getline(side, line);
+				cout << "# Info: [feed] " << line << endl;
+			}
+
+			setnewline(side, ss) >> name >> num;
+			if(name == "BLK")
+			{
+				break;
+			}
+			else if(name == "PIC")
+			{
+				setnewline(side, ss);	// idp
+				setnewline(side, ss);	// qst
+				setnewline(side, ss);	// if
+			}
+			else if(name == "MB")
+			{
+				setnewline(side, ss);	// mbx
+				setnewline(side, ss);	// mby
+				setnewline(side, ss);	// mvh
+				setnewline(side, ss);	// mvv
+				setnewline(side, ss);	// mbqsc
+				setnewline(side, ss);	// intra
+			}
+			else if(name == "PICE")
+			{
+				feed_stall = 3;
+				return 0;
+			}
+			else
+			{
+				goto syntax_error;
+			}
+		}
+
+		setnewline(side, ss) >> name >> s2_coded;
+		if(name != "coded") goto syntax_error;
+
+		set_sideinfo_blk(sv_1, s2_coded.logic());
+
+		block_start();
+
+		if(s2_coded.val())
+		{
+			while(isdq_out.peek() == '#') skipline(isdq_out);
+			for(i = 0; i < 64; ++i)
+			{
+				if((i % 8) == 0) setnewline(isdq_out, ss);
+				ss >> coefs[i];
+			}
+
+			// feed by transpositioned order
+			for(i = 0; i < 64; ++i)
+			{
+				int value = coefs[(i % 8) * 8 + (i / 8)];
+				coef_sign = (value < 0) ? 1 : 0;
+				coef_data = (value < 0) ? -value : value;
+				set_coef_data(coef_sign.logic(), coef_data.logic());
+				for(wait = 10; wait > 0; --wait)
+				{
+					posedge_clk();
+					get_coef_next(coef_next.plogic());
+					if(coef_next.val()) break;
+				}
+				if(!coef_next.val())
+				{
+					cout << "# Error: coef_next must be asserted!" << endl;
+					return 1;
+				}
+				for(wait = 1; wait > 0; --wait)
+				{
+					posedge_clk();
+					get_coef_next(coef_next.plogic());
+					if(!coef_next.val()) break;
+				}
+				if(coef_next.val())
+				{
+					cout << "# Error: coef_next must be negated!" << endl;
+					return 1;
+				}
+			}
+		}
 	}
 
-	// get next block's side information
-	setnewline(ss, side) >> name >> blk;
-
-	if(name == "pic")
+	do
 	{
-		feed_stall = 4;
-		return 0;
+		posedge_clk();
+		read_ready_idct(ready_idct.plogic());
 	}
-
-	if(name != "blk") goto syntax_error;
-	if(blk == 0)
-	{
-		setnewline(ss, side);	// idp
-		setnewline(ss, side);	// qst
-		setnewline(ss, side);	// if
-		setnewline(ss, side);	// mbx
-		setnewline(ss, side);	// mby
-		setnewline(ss, side);	// mvh
-		setnewline(ss, side);	// mvv
-		setnewline(ss, side);	// mbqsc
-		setnewline(ss, side);	// intra
-	}
-	setnewline(ss, side) >> name >> s2_coded;
-	if(name != "coded") goto syntax_error;
-
-	set_sideinfo(sv_1, s2_coded);
-	block_start();
-
-	if(s2_coded.aval())
-	{
-	}
-
-	extern bool verifying;
-	while(verifying) posedge_clk();
+	while(verifying || !ready_idct.val());
 
 	wait = (rand() % 10);
 	for(; wait >= 0; --wait) posedge_clk();
 	return 0;
 
 syntax_error:
-	printf("# Error: Invalid reference data syntax\n");
+	cout << "# Error: Invalid reference data syntax" << endl;
 	return 1;
 }
 
-int feed_block(svLogic* finished)
+DPI_LINK_DECL int feed_block(svLogic* finished)
 {
 	return feed_block(*(svUnsigned<1>*)finished);
 }

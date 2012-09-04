@@ -11,92 +11,112 @@
 using namespace std;
 
 static ifstream idct_out;
-bool verifying = false;
+bool verifying;
 
-int start_verifying(const char* ref_dir)
+DPI_LINK_DECL int start_verifying(const char* ref_dir)
 {
 	int wait;
-	svUnsigned<1> ready_isdq;
+	svUnsigned<1> ready_idct;
 
-	if(!open_refdata(isdq_out, ref_dir, "idct_out.txt"))
+	if(!open_refdata(idct_out, ref_dir, "idct_out.txt"))
 		return 1;
 
 	wait_reset_done();
-	set_coef_next(sv_0);
-	for(wait = 0; wait < 130; ++wait)
+	for(wait = 0; wait < 10; ++wait)
 	{
-		read_ready_isdq(ready_isdq);
+		read_ready_idct(ready_idct.plogic());
 		posedge_clk();
-		if(ready_isdq.aval()) break;
+		if(ready_idct.val()) break;
 	}
 
-	if(!ready_isdq.aval())
+	if(!ready_idct.val())
 	{
-		printf("# Error: Software reset time is too long!\n");
+		cout << "# Error: Software reset time is too long!" << endl;
 		return 1;
 	}
+
+	verifying = false;
+	return 0;
+}
+
+static int verify_block(svUnsigned<1> s4_enable, svUnsigned<1> s4_coded)
+{
+	if(!idct_out) return 0;
+
+	if(!s4_enable.val()) return 0;
+
+	svUnsigned<5> pixel_addr;
+	svSigned<9> pixel_data0;
+	svSigned<9> pixel_data1;
+	stringstream ss;
+	int i;
+	int expected[64];
+
+	verifying = true;
+
+	if(!s4_coded.val())
+	{
+		// 64 zeros
+		for(i = 0; i < 64; ++i) expected[i] = 0;
+	}
+	else
+	{
+		while(idct_out.peek() == '#')
+		{
+			string line;
+			getline(idct_out, line);
+			cout << "# Info: [verify] " << line << endl;
+		}
+
+		// load 64 expected values
+		for(i = 0; i < 64; ++i)
+		{
+			if((i % 8) == 0)
+			{
+				if(idct_out.eof())
+				{
+					cout << "# Error: cannot read expected value data!" << endl;
+					return 1;
+				}
+				setnewline(idct_out, ss);
+			}
+			ss >> expected[i];
+		}
+	}
+
+	verifying = true;
+
+	for(i = 0; i < 33; ++i)
+	{
+		if(i < 32)
+			pixel_addr = i;
+		else
+			pixel_addr.set_x();
+
+		set_pixel_addr(s4_coded.logic(), pixel_addr.logic());
+		posedge_clk();
+
+		if(i > 0)
+		{
+			get_pixel_data(pixel_data0.plogic(), pixel_data1.plogic());
+			if(pixel_data0.val() != expected[i*2-2] || pixel_data1.val() != expected[i*2-1])
+			{
+				cout << "# Error: Verify failed! (Index: " << i <<
+						", Read: (" << pixel_data0 << ", " << pixel_data1 <<
+						"), Expected: (" << expected[i*2] << ", " << expected[i*2+1] << "))" << endl;
+				posedge_clk();
+				return 1;
+			}
+		}
+	}
+
+	verifying = false;
 
 	return 0;
 }
 
-int verify_block()
+DPI_LINK_DECL int verify_block(svLogic s4_enable, svLogic s4_coded)
 {
-	int i;
-
-	if(!isdq_out) return 0;
-
-	svUnsigned<1> coef_sign;
-	svUnsigned<12> coef_data;
-	stringstream ss;
-	int read;
-	int expected[64];
-
-	// load '64 expected values' with transpositioning
-	for(i = 0; i < 64; ++i)
-	{
-		if((i % 8) == 0)
-		{
-			if(isdq_out.eof())
-			{
-				printf("# Error: cannot read expected value data!\n");
-				return 1;
-			}
-			setnewline(ss, isdq_out);
-		}
-		ss >> expected[(i % 8) * 8 + (i / 8)];
-	}
-
-	// verify
-	verifying = true;
-	for(i = 0; i < 128; ++i)
-	{
-		set_coef_next((i & 1) ? sv_0 : sv_1);
-		posedge_clk();
-		get_coef_values(coef_sign, coef_data);
-
-		if(coef_sign.has_zx())
-		{
-			printf("# Error: coef_sign is X or Z!\n");
-			return 1;
-		}
-		if(coef_data.has_zx())
-		{
-			printf("# Error: coef_data contains X or Z!\n");
-			return 1;
-		}
-
-		read = (int)coef_data.aval();
-		if(coef_sign.aval()) read = -read;
-
-		if(read != expected[i / 2])
-		{
-			printf("# Error: Verify failed! (Index: %d, Read: %d, Expected: %d)\n",
-					i, read, expected[i / 2]);
-			return 1;
-		}
-	}
-	verifying = false;
-
-	return 0;
+	return verify_block(svUnsigned<1>(s4_enable), svUnsigned<1>(s4_coded));
 }
 
