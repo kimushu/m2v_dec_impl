@@ -8,8 +8,8 @@ add wave -noupdate /test_m2vmc/u_dut/block_start
 add wave -noupdate /test_m2vmc/u_dut/picture_complete
 add wave -noupdate /test_m2vmc/u_dut/pixel_coded
 add wave -noupdate -radix unsigned /test_m2vmc/u_dut/pixel_addr
-add wave -noupdate /test_m2vmc/u_dut/pixel_data0
-add wave -noupdate /test_m2vmc/u_dut/pixel_data1
+add wave -noupdate -radix decimal /test_m2vmc/u_dut/pixel_data0
+add wave -noupdate -radix decimal /test_m2vmc/u_dut/pixel_data1
 add wave -noupdate /test_m2vmc/u_dut/sa_iframe
 add wave -noupdate -radix decimal /test_m2vmc/u_dut/s3_mv_h
 add wave -noupdate -radix decimal /test_m2vmc/u_dut/s3_mv_v
@@ -116,7 +116,7 @@ add wave -noupdate /test_m2vmc/u_dut/fpn_douta_w
 add wave -noupdate /test_m2vmc/u_dut/fpu_datab_w
 add wave -noupdate /test_m2vmc/u_dut/fpu_douta_w
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {126318 ps} 0}
+WaveRestoreCursors {{Cursor 1} {218292 ps} 0}
 configure wave -namecolwidth 165
 configure wave -valuecolwidth 64
 configure wave -justifyvalue left
@@ -131,4 +131,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ps
 update
-WaveRestoreZoom {0 ps} {20987164 ps}
+WaveRestoreZoom {0 ps} {231 ns}

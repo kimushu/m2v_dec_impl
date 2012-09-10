@@ -108,6 +108,15 @@ begin
 end
 endtask
 
+export "DPI-C" task picture_complete;
+task picture_complete;
+begin
+	picture_complete_r <= 1'b1;
+	@(posedge clk);
+	picture_complete_r <= 1'b0;
+end
+endtask
+
 export "DPI-C" task get_s4_coded;
 task get_s4_coded;
 	output s4_enable;
@@ -175,18 +184,33 @@ end
 endtask
 
 import "DPI-C" context task start_feeding(string);
-import "DPI-C" context task feed_block(output finished);
-reg feed_finished;
-integer feed_count;
+import "DPI-C" context task feed_block_s3(output finished);
+reg feed_finished_s3;
+integer feed_count_s3;
 initial begin
 	start_feeding(REF_DIR);
-	feed_finished = 1'b0;
-	feed_count = 0;
-	while(~feed_finished) begin
-		feed_block(feed_finished);
-		feed_count += 1;
+	feed_finished_s3 = 1'b0;
+	feed_count_s3 = 0;
+	while(~feed_finished_s3) begin
+		feed_block_s3(feed_finished_s3);
+		feed_count_s3 += 1;
 	end
-	$display("[%t] Feed finished", $time);
+	$display("[%t] Feed(s3) finished", $time);
+end
+
+import "DPI-C" context task feed_block_s4(output finished);
+reg feed_finished_s4;
+integer feed_count_s4;
+initial begin
+	feed_finished_s4 = 1'b0;
+	feed_count_s4 = 0;
+	wait_reset_done;
+	while(~feed_finished_s4) begin
+		while(~block_start_r) @(posedge clk);
+		feed_block_s4(feed_finished_s4);
+		feed_count_s4 += 1;
+	end
+	$display("[%t] Feed(s4) finished", $time);
 end
 
 import "DPI-C" context task start_verifying(string);
@@ -199,9 +223,9 @@ initial begin
 	verify_count = 0;
 	while(~verify_finished) begin
 		while(~block_start_r) @(posedge clk);
-		// verify_block(s4_enable_r, s4_coded_r);
+		verify_block(s4_enable_r, s4_coded_r);
 		verify_count += 1;
-		if(feed_finished && feed_count == verify_count) verify_finished = 1'b1;
+		if(feed_finished_s4 && feed_count_s4 == verify_count) verify_finished = 1'b1;
 		@(posedge clk);
 	end
 end
@@ -210,6 +234,7 @@ end
 //--------------------------------------------------------------------------------
 // Verify (through Avalon MM Slave BFM)
 //
+import avalon_mm_pkg::*;
 `define U u_mm_slave
 altera_avalon_mm_slave_bfm #( // {{{
 	.AV_ADDRESS_W               (MEM_WIDTH),
@@ -267,6 +292,46 @@ altera_avalon_mm_slave_bfm #( // {{{
 	.avs_writeid              (),
 	.avs_clken                (1'b1)
 ); // }}}
+
+import "DPI-C" context task mc_fbuf_write(
+	input [(MEM_WIDTH-1):0] address,
+	input [15:0] data,
+	output integer waitcycles);
+import "DPI-C" context task mc_fbuf_read(
+	input [(MEM_WIDTH-1):0] address,
+	output [15:0] data,
+	output integer waitcycles);
+
+initial `U.init();
+
+integer temp_waitcycles;
+reg [15:0] temp_readdata;
+
+always @(`U.signal_command_received) begin
+	`U.pop_command();
+	if(`U.get_command_request() == REQ_WRITE) begin
+		mc_fbuf_write(
+			`U.get_command_address(),
+			`U.get_command_data(0),
+			temp_waitcycles
+		);
+		// TODO: wait_cycles
+	end else if(`U.get_command_request() == REQ_READ) begin
+		mc_fbuf_read(
+			`U.get_command_address(),
+			temp_readdata,
+			temp_waitcycles
+		);
+		`U.set_read_response_id(`U.get_command_transaction_id());
+		`U.set_read_response_status(1, 0);
+		`U.set_response_request(REQ_READ);
+		`U.set_response_data(temp_readdata, 0);
+		`U.set_response_latency(0, 0);
+		`U.set_response_burst_size(1);
+		`U.push_response();
+	end
+end
+`undef U
 
 m2vmc u_dut(
 	.clk                (clk),
