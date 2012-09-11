@@ -243,7 +243,7 @@ static int feed_block_s4(svUnsigned<1>& finished)
 
 	for(next_addr = 0; next_addr < 32; ++next_addr)
 	{
-		wait = (next_addr > 0) ? 1 : 200;
+		wait = (next_addr > 0) ? 10 : 200;
 		for(; wait > 0; --wait)
 		{
 			posedge_clk();
@@ -271,8 +271,14 @@ static int feed_block_s4(svUnsigned<1>& finished)
 		set_pixel_data(pixel_data0.logic(), pixel_data1.logic());
 	}
 
-	posedge_clk();
+	for(wait = 10; wait > 0; --wait)
+	{
+		posedge_clk();
+		get_pixel_addr(pixel_coded.plogic(), pixel_addr.plogic());
+		if(pixel_addr.val() != 31) break;
+	}
 	set_pixel_data(pixel_data0.set_x().logic(), pixel_data1.set_x().logic());
+
 	return 0;
 }
 

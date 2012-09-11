@@ -41,8 +41,8 @@ add wave -noupdate /test_m2vmc/u_dut/xhalf_r
 add wave -noupdate /test_m2vmc/u_dut/xodd_r
 add wave -noupdate /test_m2vmc/u_dut/yhalf_r
 add wave -noupdate /test_m2vmc/u_dut/fptr_fetch_w
-add wave -noupdate /test_m2vmc/u_dut/xref_r
-add wave -noupdate /test_m2vmc/u_dut/yref_r
+add wave -noupdate -radix unsigned /test_m2vmc/u_dut/xref_r
+add wave -noupdate -radix unsigned /test_m2vmc/u_dut/yref_r
 add wave -noupdate /test_m2vmc/u_dut/rxcnt_r
 add wave -noupdate /test_m2vmc/u_dut/rycnt_r
 add wave -noupdate /test_m2vmc/u_dut/xref_1d_r
@@ -66,22 +66,24 @@ add wave -noupdate /test_m2vmc/u_dut/wycnt_r
 add wave -noupdate /test_m2vmc/u_dut/wxcnt_1d_r
 add wave -noupdate /test_m2vmc/u_dut/wycnt_1d_r
 add wave -noupdate /test_m2vmc/u_dut/px1_1d_r
-add wave -noupdate /test_m2vmc/u_dut/px0_w
-add wave -noupdate /test_m2vmc/u_dut/px1_w
-add wave -noupdate /test_m2vmc/u_dut/i0out_w
-add wave -noupdate /test_m2vmc/u_dut/i1out_w
-add wave -noupdate /test_m2vmc/u_dut/sum0a_w
-add wave -noupdate /test_m2vmc/u_dut/sum0b_w
-add wave -noupdate /test_m2vmc/u_dut/sum0r_w
-add wave -noupdate /test_m2vmc/u_dut/sum1a_w
-add wave -noupdate /test_m2vmc/u_dut/sum1b_w
-add wave -noupdate /test_m2vmc/u_dut/sum1r_w
-add wave -noupdate /test_m2vmc/u_dut/sum2a_w
-add wave -noupdate /test_m2vmc/u_dut/sum2b_w
-add wave -noupdate /test_m2vmc/u_dut/sum2r_w
-add wave -noupdate /test_m2vmc/u_dut/sum3a_w
-add wave -noupdate /test_m2vmc/u_dut/sum3b_w
-add wave -noupdate /test_m2vmc/u_dut/sum3r_w
+add wave -noupdate -radix hexadecimal /test_m2vmc/u_dut/i0ram_r
+add wave -noupdate -radix hexadecimal /test_m2vmc/u_dut/i1ram_r
+add wave -noupdate -radix hexadecimal /test_m2vmc/u_dut/px0_w
+add wave -noupdate -radix hexadecimal /test_m2vmc/u_dut/px1_w
+add wave -noupdate -radix hexadecimal /test_m2vmc/u_dut/i0out_w
+add wave -noupdate -radix hexadecimal /test_m2vmc/u_dut/i1out_w
+add wave -noupdate -radix hexadecimal /test_m2vmc/u_dut/sum0a_w
+add wave -noupdate -radix hexadecimal /test_m2vmc/u_dut/sum0b_w
+add wave -noupdate -radix hexadecimal /test_m2vmc/u_dut/sum0r_w
+add wave -noupdate -radix hexadecimal /test_m2vmc/u_dut/sum1a_w
+add wave -noupdate -radix hexadecimal /test_m2vmc/u_dut/sum1b_w
+add wave -noupdate -radix hexadecimal /test_m2vmc/u_dut/sum1r_w
+add wave -noupdate -radix hexadecimal /test_m2vmc/u_dut/sum2a_w
+add wave -noupdate -radix hexadecimal /test_m2vmc/u_dut/sum2b_w
+add wave -noupdate -radix hexadecimal /test_m2vmc/u_dut/sum2r_w
+add wave -noupdate -radix hexadecimal /test_m2vmc/u_dut/sum3a_w
+add wave -noupdate -radix hexadecimal /test_m2vmc/u_dut/sum3b_w
+add wave -noupdate -radix hexadecimal /test_m2vmc/u_dut/sum3r_w
 add wave -noupdate /test_m2vmc/u_dut/fwaddr0_w
 add wave -noupdate /test_m2vmc/u_dut/fwaddr1_w
 add wave -noupdate /test_m2vmc/u_dut/fwxen0_w
@@ -116,7 +118,7 @@ add wave -noupdate /test_m2vmc/u_dut/fpn_douta_w
 add wave -noupdate /test_m2vmc/u_dut/fpu_datab_w
 add wave -noupdate /test_m2vmc/u_dut/fpu_douta_w
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {218292 ps} 0}
+WaveRestoreCursors {{Cursor 1} {604896169 ps} 0}
 configure wave -namecolwidth 165
 configure wave -valuecolwidth 64
 configure wave -justifyvalue left
@@ -131,4 +133,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ps
 update
-WaveRestoreZoom {0 ps} {231 ns}
+WaveRestoreZoom {604857866 ps} {605026317 ps}

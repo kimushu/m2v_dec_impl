@@ -104,9 +104,14 @@ struct svUnsigned : _svLogicVecValWrapper<W, uint32_t>
 	friend std::istream& operator >>(std::istream& is, self_t& self)
 		{ word_t v; is >> v; self.let(v); return is; }
 	friend std::ostream& operator <<(std::ostream& os, const self_t& self)
-		{ return (os << self.val()); }
+		{ return self.has_zx() ? (os << self.bin()) : (os << self.val()); }
 	explicit svUnsigned(const typename super_t::L& v) : super_t(v) {}
 	svUnsigned() {}
+	static self_t cast(typename super_t::L v) { return self_t(v); }
+	static self_t& cast(typename super_t::L* pv)
+		{ return *reinterpret_cast<self_t*>(pv); }
+	static const self_t& cast(const typename super_t::L* pv)
+		{ return *reinterpret_cast<const self_t*>(pv); }
 };
 
 template <>
@@ -119,9 +124,14 @@ struct svUnsigned<1> : _svLogicWrapper<uint32_t>
 	friend std::istream& operator >>(std::istream& is, self_t& self)
 		{ word_t v; is >> v; self.let(v); return is; }
 	friend std::ostream& operator <<(std::ostream& os, const self_t& self)
-		{ return (os << self.val()); }
+		{ return self.has_zx() ? (os << self.bin()) : (os << self.val()); }
 	explicit svUnsigned(const typename super_t::L& v) : super_t(v) {}
 	svUnsigned() {}
+	static self_t cast(typename super_t::L v) { return self_t(v); }
+	static self_t& cast(typename super_t::L* pv)
+		{ return *reinterpret_cast<self_t*>(pv); }
+	static const self_t& cast(const typename super_t::L* pv)
+		{ return *reinterpret_cast<const self_t*>(pv); }
 };
 
 typedef svUnsigned<32> svUInt;
@@ -140,6 +150,11 @@ struct svSigned : _svLogicVecValWrapper<W, int32_t>
 		{ return self.has_zx() ? (os << self.bin()) : (os << self.val()); }
 	explicit svSigned(const typename super_t::L& v) : super_t(v) {}
 	svSigned() {}
+	static self_t cast(typename super_t::L v) { return self_t(v); }
+	static self_t& cast(typename super_t::L* pv)
+		{ return *reinterpret_cast<self_t*>(pv); }
+	static const self_t& cast(const typename super_t::L* pv)
+		{ return *reinterpret_cast<const self_t*>(pv); }
 };
 
 template <>
@@ -155,6 +170,11 @@ struct svSigned<1> : _svLogicWrapper<int32_t>
 		{ return self.has_zx() ? (os << self.bin()) : (os << self.val()); }
 	explicit svSigned(const typename super_t::L& v) : super_t(v) {}
 	svSigned() {}
+	static self_t cast(typename super_t::L v) { return self_t(v); }
+	static self_t& cast(typename super_t::L* pv)
+		{ return *reinterpret_cast<self_t*>(pv); }
+	static const self_t& cast(const typename super_t::L* pv)
+		{ return *reinterpret_cast<const self_t*>(pv); }
 };
 
 typedef svSigned<32> svInt;

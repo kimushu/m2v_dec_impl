@@ -8,7 +8,7 @@ compile:
 # Directories
 TEST_ROOT = $(patsubst %/,%,$(dir $(word $(words $(MAKEFILE_LIST)),$(MAKEFILE_LIST))))
 RTL_DIR   = $(TEST_ROOT)/../rtl
-WORK_DIR  = $(TEST_ROOT)/work
+WORK_DIR  = ./work
 OBJ_DIR   = ./obj
 DUMP_DIR  = ./dump
 REF_DIR   = $(TEST_ROOT)/ref
@@ -102,7 +102,7 @@ $(REF_DIR):
 mif: mif.gen mif.link
 
 mif.gen:
-	$(Q)$(MAKE) -C $(RTL_DIR)
+	$(Q)$(MAKE) -C $(RTL_DIR) mif
 
 mif.link: $(notdir $(wildcard $(RTL_DIR)/*.mif))
 

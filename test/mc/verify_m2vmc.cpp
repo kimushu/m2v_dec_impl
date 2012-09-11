@@ -102,8 +102,9 @@ static int mc_fbuf_write(
 
 	if(data.has_zx() || data.val() != mix_data[mix_pos])
 	{
-		cout << "# Error: Mix data mismatch! (Read: " << hex <<
-				setw(4) << setfill('0') << data <<
+		cout << "# Error: Mix data mismatch! @address=" <<
+				hex << setw(6) << setfill('0') << address <<
+				" (Read: " << hex << setw(4) << setfill('0') << data <<
 				", Expected: " << setw(4) << mix_data[mix_pos] << ")" << endl;
 		posedge_clk();
 		return 1;
@@ -114,7 +115,7 @@ static int mc_fbuf_write(
 		verifying = false;
 	}
 
-	waitcycles = 0;
+	waitcycles = rand() % 5;
 	return 0;
 }
 

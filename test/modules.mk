@@ -28,5 +28,6 @@ MODULES_V += \
 		m2vdd_hx8347a_buf \
 		m2vdd_hx8347a_fifo \
 		ycbcr2rgb \
-			ycbcr2rgb_mac
+			ycbcr2rgb_mac \
+	m2vfbagen
 

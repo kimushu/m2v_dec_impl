@@ -315,7 +315,7 @@ always @(`U.signal_command_received) begin
 			`U.get_command_data(0),
 			temp_waitcycles
 		);
-		// TODO: wait_cycles
+		`U.set_interface_wait_time(temp_waitcycles, 0);
 	end else if(`U.get_command_request() == REQ_READ) begin
 		mc_fbuf_read(
 			`U.get_command_address(),
@@ -326,7 +326,7 @@ always @(`U.signal_command_received) begin
 		`U.set_read_response_status(1, 0);
 		`U.set_response_request(REQ_READ);
 		`U.set_response_data(temp_readdata, 0);
-		`U.set_response_latency(0, 0);
+		`U.set_interface_wait_time(temp_waitcycles, 0);
 		`U.set_response_burst_size(1);
 		`U.push_response();
 	end
