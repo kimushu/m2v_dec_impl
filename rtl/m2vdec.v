@@ -45,8 +45,7 @@ module m2vdec
 	input         avm_fbuf_readdatavalid,
 	input  [(MBX_WIDTH+MBY_WIDTH-1):0] coe_fptr_address,
 	output        coe_fptr_updated,
-	output        coe_fptr_number,
-	input         pre_block_start
+	output        coe_fptr_number
 );
 
 // Wires
@@ -73,6 +72,7 @@ wire [7:0] qm_value_w;
 wire ready_idct_w;
 wire ready_mc_w;
 wire softreset_w;
+wire pre_block_start_w;
 wire block_start_w;
 wire block_end_w;
 wire picture_complete_w;
@@ -93,7 +93,6 @@ wire [4:0] pixel_addr_w;
 wire [8:0] pixel_data0_w;
 wire [8:0] pixel_data1_w;
 wire sa_iframe_w;
-wire s2_mb_intra_w;
 wire [(MVH_WIDTH-1):0] s3_mv_h_w;
 wire [(MVV_WIDTH-1):0] s3_mv_v_w;
 wire [(MBX_WIDTH-1):0] s3_mb_x_w;
@@ -114,6 +113,7 @@ wire [(MVH_WIDTH-1):0] s2_mv_h_w;
 wire [(MVV_WIDTH-1):0] s2_mv_v_w;
 wire [(MBX_WIDTH-1):0] s2_mb_x_w;
 wire [(MBY_WIDTH-1):0] s2_mb_y_w;
+wire s2_mb_intra_w;
 wire [2:0] s2_block_w;
 
 // Sub-module instanciations
@@ -160,6 +160,7 @@ m2vctrl #(
 	.ready_idct            (ready_idct_w),
 	.ready_mc              (ready_mc_w),
 	.softreset             (softreset_w),
+	.pre_block_start       (pre_block_start_w),
 	.block_start           (block_start_w),
 	.block_end             (block_end_w),
 	.picture_complete      (picture_complete_w)
@@ -228,8 +229,6 @@ m2vmc #(
 	.pixel_data0        (pixel_data0_w),
 	.pixel_data1        (pixel_data1_w),
 	.sa_iframe          (sa_iframe_w),
-	.s2_mb_intra        (s2_mb_intra_w),
-	.s2_enable          (s2_enable_w),
 	.s3_mv_h            (s3_mv_h_w),
 	.s3_mv_v            (s3_mv_v_w),
 	.s3_mb_x            (s3_mb_x_w),
@@ -272,7 +271,7 @@ m2vside1 #(
 	.s0_mb_x         (s0_mb_x_w),
 	.s0_mb_y         (s0_mb_y_w),
 	.s0_mb_qscode    (s0_mb_qscode_w),
-	.pre_block_start (pre_block_start),
+	.pre_block_start (pre_block_start_w),
 	.block_start     (block_start_w),
 	.sa_dcprec       (sa_dcprec_w),
 	.sa_qstype       (sa_qstype_w),
@@ -304,7 +303,7 @@ m2vside2 #(
 	.s1_block        (s1_block_w),
 	.s1_coded        (s1_coded_w),
 	.s1_enable       (s1_enable_w),
-	.pre_block_start (pre_block_start),
+	.pre_block_start (pre_block_start_w),
 	.block_start     (block_start_w),
 	.s2_mv_h         (s2_mv_h_w),
 	.s2_mv_v         (s2_mv_v_w),
@@ -332,7 +331,7 @@ m2vside3 #(
 	.s2_block        (s2_block_w),
 	.s2_coded        (s2_coded_w),
 	.s2_enable       (s2_enable_w),
-	.pre_block_start (pre_block_start),
+	.pre_block_start (pre_block_start_w),
 	.block_start     (block_start_w),
 	.s3_mv_h         (s3_mv_h_w),
 	.s3_mv_v         (s3_mv_v_w),
@@ -356,7 +355,7 @@ m2vside4 #(
 	.s3_block        (s3_block_w),
 	.s3_coded        (s3_coded_w),
 	.s3_enable       (s3_enable_w),
-	.pre_block_start (pre_block_start),
+	.pre_block_start (pre_block_start_w),
 	.block_start     (block_start_w),
 	.s4_mb_x         (s4_mb_x_w),
 	.s4_mb_y         (s4_mb_y_w),

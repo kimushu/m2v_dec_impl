@@ -26,9 +26,6 @@ module m2vmc #(
 
 	input         sa_iframe,
 
-	input         s2_mb_intra,
-	input         s2_enable,
-
 	input [(MVH_WIDTH-1):0] s3_mv_h,
 	input [(MVV_WIDTH-1):0] s3_mv_v,
 	input [(MBX_WIDTH-1):0] s3_mb_x,
@@ -142,7 +139,7 @@ always @(posedge clk or negedge reset_n)
 	else if(softreset)
 		{xodd_r, xhalf_r} <= 2'd0;
 	else if(state_r == ST_CALCREF)
-		{xodd_r, xhalf_r} <= xrar_w[1:0];
+		{xodd_r, xhalf_r} <= s3_block[2] ? xrar_w[2:1] : xrar_w[1:0];
 
 always @(posedge clk or negedge reset_n)
 	if(~reset_n)
@@ -168,7 +165,7 @@ always @(posedge clk or negedge reset_n)
 	else if(softreset)
 		yhalf_r <= 1'b0;
 	else if(state_r == ST_CALCREF)
-		yhalf_r <= yrar_w[0];
+		yhalf_r <= s3_block[2] ? yrar_w[1] : yrar_w[0];
 
 always @(posedge clk or negedge reset_n)
 	if(~reset_n)
@@ -571,8 +568,8 @@ always @(posedge clk or negedge reset_n)
 	ST_IDLE:
 		state_r <= picture_complete ? ST_PICTURE :
 					block_start ? (
-					s3_enable ? ST_PREMIX :
-					(~s2_enable | s2_mb_intra) ? ST_IDLE :
+					s4_enable ? ST_PREMIX :
+					(~s3_enable | s3_mb_intra) ? ST_IDLE :
 					ST_CALCREF) : ST_IDLE;
 	ST_PREMIX:
 		state_r <= ST_MIX;

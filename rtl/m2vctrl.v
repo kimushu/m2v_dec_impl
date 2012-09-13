@@ -60,6 +60,7 @@ module m2vctrl #(
 
 	// for all stages
 	output        softreset,
+	output        pre_block_start,
 	output        block_start,
 	output        block_end,
 	output        picture_complete
@@ -273,6 +274,7 @@ assign ioaddr_w = bdata_r[3:0];
 //--------------------------------------------------------------------------------
 // Control
 //
+reg pre_block_start_r;
 reg block_start_r;
 reg block_end_r;
 reg pic_complete_r;
@@ -285,11 +287,17 @@ reg error_r;
 
 always @(posedge clk or negedge reset_n)
 	if(~reset_n)
-		block_start_r <= 1'b0;
-	else if(block_start_r)
-		block_start_r <= 1'b0;
+		pre_block_start_r <= 1'b0;
+	else if(pre_block_start_r)
+		pre_block_start_r <= 1'b0;
 	else if(custom_inout_r && ioaddr_w == IO_CONTROL && adata_r[CN_BLK_START])
-		block_start_r <= 1'b1;
+		pre_block_start_r <= 1'b1;
+
+always @(posedge clk or negedge reset_n)
+	if(~reset_n)
+		block_start_r <= 1'b0;
+	else
+		block_start_r <= pre_block_start_r;
 
 always @(posedge clk or negedge reset_n)
 	if(~reset_n)
@@ -354,6 +362,7 @@ always @(posedge clk or negedge reset_n)
 		softreset_r <= control_writedata[CN_SOFTRESET];
 
 assign softreset = softreset_r;
+assign pre_block_start = pre_block_start_r;
 assign block_start = block_start_r;
 assign block_end = block_end_r;
 assign picture_complete = pic_complete_r;

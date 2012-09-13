@@ -332,8 +332,8 @@ m2visdq_dmem u_dmem(
 );
 
 assign coef_sign = dmem_doutb_w[12];
-assign coef_data = (dmem_doutb_w[12] & lastcoef_r & ~mismatch_r) ?
-					{dmem_doutb_w[11:1] + 11'd1, 1'b0} :
+assign coef_data = (dmem_doutb_w[12] & lastcoef_r & (mismatch_r ^ dmem_doutb_w[0])) ?
+					(dmem_doutb_w[0] ? {dmem_doutb_w[11:0] + 1'b1} : {dmem_doutb_w[11:0] - 1'd1}) :
 					{dmem_doutb_w[11:1], lastcoef_r ? mismatch_r : dmem_doutb_w[0]};
 
 endmodule

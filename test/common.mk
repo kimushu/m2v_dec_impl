@@ -17,7 +17,7 @@ SIM_TOOL  = modelsim
 vpath %.v $(RTL_DIR)
 
 # Environments
-include $(TEST_ROOT)/altera.mk
+include $(TEST_ROOT)/../altera.mk
 #include $(TEST_ROOT)/$(SIM_TOOL).mk
 Q ?= @
 VLFLAGS += -lint -quiet +incdir+$(RTL_DIR) +define+SIM=1
