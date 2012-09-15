@@ -6,13 +6,13 @@
 compile:
 
 # Directories
-TEST_ROOT = $(patsubst %/,%,$(dir $(word $(words $(MAKEFILE_LIST)),$(MAKEFILE_LIST))))
-RTL_DIR   = $(TEST_ROOT)/../rtl
-WORK_DIR  = ./work
-OBJ_DIR   = ./obj
-DUMP_DIR  = ./dump
-REF_DIR   = $(TEST_ROOT)/ref
-SIM_TOOL  = modelsim
+TEST_ROOT := $(patsubst %/,%,$(dir $(word $(words $(MAKEFILE_LIST)),$(MAKEFILE_LIST))))
+RTL_DIR    = $(TEST_ROOT)/../rtl
+WORK_DIR   = ./work
+OBJ_DIR    = ./obj
+DUMP_DIR   = ./dump
+REF_DIR    = $(TEST_ROOT)/ref
+SIM_TOOL   = modelsim
 
 vpath %.v $(RTL_DIR)
 
