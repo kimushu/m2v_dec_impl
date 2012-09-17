@@ -3,7 +3,7 @@
 # Machine generated for CPU 'nios2_qsys_0' in SOPC Builder design 'demo_de0_sys'
 # SOPC Builder design path: ../../demo_de0_sys.sopcinfo
 #
-# Generated: Sat Aug 18 18:36:56 JST 2012
+# Generated: Sat Sep 15 10:43:52 JST 2012
 
 # DO NOT MODIFY THIS FILE
 #
@@ -46,8 +46,8 @@
 # The cache attribute is specified which improves GDB performance
 # by allowing GDB to cache memory contents on the host.
 
-# rom_0
-memory 0x400000 0x800000 cache
-
 # ram_0
-memory 0x1000000 0x1002000 cache
+memory 0x0 0x2000 cache
+
+# rom_0
+memory 0xf000000 0xf400000 cache

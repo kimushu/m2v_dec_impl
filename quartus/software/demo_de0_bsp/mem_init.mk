@@ -155,7 +155,7 @@ ACDS_VERSION := 11.1sp2
 SIM_OPTIMIZE ?= 0
 
 # The CPU reset address as needed by elf2flash
-RESET_ADDRESS ?= 0x00400000
+RESET_ADDRESS ?= 0x0f000000
 
 #-------------------------------------
 # Pre-Initialized Memory Descriptions
@@ -171,9 +171,9 @@ DAT_FILES += $(HDL_SIM_DIR)/$(MEM_0).dat
 HDL_SIM_INSTALL_FILES += $(HDL_SIM_INSTALL_DIR)/$(MEM_0).dat
 SYM_FILES += $(HDL_SIM_DIR)/$(MEM_0).sym
 HDL_SIM_INSTALL_FILES += $(HDL_SIM_INSTALL_DIR)/$(MEM_0).sym
-$(MEM_0)_START := 0x01000000
+$(MEM_0)_START := 0x00000000
 $(MEM_0)_RELOC_INPUT_FLAG := --relocate-input=$($(MEM_0)_START)
-$(MEM_0)_END := 0x01001fff
+$(MEM_0)_END := 0x00001fff
 $(MEM_0)_HIERARCHICAL_PATH := ram_0
 $(MEM_0)_WIDTH := 32
 $(MEM_0)_ENDIANNESS := --little-endian-mem
@@ -193,9 +193,9 @@ HDL_SIM_INSTALL_FILES += $(HDL_SIM_INSTALL_DIR)/$(MEM_1)_lane1.dat
 SYM_FILES += $(HDL_SIM_DIR)/$(MEM_1).sym
 HDL_SIM_INSTALL_FILES += $(HDL_SIM_INSTALL_DIR)/$(MEM_1).sym
 FLASH_FILES += $(MEM_1).flash
-$(MEM_1)_START := 0x00400000
+$(MEM_1)_START := 0x0f000000
 $(MEM_1)_RELOC_INPUT_FLAG := --relocate-input=$($(MEM_1)_START)
-$(MEM_1)_END := 0x007fffff
+$(MEM_1)_END := 0x0f3fffff
 $(MEM_1)_HIERARCHICAL_PATH := rom_0
 $(MEM_1)_WIDTH := 16
 $(MEM_1)_ENDIANNESS := --little-endian-mem

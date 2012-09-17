@@ -89,7 +89,6 @@ module demo_de0(
 
 wire [21:0] flash_a_w;
 assign flash_a = {1'b0, flash_a_w[21:1]};
-
 assign flash_reset_n = 1'b1;
 assign flash_byte_n = 1'b1;
 assign flash_wp_n = 1'b1;
@@ -111,19 +110,36 @@ assign hex1_dp = hd_dp_w[1];
 assign hex2_dp = hd_dp_w[2];
 assign hex3_dp = hd_dp_w[3];
 
-assign led[0] = sw[0];
-assign led[1] = button[0];
+assign sd_dat1 = 1'bz;
+assign sd_dat2 = 1'bz;
 
-demo_de0_sys u0 (
-	.pll_areset_export            (),               //    pll_areset_conduit.export
-	.pll_locked_export            (led[2]),         //    pll_locked_conduit.export
-	.pll_phasedone_export         (led[3]),         // pll_phasedone_conduit.export
+assign led[0] = ~button[0];
+assign led[1] = ~sysreset_n_w;
+
+wire sysreset_n_w;
+wire sysclk_w;	// 100MHz
+wire sdrclk_w;	// 100MHz -60deg
+wire lcdclk_w;	// 20MHz
+
+demo_de0_pll u_pll(
+	.areset (~button[0]),
+	.inclk0 (clk50mhz_1),
+	.c0     (sysclk_w),
+	.c1     (sdrclk_w),
+	.c2     (lcdclk_w),
+	.locked (sysreset_n_w)
+);
+
+assign dram_clk = sdrclk_w;
+
+demo_de0_sys u_sys (
+	.sysclk_clk                   (sysclk_w),
+	.sysreset_reset_n             (sysreset_n_w),
 	.flash_tcm_address_out        (flash_a_w),      //                 flash.tcm_address_out
 	.flash_tcm_read_n_out         (flash_oe_n),     //                      .tcm_read_n_out
 	.flash_tcm_write_n_out        (flash_we_n),     //                      .tcm_write_n_out
 	.flash_tcm_data_out           (flash_d),        //                      .tcm_data_out
 	.flash_tcm_chipselect_n_out   (flash_ce_n),     //                      .tcm_chipselect_n_out
-	.sdrclk_clk                   (dram_clk),       //             sdram_clk.clk
 	.sdr_addr                     (dram_a),         //                 sdram.addr
 	.sdr_ba                       (dram_ba),        //                      .ba
 	.sdr_cas_n                    (dram_cas_n),     //                      .cas_n
@@ -139,8 +155,6 @@ demo_de0_sys u0 (
 	.lcd_data                     (gpio0_d[23:8]),  //                      .data
 	.lcd_write_n                  (gpio0_d[5]),     //                      .write_n
 	.lcd_read_n                   (gpio0_d[6]),     //                      .read_n
-	.clk_clk                      (clk50mhz_1),     //              clk50mhz.clk
-	.reset_reset_n                (button[2]),      //                 reset.reset_n
 	.hd_a                         (hd_a_w),         //                    hd.a
 	.hd_b                         (hd_b_w),         //                      .b
 	.hd_c                         (hd_c_w),         //                      .c
@@ -153,7 +167,8 @@ demo_de0_sys u0 (
 	.sdcard_MOSI                  (sd_cmd),         //                      .MOSI
 	.sdcard_SCLK                  (sd_clk),         //                      .SCLK
 	.sdcard_SS_n                  (sd_dat3),        //                      .SS_n
-	.sw_export                    ({button[1:0], sw[9:0]})  //            sw.export
+	.sw_export                    ({button[1:0], sw[9:0]}), //            sw.export
+	.lcdclk_clk                   (lcdclk_w)
 );
 
 endmodule

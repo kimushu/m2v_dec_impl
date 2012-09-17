@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2_qsys_0' in SOPC Builder design 'demo_de0_sys'
  * SOPC Builder design path: ../../demo_de0_sys.sopcinfo
  *
- * Generated: Thu Aug 23 21:32:22 JST 2012
+ * Generated: Sat Sep 15 10:56:20 JST 2012
  */
 
 /*
@@ -65,14 +65,14 @@
  *
  */
 
-#define RAM_0_REGION_BASE 0x1000000
+#define RAM_0_REGION_BASE 0x0
 #define RAM_0_REGION_SPAN 8192
-#define RESET_REGION_BASE 0x400000
+#define RESET_REGION_BASE 0xf000000
 #define RESET_REGION_SPAN 32
-#define ROM_0_REGION_BASE 0x400020
+#define ROM_0_REGION_BASE 0xf000020
 #define ROM_0_REGION_SPAN 1048544
-#define TESTDATA_REGION_BASE 0x500000
-#define TESTDATA_REGION_SPAN 1048576
+#define TESTDATA_REGION_BASE 0xf100000
+#define TESTDATA_REGION_SPAN 3145728
 
 
 /*
@@ -85,13 +85,5 @@
 #define ALT_RODATA_DEVICE ROM_0
 #define ALT_RWDATA_DEVICE RAM_0
 #define ALT_TEXT_DEVICE ROM_0
-
-
-/*
- * Initialization code at the reset address is allowed (e.g. no external bootloader).
- *
- */
-
-#define ALT_ALLOW_CODE_AT_RESET
 
 #endif /* __LINKER_H_ */

@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>2012/08/24 21:58:21</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1345813101098</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>Sep 15, 2012 10:56:20 AM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1347674180345</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>/home/shuta/projects/m2v_dec_impl/quartus/software/demo_de0_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>../../demo_de0_sys.sopcinfo</SopcDesignFile>
@@ -62,7 +62,7 @@
                 <SettingName>hal.linker.allow_code_at_reset</SettingName>
                 <Identifier>ALT_ALLOW_CODE_AT_RESET</Identifier>
                 <Type>Boolean</Type>
-                <Value>1</Value>
+                <Value>0</Value>
                 <DefaultValue>0</DefaultValue>
                 <DestinationFile>none</DestinationFile>
                 <Description>Indicates if initialization code is allowed at the reset address. If true, defines the macro ALT_ALLOW_CODE_AT_RESET in linker.h.</Description>
@@ -839,108 +839,102 @@
                 <Group>none</Group>
         </Setting>
         <LinkerRegion>
+                <regionName>ram_0</regionName>
+                <memoryName>ram_0</memoryName>
+                <offset>0</offset>
+                <size>8192</size>
+                <baseAddress>0x0</baseAddress>
+                <addressRange>0x00000000 - 0x00001FFF</addressRange>
+        </LinkerRegion>
+        <LinkerRegion>
                 <regionName>reset</regionName>
                 <memoryName>rom_0</memoryName>
                 <offset>0</offset>
                 <size>32</size>
-                <baseAddress>0x400000</baseAddress>
-                <addressRange>0x00400000 - 0x0040001F</addressRange>
+                <baseAddress>0xf000000</baseAddress>
+                <addressRange>0x0F000000 - 0x0F00001F</addressRange>
         </LinkerRegion>
         <LinkerRegion>
                 <regionName>rom_0</regionName>
                 <memoryName>rom_0</memoryName>
                 <offset>32</offset>
                 <size>1048544</size>
-                <baseAddress>0x400020</baseAddress>
-                <addressRange>0x00400020 - 0x004FFFFF</addressRange>
+                <baseAddress>0xf000020</baseAddress>
+                <addressRange>0x0F000020 - 0x0F0FFFFF</addressRange>
         </LinkerRegion>
         <LinkerRegion>
                 <regionName>testdata</regionName>
                 <memoryName>rom_0</memoryName>
                 <offset>1048576</offset>
-                <size>1048576</size>
-                <baseAddress>0x500000</baseAddress>
-                <addressRange>0x00500000 - 0x005FFFFF</addressRange>
-        </LinkerRegion>
-        <LinkerRegion>
-                <regionName>ram_0</regionName>
-                <memoryName>ram_0</memoryName>
-                <offset>0</offset>
-                <size>8192</size>
-                <baseAddress>0x1000000</baseAddress>
-                <addressRange>0x01000000 - 0x01001FFF</addressRange>
+                <size>3145728</size>
+                <baseAddress>0xf100000</baseAddress>
+                <addressRange>0x0F100000 - 0x0F3FFFFF</addressRange>
         </LinkerRegion>
         <MemoryMap>
-                <slaveDescriptor>altpll_0</slaveDescriptor>
-                <addressRange>0x00001000 - 0x0000100F</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
+                <slaveDescriptor>ram_0</slaveDescriptor>
+                <addressRange>0x00000000 - 0x00001FFF</addressRange>
+                <addressSpan>8192</addressSpan>
+                <attributes>memory</attributes>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>rom_0</slaveDescriptor>
+                <addressRange>0x0F000000 - 0x0F3FFFFF</addressRange>
+                <addressSpan>4194304</addressSpan>
+                <attributes>flash, memory, non-volatile</attributes>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>sysid_qsys_0</slaveDescriptor>
-                <addressRange>0x00001100 - 0x00001107</addressRange>
+                <addressRange>0x10000000 - 0x10000007</addressRange>
                 <addressSpan>8</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>timer_0</slaveDescriptor>
-                <addressRange>0x00002000 - 0x0000201F</addressRange>
+                <addressRange>0x10000100 - 0x1000011F</addressRange>
                 <addressSpan>32</addressSpan>
                 <attributes>timer</attributes>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>hexdisp_0</slaveDescriptor>
-                <addressRange>0x00003000 - 0x0000300F</addressRange>
+                <addressRange>0x10000200 - 0x1000020F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>spi_0</slaveDescriptor>
-                <addressRange>0x00003100 - 0x0000311F</addressRange>
+                <addressRange>0x10000300 - 0x1000031F</addressRange>
                 <addressSpan>32</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>pio_0</slaveDescriptor>
-                <addressRange>0x00003200 - 0x0000320F</addressRange>
+                <addressRange>0x10000400 - 0x1000040F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>fifo_0_in</slaveDescriptor>
-                <addressRange>0x00004000 - 0x00004007</addressRange>
+                <addressRange>0x10000500 - 0x10000507</addressRange>
                 <addressSpan>8</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>fifo_0_in_csr</slaveDescriptor>
-                <addressRange>0x00004100 - 0x0000411F</addressRange>
+                <addressRange>0x10000520 - 0x1000053F</addressRange>
                 <addressSpan>32</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>m2vdec_0</slaveDescriptor>
-                <addressRange>0x00005000 - 0x00005007</addressRange>
+                <addressRange>0x10000600 - 0x10000607</addressRange>
                 <addressSpan>8</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>m2vdd_hx8347a_0</slaveDescriptor>
-                <addressRange>0x00006000 - 0x00006003</addressRange>
+                <addressRange>0x10000700 - 0x10000703</addressRange>
                 <addressSpan>4</addressSpan>
                 <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>rom_0</slaveDescriptor>
-                <addressRange>0x00400000 - 0x007FFFFF</addressRange>
-                <addressSpan>4194304</addressSpan>
-                <attributes>flash, memory, non-volatile</attributes>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>ram_0</slaveDescriptor>
-                <addressRange>0x01000000 - 0x01001FFF</addressRange>
-                <addressSpan>8192</addressSpan>
-                <attributes>memory</attributes>
         </MemoryMap>
         <LinkerSection>
                 <sectionName>.text</sectionName>

@@ -214,7 +214,7 @@ always @(posedge clk or negedge reset_n)
 		frchroma_r <= 1'b0;
 	else if(state_r == ST_BRANCH)
 		frchroma_r <= 1'b0;
-	else if(next_frpxy_w[4] & next_frpxx2_w[3])
+	else if(next_frpxy_w[4] & next_frpxx2_w[3] && ~fbuf_waitrequest)
 		frchroma_r <= 1'b1;
 
 always @(posedge clk or negedge reset_n)
@@ -369,7 +369,7 @@ always @(posedge clk or negedge reset_n)
 
 assign next_brpixel_w = {1'b0, brpixel_r} + 1'b1;
 assign braddr_w = {brchroma_r, brchroma_r ?
-					{1'b0, brpixel_r[7:3]} : brpixel_r[7:2]};
+					{1'b0, brpixel_r[7:5]} : brpixel_r[7:4], brpixel_r[3:2]};
 
 assign brcb_w = brpixel_r[1] ? buf_q_w[31:24] : buf_q_w[23:16];
 assign brcr_w = brpixel_r[1] ? buf_q_w[15: 8] : buf_q_w[ 7: 0];

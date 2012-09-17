@@ -19,12 +19,12 @@
  *
  */
 
-#define M2V_FLASH_BASE	0x500000
+#define M2V_FLASH_BASE	0x0f100000
 
 #ifdef M2V_FLASH_BASE
 const alt_u32 test_1mb_m2v = M2V_FLASH_BASE;
-const __attribute__((section(".testdata")))
-#include "pd1m_1mb.h"
+/*const __attribute__((section(".testdata")))
+#include "pd1m_1mb.h"*/
 #endif
 
 volatile int fr_flags;
@@ -37,7 +37,7 @@ static void delay(int ms)
 {
 #ifndef M2V_FLASH_BASE
 	int end = alt_nticks() + ms + 1;
-	while(alt_nticks() < end);*/
+	while(alt_nticks() < end);
 #endif
 }
 
@@ -127,11 +127,11 @@ int main()
 				while(IORD_M2VDD_HX8347A_CONTROL(M2VDD_HX8347A_0_BASE) & 1);
 
 #ifndef M2V_FLASH_BASE
-				if((alt_u16)stop == (IORD_ALTERA_AVALON_PIO_DATA(PIO_0_BASE) & 0x2ff))
+				if((alt_u16)stop == (IORD_ALTERA_AVALON_PIO_DATA(PIO_0_BASE) & 0xff))
 				{
-					while( (IORD_ALTERA_AVALON_PIO_DATA(PIO_0_BASE) & (1 << 10)));
+					while( (IORD_ALTERA_AVALON_PIO_DATA(PIO_0_BASE) & (1 << 11)));
 					delay(30);
-					while(!(IORD_ALTERA_AVALON_PIO_DATA(PIO_0_BASE) & (1 << 10)));
+					while(!(IORD_ALTERA_AVALON_PIO_DATA(PIO_0_BASE) & (1 << 11)));
 					delay(30);
 					stop = 0;
 				}
