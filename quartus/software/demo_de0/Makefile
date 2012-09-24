@@ -143,8 +143,8 @@ ELF := demo_de0.elf
 
 # Paths to C, C++, and assembly source files.
 C_SRCS += demo_de0.c
-C_SRCS += pff/pff.c
-C_SRCS += pff/diskio.c
+C_SRCS += ff9/ff.c
+C_SRCS += ff9/diskio.c
 CXX_SRCS :=
 ASM_SRCS :=
 

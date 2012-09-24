@@ -11,15 +11,15 @@
 /
 /-------------------------------------------------------------------------*/
 
-#define SSP_CH		1				/* SSP channel to use (0:SSP0, 1:SSP1) */
+#define SSP_CH	1	/* SSP channel to use (0:SSP0, 1:SSP1) */
 
-#define CCLK			100000000UL	/* cclk frequency [Hz] */
-#define PCLK_SSP		50000000UL		/* PCLK frequency for SSP [Hz] */
-#define SCLK_FAST		25000000UL		/* SCLK frequency under normal operation [Hz] */
-#define SCLK_SLOW		400000UL		/* SCLK frequency under initialization [Hz] */
+#define	CCLK		100000000UL	/* cclk frequency [Hz] */
+#define PCLK_SSP	50000000UL	/* PCLK frequency for SSP [Hz] */
+#define SCLK_FAST	25000000UL	/* SCLK frequency under normal operation [Hz] */
+#define	SCLK_SLOW	400000UL	/* SCLK frequency under initialization [Hz] */
 
-#define INS			1				/* Socket status (true:Inserted, false:Empty) */
-#define WP				1				/* Card write protection (true:yes, false:no) */
+#define	INS			1	/* Socket status (true:Inserted, false:Empty) */
+#define	WP			1  /* Card write protection (true:yes, false:no) */
 
 
 #define FCLK_FAST() ({})
@@ -42,17 +42,17 @@
 /* MMC/SD command */
 #define CMD0	(0)			/* GO_IDLE_STATE */
 #define CMD1	(1)			/* SEND_OP_COND (MMC) */
-#define ACMD41 (0x80+41)	/* SEND_OP_COND (SDC) */
+#define	ACMD41	(0x80+41)	/* SEND_OP_COND (SDC) */
 #define CMD8	(8)			/* SEND_IF_COND */
 #define CMD9	(9)			/* SEND_CSD */
 #define CMD10	(10)		/* SEND_CID */
 #define CMD12	(12)		/* STOP_TRANSMISSION */
-#define ACMD13 (0x80+13)	/* SD_STATUS (SDC) */
+#define ACMD13	(0x80+13)	/* SD_STATUS (SDC) */
 #define CMD16	(16)		/* SET_BLOCKLEN */
 #define CMD17	(17)		/* READ_SINGLE_BLOCK */
 #define CMD18	(18)		/* READ_MULTIPLE_BLOCK */
 #define CMD23	(23)		/* SET_BLOCK_COUNT (MMC) */
-#define ACMD23 (0x80+23)	/* SET_WR_BLK_ERASE_COUNT (SDC) */
+#define	ACMD23	(0x80+23)	/* SET_WR_BLK_ERASE_COUNT (SDC) */
 #define CMD24	(24)		/* WRITE_BLOCK */
 #define CMD25	(25)		/* WRITE_MULTIPLE_BLOCK */
 #define CMD32	(32)		/* ERASE_ER_BLK_START */
@@ -335,11 +335,15 @@ BYTE send_cmd (		/* Return value: R1 resp (bit7==1:Failed to send) */
 /* Initialize disk drive                                                 */
 /*-----------------------------------------------------------------------*/
 
-DSTATUS disk_initialize()
+DSTATUS disk_initialize (
+	BYTE drv		/* Physical drive number (0) */
+)
 {
 	BYTE n, cmd, ty, ocr[4];
 
-	if (Stat & STA_NODISK) return Stat;	/* Is card existing in the socket? */
+
+	if (drv) return STA_NOINIT;			/* Supports only drive 0 */
+	if (Stat & STA_NODISK) return Stat;	/* Is card existing in the soket? */
 
 	power_on();							/* Initialize SPI */
 	FCLK_SLOW();
@@ -383,7 +387,7 @@ DSTATUS disk_initialize()
 }
 
 
-#if 0
+
 /*-----------------------------------------------------------------------*/
 /* Get disk status                                                       */
 /*-----------------------------------------------------------------------*/
@@ -396,39 +400,42 @@ DSTATUS disk_status (
 
 	return Stat;	/* Return disk status */
 }
-#endif
+
 
 
 /*-----------------------------------------------------------------------*/
 /* Read sector(s)                                                        */
 /*-----------------------------------------------------------------------*/
 
-DRESULT disk_readp (
-	BYTE* Buffer,        /* Pointer to the read buffer */
-	DWORD SectorNumber,  /* Sector number */
-	WORD Offset,         /* Byte offset in the sector to start to read */
-	WORD Count           /* Number of bytes to read */
+DRESULT disk_read (
+	BYTE drv,		/* Physical drive number (0) */
+	BYTE *buff,		/* Pointer to the data buffer to store read data */
+	DWORD sector,	/* Start sector number (LBA) */
+	BYTE count		/* Number of sectors to read (1..128) */
 )
 {
+	if (drv || !count) return RES_PARERR;		/* Check parameter */
 	if (Stat & STA_NOINIT) return RES_NOTRDY;	/* Check if drive is ready */
 
-	if (!(CardType & CT_BLOCK))
-	{
-		SectorNumber *= 512;		/* LBA ot BA conversion (byte addressing cards) */
-		SectorNumber += Offset;
-	}
-	else if(Offset != 0)
-	{
-		return RES_PARERR;	/* Cannot access with offset */
-	}
+	if (!(CardType & CT_BLOCK)) sector *= 512;	/* LBA ot BA conversion (byte addressing cards) */
 
-	if ((send_cmd(CMD17, SectorNumber) == 0)	&& rcvr_datablock(Buffer, Count))
-	{
-		Count = 0;
+	if (count == 1) {	/* Single sector read */
+		if ((send_cmd(CMD17, sector) == 0)	/* READ_SINGLE_BLOCK */
+			&& rcvr_datablock(buff, 512))
+			count = 0;
+	}
+	else {				/* Multiple sector read */
+		if (send_cmd(CMD18, sector) == 0) {	/* READ_MULTIPLE_BLOCK */
+			do {
+				if (!rcvr_datablock(buff, 512)) break;
+				buff += 512;
+			} while (--count);
+			send_cmd(CMD12, 0);				/* STOP_TRANSMISSION */
+		}
 	}
 	deselect();
 
-	return Count ? RES_ERROR : RES_OK;	/* Return result */
+	return count ? RES_ERROR : RES_OK;	/* Return result */
 }
 
 
@@ -618,6 +625,10 @@ alt_u32 disk_timerproc(void* context)
 	if (n) Timer2 = --n;
 
 	s = Stat;
+	if (WP)		/* Write protected */
+		s |= STA_PROTECT;
+	else		/* Write enabled */
+		s &= ~STA_PROTECT;
 	if (INS)	/* Card is in socket */
 		s &= ~STA_NODISK;
 	else		/* Socket empty */

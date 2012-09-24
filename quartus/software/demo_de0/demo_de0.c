@@ -8,7 +8,7 @@
 #include "m2vdd_hx8347a.h"
 #include "m2vdec_regs.h"
 #include "m2vdd_hx8347a_regs.h"
-#include "pff/pff.h"
+#include "ff9/ff.h"
 #include "altera_avalon_pio_regs.h"
 
 /*
@@ -19,7 +19,8 @@
  *
  */
 
-#define M2V_FLASH_BASE	0x0f100000
+//#define M2V_FLASH_BASE	0x0f100000
+//#define SIM
 
 #ifdef M2V_FLASH_BASE
 const alt_u32 test_1mb_m2v = M2V_FLASH_BASE;
@@ -33,9 +34,11 @@ extern void disk_inittimer();	// in mmc.c
 static void m2vdec_irq_handler(void* context, alt_u32 id) __attribute__((section(".exceptions")));
 static alt_u32 frame_rate_handler(void* context) __attribute__((section(".exceptions")));
 
+//M2VDD_HX8347A_INSTANCE ( M2VDD_HX8347A_0, m2vdd_hx8347a_0);
+
 static void delay(int ms)
 {
-#ifndef M2V_FLASH_BASE
+#ifndef SIM
 	int end = alt_nticks() + ms + 1;
 	while(alt_nticks() < end);
 #endif
@@ -44,17 +47,21 @@ static void delay(int ms)
 int main()
 { 
 	FATFS fs;
+	FIL f;
 	FRESULT res;
 	alt_u32 buf[512/4];
 
 	IOWR_32DIRECT(HEXDISP_0_BASE, 0, 0x00E0);
+//	M2VDD_HX8347A_INIT ( M2VDD_HX8347A_0, m2vdd_hx8347a_0);
+	IOWR_32DIRECT(HEXDISP_0_BASE, 0, 0x10E0);
+
 #ifndef M2V_FLASH_BASE
 	disk_inittimer();
 
-	if((res = pf_mount(&fs)) != FR_OK) while(1);
+	if((res = f_mount(0, &fs)) != FR_OK) while(1);
 	IOWR_32DIRECT(HEXDISP_0_BASE, 0, 0x00E1);
 
-	if((res = pf_open("test.m2v")) != FR_OK) while(1);
+	if((res = f_open(&f, "test.m2v", FA_READ)) != FR_OK) while(1);
 	IOWR_32DIRECT(HEXDISP_0_BASE, 0, 0x00E2);
 #endif
 
@@ -66,7 +73,7 @@ int main()
 		IOWR_M2VDD_HX8347A_CONTROL(M2VDD_HX8347A_0_BASE, 0x22 |
 			M2VDD_HX8347A_CONTROL_WRITE_MSK |
 			M2VDD_HX8347A_CONTROL_RESET_MSK);
-#ifdef M2V_FLASH_BASE
+#ifdef SIM
 		for(pixels = 0; pixels < 50; pixels++)
 #else
 		for(pixels = 0; pixels < 320*240; pixels++)
@@ -103,14 +110,14 @@ int main()
 	alt_u32* p = (alt_u32*)test_1mb_m2v;
 #else
 	alt_u32* p = buf;
-	WORD left = 0;
+	UINT left = 0;
 #endif
 	while(1)
 	{
 #ifndef M2V_FLASH_BASE
 		if(left == 0)
 		{
-			if((res = pf_read(buf, 512, &left)) != 0)
+			if((res = f_read(&f, buf, 512, &left)) != 0)
 			{
 				IOWR_32DIRECT(HEXDISP_0_BASE, 0, 0xE100);
 				while(1);
@@ -126,7 +133,7 @@ int main()
 				IOWR_M2VDD_HX8347A_CONTROL(M2VDD_HX8347A_0_BASE, M2VDD_HX8347A_CONTROL_START_MSK);
 				while(IORD_M2VDD_HX8347A_CONTROL(M2VDD_HX8347A_0_BASE) & 1);
 
-#ifndef M2V_FLASH_BASE
+#ifndef SIM
 				if((alt_u16)stop == (IORD_ALTERA_AVALON_PIO_DATA(PIO_0_BASE) & 0xff))
 				{
 					while( (IORD_ALTERA_AVALON_PIO_DATA(PIO_0_BASE) & (1 << 11)));
@@ -164,8 +171,8 @@ static void m2vdec_irq_handler(void* context, alt_u32 id)
 {
 	if(IORD_M2VDEC_STATUS(M2VDEC_0_BASE) & M2VDEC_STATUS_IRQ_PIC_MSK)
 	{
-		//*((volatile int*)context) |= 1;
-		*((volatile int*)context) |= 3;
+		*((volatile int*)context) |= 1;
+		//*((volatile int*)context) |= 3;
 	}
 	else
 	{
@@ -182,7 +189,7 @@ static alt_u32 frame_rate_handler(void* context)
 {
 	*((volatile int*)context) |= 2;
 	//return 33;
-#ifdef M2V_FLASH_BASE
+#ifdef SIM
 	return 0;
 #else
 	return (IORD_ALTERA_AVALON_PIO_DATA(PIO_0_BASE) & (1 << 8)) ? 1000 : 33;

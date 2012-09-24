@@ -172,7 +172,6 @@ HDL_SIM_INSTALL_FILES += $(HDL_SIM_INSTALL_DIR)/$(MEM_0).dat
 SYM_FILES += $(HDL_SIM_DIR)/$(MEM_0).sym
 HDL_SIM_INSTALL_FILES += $(HDL_SIM_INSTALL_DIR)/$(MEM_0).sym
 $(MEM_0)_START := 0x00000000
-$(MEM_0)_RELOC_INPUT_FLAG := --relocate-input=$($(MEM_0)_START)
 $(MEM_0)_END := 0x00001fff
 $(MEM_0)_HIERARCHICAL_PATH := ram_0
 $(MEM_0)_WIDTH := 32
@@ -194,7 +193,6 @@ SYM_FILES += $(HDL_SIM_DIR)/$(MEM_1).sym
 HDL_SIM_INSTALL_FILES += $(HDL_SIM_INSTALL_DIR)/$(MEM_1).sym
 FLASH_FILES += $(MEM_1).flash
 $(MEM_1)_START := 0x0f000000
-$(MEM_1)_RELOC_INPUT_FLAG := --relocate-input=$($(MEM_1)_START)
 $(MEM_1)_END := 0x0f3fffff
 $(MEM_1)_HIERARCHICAL_PATH := rom_0
 $(MEM_1)_WIDTH := 16
@@ -202,16 +200,6 @@ $(MEM_1)_ENDIANNESS := --little-endian-mem
 $(MEM_1)_CREATE_LANES := 1
 $(MEM_1)_CFI_FLAGS := --base=$($(MEM_1)_START) --end=$($(MEM_1)_END) --reset=$(RESET_ADDRESS)
 $(MEM_1)_BOOT_LOADER_FLAG := --boot="$(BOOT_LOADER_CFI)"
-
-$(HDL_SIM_DIR)/$(MEM_1).dat: $(MEM_1).flash
-	$(post-process-info)
-	$(MKDIR) -p $(@D)
-	$(FLASH2DAT) --infile=$< --outfile=$@ \
-		--base=$(mem_start_address) --end=$(mem_end_address) --width=$(mem_width) \
-		--create-lanes=$(mem_create_lanes) $(flash2dat_extra_args)
-
-
-FLASH_DAT_FILES += $(HDL_SIM_DIR)/$(MEM_1).dat
 
 .PHONY: rom_0
 rom_0: check_elf_exists $(HDL_SIM_DIR)/$(MEM_1).dat $(HDL_SIM_DIR)/$(MEM_1).sym $(MEM_1).flash

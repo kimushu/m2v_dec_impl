@@ -9,3 +9,7 @@ incremental_db
 *.pin
 *.pof
 *.sof
+*.bsf
+*.csv
+*.html
+sopc_builder_log.txt

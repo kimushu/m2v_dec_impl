@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>Sep 15, 2012 10:56:20 AM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1347674180345</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>2012/09/21 6:58:47</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1348178327133</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>/home/shuta/projects/m2v_dec_impl/quartus/software/demo_de0_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>../../demo_de0_sys.sopcinfo</SopcDesignFile>
@@ -62,7 +62,7 @@
                 <SettingName>hal.linker.allow_code_at_reset</SettingName>
                 <Identifier>ALT_ALLOW_CODE_AT_RESET</Identifier>
                 <Type>Boolean</Type>
-                <Value>0</Value>
+                <Value>1</Value>
                 <DefaultValue>0</DefaultValue>
                 <DestinationFile>none</DestinationFile>
                 <Description>Indicates if initialization code is allowed at the reset address. If true, defines the macro ALT_ALLOW_CODE_AT_RESET in linker.h.</Description>
@@ -74,7 +74,7 @@
                 <SettingName>hal.linker.enable_alt_load</SettingName>
                 <Identifier>NONE</Identifier>
                 <Type>Boolean</Type>
-                <Value>0</Value>
+                <Value>1</Value>
                 <DefaultValue>0</DefaultValue>
                 <DestinationFile>none</DestinationFile>
                 <Description>Enables the alt_load() facility. The alt_load() facility copies sections from the .text memory into RAM. If true, this setting sets up the VMA/LMA of sections in linker.x to allow them to be loaded into the .text memory.</Description>
@@ -98,7 +98,7 @@
                 <SettingName>hal.linker.enable_alt_load_copy_rwdata</SettingName>
                 <Identifier>NONE</Identifier>
                 <Type>Boolean</Type>
-                <Value>0</Value>
+                <Value>1</Value>
                 <DefaultValue>0</DefaultValue>
                 <DestinationFile>none</DestinationFile>
                 <Description>Causes the alt_load() facility to copy the .rwdata section. If true, this setting defines the macro ALT_LOAD_COPY_RWDATA in linker.h.</Description>
@@ -838,38 +838,6 @@
                 <Enabled>false</Enabled>
                 <Group>none</Group>
         </Setting>
-        <LinkerRegion>
-                <regionName>ram_0</regionName>
-                <memoryName>ram_0</memoryName>
-                <offset>0</offset>
-                <size>8192</size>
-                <baseAddress>0x0</baseAddress>
-                <addressRange>0x00000000 - 0x00001FFF</addressRange>
-        </LinkerRegion>
-        <LinkerRegion>
-                <regionName>reset</regionName>
-                <memoryName>rom_0</memoryName>
-                <offset>0</offset>
-                <size>32</size>
-                <baseAddress>0xf000000</baseAddress>
-                <addressRange>0x0F000000 - 0x0F00001F</addressRange>
-        </LinkerRegion>
-        <LinkerRegion>
-                <regionName>rom_0</regionName>
-                <memoryName>rom_0</memoryName>
-                <offset>32</offset>
-                <size>1048544</size>
-                <baseAddress>0xf000020</baseAddress>
-                <addressRange>0x0F000020 - 0x0F0FFFFF</addressRange>
-        </LinkerRegion>
-        <LinkerRegion>
-                <regionName>testdata</regionName>
-                <memoryName>rom_0</memoryName>
-                <offset>1048576</offset>
-                <size>3145728</size>
-                <baseAddress>0xf100000</baseAddress>
-                <addressRange>0x0F100000 - 0x0F3FFFFF</addressRange>
-        </LinkerRegion>
         <MemoryMap>
                 <slaveDescriptor>ram_0</slaveDescriptor>
                 <addressRange>0x00000000 - 0x00001FFF</addressRange>
@@ -959,9 +927,5 @@
         <LinkerSection>
                 <sectionName>.stack</sectionName>
                 <regionName>ram_0</regionName>
-        </LinkerSection>
-        <LinkerSection>
-                <sectionName>.testdata</sectionName>
-                <regionName>testdata</regionName>
         </LinkerSection>
 </sch:Settings>

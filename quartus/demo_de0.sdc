@@ -1,6 +1,6 @@
 ## Generated SDC file "demo_de0.sdc"
 
-## Copyright (C) 1991-2012 Altera Corporation
+## Copyright (C) 1991-2011 Altera Corporation
 ## Your use of Altera Corporation's design tools, logic functions 
 ## and other software and tools, and its AMPP partner logic 
 ## functions, and any output files from any of the foregoing 
@@ -17,9 +17,9 @@
 
 ## VENDOR  "Altera"
 ## PROGRAM "Quartus II"
-## VERSION "Version 12.0 Build 178 05/31/2012 SJ Web Edition"
+## VERSION "Version 11.1 Build 259 01/25/2012 Service Pack 2 SJ Web Edition"
 
-## DATE    "Sat Jun 23 18:23:55 2012"
+## DATE    "Mon Sep 17 10:27:21 2012"
 
 ##
 ## DEVICE  "EP3C16F484C6"
@@ -46,6 +46,9 @@ create_clock -name {clk50mhz_1} -period 20.000 -waveform { 0.000 10.000 } [get_p
 # Create Generated Clock
 #**************************************************************
 
+create_generated_clock -name {sysclk} -source [get_pins {u_pll|altpll_component|auto_generated|pll1|inclk[0]}] -multiply_by 2 -master_clock {clk50mhz_1} [get_pins { u_pll|altpll_component|auto_generated|pll1|clk[0] }] 
+create_generated_clock -name {sdrclk} -source [get_pins {u_pll|altpll_component|auto_generated|pll1|inclk[0]}] -multiply_by 2 -phase -60.000 -master_clock {clk50mhz_1} [get_pins {u_pll|altpll_component|auto_generated|pll1|clk[1]}] 
+create_generated_clock -name {lcdclk} -source [get_pins {u_pll|altpll_component|auto_generated|pll1|inclk[0]}] -divide_by 5 -master_clock {clk50mhz_1} [get_pins {u_pll|altpll_component|auto_generated|pll1|clk[2]}] 
 
 
 #**************************************************************
@@ -83,7 +86,6 @@ set_clock_groups -asynchronous -group [get_clocks {altera_reserved_tck}]
 # Set False Path
 #**************************************************************
 
-set_false_path -from [get_registers {*altera_avalon_st_clock_crosser:*|in_data_buffer*}] -to [get_registers {*altera_avalon_st_clock_crosser:*|out_data_buffer*}]
 set_false_path -to [get_keepers {*altera_std_synchronizer:*|din_s1}]
 set_false_path -from [get_keepers {*rdptr_g*}] -to [get_keepers {*ws_dgrp|dffpipe_uu8:dffpipe13|dffe14a*}]
 set_false_path -from [get_keepers {*delayed_wrptr_g*}] -to [get_keepers {*rs_dgwp|dffpipe_tu8:dffpipe10|dffe11a*}]

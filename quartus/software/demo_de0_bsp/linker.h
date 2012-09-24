@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2_qsys_0' in SOPC Builder design 'demo_de0_sys'
  * SOPC Builder design path: ../../demo_de0_sys.sopcinfo
  *
- * Generated: Sat Sep 15 10:56:20 JST 2012
+ * Generated: Thu Sep 20 07:20:46 JST 2012
  */
 
 /*
@@ -70,9 +70,7 @@
 #define RESET_REGION_BASE 0xf000000
 #define RESET_REGION_SPAN 32
 #define ROM_0_REGION_BASE 0xf000020
-#define ROM_0_REGION_SPAN 1048544
-#define TESTDATA_REGION_BASE 0xf100000
-#define TESTDATA_REGION_SPAN 3145728
+#define ROM_0_REGION_SPAN 4194272
 
 
 /*
@@ -85,5 +83,21 @@
 #define ALT_RODATA_DEVICE ROM_0
 #define ALT_RWDATA_DEVICE RAM_0
 #define ALT_TEXT_DEVICE ROM_0
+
+
+/*
+ * Initialization code at the reset address is allowed (e.g. no external bootloader).
+ *
+ */
+
+#define ALT_ALLOW_CODE_AT_RESET
+
+
+/*
+ * The alt_load() facility is called from crt0 to copy sections into RAM.
+ *
+ */
+
+#define ALT_LOAD_COPY_RWDATA
 
 #endif /* __LINKER_H_ */

@@ -599,8 +599,300 @@ set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
 
 set_instance_assignment -name AUTO_GLOBAL_CLOCK ON -to clk50mhz_*
+
 set_global_assignment -name QSYS_FILE demo_de0_sys.qsys
 set_global_assignment -name SDC_FILE demo_de0.sdc
 set_global_assignment -name VERILOG_FILE demo_de0.v
 set_global_assignment -name QIP_FILE demo_de0_pll.qip
+set_global_assignment -name ENABLE_SIGNALTAP ON
+set_global_assignment -name USE_SIGNALTAP_FILE m2visdq_debug.stp
+set_global_assignment -name SLD_NODE_CREATOR_ID 110 -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_ENTITY_NAME sld_signaltap -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_clk -to "demo_de0_pll:u_pll|c0" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_NODE_INFO=805334528" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_POWER_UP_TRIGGER=0" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_ATTRIBUTE_MEM_MODE=OFF" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_STATE_FLOW_USE_GENERATED=0" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_STATE_BITS=11" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_BUFFER_FULL_STOP=1" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_CURRENT_RESOURCE_WIDTH=1" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_STORAGE_QUALIFIER_GAP_RECORD=1" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_STORAGE_QUALIFIER_MODE=COMBINATIONAL" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_TRIGGER_LEVEL=1" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_TRIGGER_IN_ENABLED=0" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_ADVANCED_TRIGGER_ENTITY=basic,1," -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_TRIGGER_LEVEL_PIPELINE=1" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_ENABLE_ADVANCED_TRIGGER=0" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_STORAGE_QUALIFIER_ADVANCED_CONDITION_ENTITY=basic,1," -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_STORAGE_QUALIFIER_PIPELINE=1" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_STORAGE_QUALIFIER_ENABLE_ADVANCED_CONDITION=0" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_SEGMENT_SIZE=1024" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_SAMPLE_DEPTH=1024" -section_id auto_signaltap_0
+set_global_assignment -name SIGNALTAP_FILE m2visdq_debug.stp
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[0] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|block_end" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[1] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|block_start" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[2] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|clrcoef_r" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[3] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|coef_data[0]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[4] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|coef_data[10]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[5] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|coef_data[11]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[6] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|coef_data[1]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[7] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|coef_data[2]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[8] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|coef_data[3]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[9] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|coef_data[4]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[10] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|coef_data[5]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[11] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|coef_data[6]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[12] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|coef_data[7]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[13] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|coef_data[8]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[14] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|coef_data[9]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[15] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|coef_next" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[16] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|coef_sign" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[17] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|cust_qm_i_r" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[18] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|cust_qm_ni_r" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[19] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|cvalid_r" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[20] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|empty_r" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[21] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|end_blk_r" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[22] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|head_pair_r" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[23] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|lastcoef_r" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[24] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|level_data[0]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[25] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|level_data[10]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[26] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|level_data[1]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[27] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|level_data[2]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[28] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|level_data[3]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[29] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|level_data[4]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[30] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|level_data[5]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[31] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|level_data[6]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[32] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|level_data[7]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[33] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|level_data[8]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[34] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|level_data[9]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[35] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|level_sign" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[36] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|mismatch_r" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[37] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|mult_cache_r[0]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[38] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|mult_cache_r[10]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[39] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|mult_cache_r[11]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[40] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|mult_cache_r[1]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[41] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|mult_cache_r[2]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[42] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|mult_cache_r[3]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[43] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|mult_cache_r[4]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[44] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|mult_cache_r[5]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[45] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|mult_cache_r[6]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[46] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|mult_cache_r[7]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[47] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|mult_cache_r[8]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[48] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|mult_cache_r[9]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[49] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|ovf_r" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[50] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|qscale_r[0]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[51] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|qscale_r[1]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[52] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|qscale_r[2]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[53] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|qscale_r[3]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[54] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|qscale_r[4]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[55] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|qscale_r[5]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[56] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|qscale_r[6]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[57] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|ready_isdq" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[58] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|rl_valid" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[59] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|rlv_d_r[0]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[60] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|rlv_d_r[1]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[61] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|rlv_d_r[2]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[62] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|rpos_r[0]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[63] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|rpos_r[1]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[64] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|rpos_r[2]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[65] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|rpos_r[3]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[66] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|rpos_r[4]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[67] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|rpos_r[5]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[68] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|run[0]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[69] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|run[1]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[70] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|run[2]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[71] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|run[3]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[72] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|run[4]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[73] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|run[5]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[74] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|s1_enable" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[75] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|sign_d_r[0]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[76] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|sign_d_r[1]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[77] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|sign_d_r[2]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[78] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|start_blk_1d_r" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[79] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|wpage_r" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[80] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|wpos_r[0]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[81] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|wpos_r[1]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[82] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|wpos_r[2]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[83] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|wpos_r[3]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[84] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|wpos_r[4]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[85] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|wpos_r[5]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[0] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|block_end" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[1] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|block_start" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[2] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|clrcoef_r" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[3] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|coef_data[0]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[4] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|coef_data[10]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[5] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|coef_data[11]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[6] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|coef_data[1]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[7] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|coef_data[2]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[8] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|coef_data[3]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[9] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|coef_data[4]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[10] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|coef_data[5]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[11] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|coef_data[6]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[12] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|coef_data[7]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[13] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|coef_data[8]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[14] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|coef_data[9]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[15] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|coef_next" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[16] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|coef_sign" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[17] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|cust_qm_i_r" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[18] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|cust_qm_ni_r" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[19] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|cvalid_r" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[20] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|empty_r" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[21] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|end_blk_r" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[22] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|head_pair_r" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[23] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|lastcoef_r" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[24] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|level_data[0]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[25] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|level_data[10]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[26] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|level_data[1]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[27] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|level_data[2]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[28] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|level_data[3]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[29] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|level_data[4]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[30] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|level_data[5]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[31] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|level_data[6]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[32] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|level_data[7]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[33] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|level_data[8]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[34] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|level_data[9]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[35] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|level_sign" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[36] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|mismatch_r" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[37] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|mult_cache_r[0]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[38] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|mult_cache_r[10]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[39] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|mult_cache_r[11]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[40] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|mult_cache_r[1]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[41] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|mult_cache_r[2]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[42] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|mult_cache_r[3]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[43] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|mult_cache_r[4]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[44] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|mult_cache_r[5]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[45] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|mult_cache_r[6]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[46] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|mult_cache_r[7]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[47] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|mult_cache_r[8]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[48] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|mult_cache_r[9]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[49] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|ovf_r" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[50] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|qscale_r[0]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[51] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|qscale_r[1]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[52] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|qscale_r[2]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[53] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|qscale_r[3]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[54] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|qscale_r[4]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[55] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|qscale_r[5]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[56] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|qscale_r[6]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[57] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|ready_isdq" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[58] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|rl_valid" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[59] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|rlv_d_r[0]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[60] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|rlv_d_r[1]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[61] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|rlv_d_r[2]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[62] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|rpos_r[0]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[63] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|rpos_r[1]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[64] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|rpos_r[2]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[65] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|rpos_r[3]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[66] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|rpos_r[4]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[67] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|rpos_r[5]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[68] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|run[0]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[69] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|run[1]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[70] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|run[2]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[71] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|run[3]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[72] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|run[4]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[73] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|run[5]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[74] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|s1_enable" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[75] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|sign_d_r[0]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[76] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|sign_d_r[1]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[77] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|sign_d_r[2]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[78] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|start_blk_1d_r" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[79] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|wpage_r" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[80] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|wpos_r[0]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[81] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|wpos_r[1]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[82] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|wpos_r[2]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[83] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|wpos_r[3]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[84] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|wpos_r[4]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_data_in[85] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|wpos_r[5]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[0] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|block_end" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[1] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|block_start" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[2] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|clrcoef_r" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[3] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|coef_data[0]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[4] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|coef_data[10]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[5] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|coef_data[11]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[6] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|coef_data[1]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[7] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|coef_data[2]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[8] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|coef_data[3]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[9] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|coef_data[4]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[10] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|coef_data[5]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[11] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|coef_data[6]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[12] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|coef_data[7]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[13] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|coef_data[8]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[14] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|coef_data[9]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[15] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|coef_next" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[16] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|coef_sign" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[17] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|cust_qm_i_r" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[18] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|cust_qm_ni_r" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[19] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|cvalid_r" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[20] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|empty_r" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[21] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|end_blk_r" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[22] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|head_pair_r" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[23] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|lastcoef_r" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[24] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|level_data[0]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[25] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|level_data[10]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[26] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|level_data[1]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[27] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|level_data[2]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[28] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|level_data[3]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[29] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|level_data[4]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[30] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|level_data[5]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[31] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|level_data[6]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[32] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|level_data[7]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[33] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|level_data[8]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[34] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|level_data[9]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[35] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|level_sign" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[36] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|mismatch_r" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[37] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|mult_cache_r[0]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[38] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|mult_cache_r[10]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[39] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|mult_cache_r[11]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[40] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|mult_cache_r[1]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[41] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|mult_cache_r[2]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[42] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|mult_cache_r[3]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[43] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|mult_cache_r[4]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[44] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|mult_cache_r[5]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[45] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|mult_cache_r[6]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[46] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|mult_cache_r[7]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[47] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|mult_cache_r[8]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[48] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|mult_cache_r[9]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[49] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|ovf_r" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[50] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|qscale_r[0]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[51] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|qscale_r[1]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[52] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|qscale_r[2]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[53] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|qscale_r[3]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[54] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|qscale_r[4]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[55] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|qscale_r[5]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[56] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|qscale_r[6]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[57] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|ready_isdq" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[58] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|rl_valid" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[59] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|rlv_d_r[0]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[60] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|rlv_d_r[1]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[61] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|rlv_d_r[2]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[62] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|rpos_r[0]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[63] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|rpos_r[1]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[64] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|rpos_r[2]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[65] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|rpos_r[3]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[66] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|rpos_r[4]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[67] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|rpos_r[5]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[68] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|run[0]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[69] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|run[1]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[70] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|run[2]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[71] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|run[3]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[72] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|run[4]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[73] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|run[5]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[74] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|s1_enable" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[75] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|sign_d_r[0]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[76] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|sign_d_r[1]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[77] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|sign_d_r[2]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[78] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|start_blk_1d_r" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[79] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|wpage_r" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[80] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|wpos_r[0]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[81] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|wpos_r[1]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[82] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|wpos_r[2]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[83] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|wpos_r[3]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[84] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|wpos_r[4]" -section_id auto_signaltap_0
+set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_storage_qualifier_in[85] -to "demo_de0_sys:u_sys|m2vdec:m2vdec_0|m2visdq:u_m2visdq|wpos_r[5]" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_DATA_BITS=86" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_TRIGGER_BITS=86" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_STORAGE_QUALIFIER_BITS=86" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_INVERSION_MASK=0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_INVERSION_MASK_LENGTH=541" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_STORAGE_QUALIFIER_INVERSION_MASK_LENGTH=259" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_NODE_CRC_LOWORD=48381" -section_id auto_signaltap_0
+set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_NODE_CRC_HIWORD=39984" -section_id auto_signaltap_0
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
