@@ -25,12 +25,13 @@ inline std::istream& skipline(std::istream& is)
 	return is;
 }
 
-inline bool open_refdata(std::ifstream& is, const char* ref_dir, const char* file_name)
+inline bool open_refdata(std::ifstream& is, const char* ref_dir, const char* file_name,
+                         std::ios_base::openmode mode = std::ios_base::in)
 {
 	using namespace std;
 	string path(string(ref_dir) + "/" + file_name);
 	is.close();
-	is.open(path.c_str());
+	is.open(path.c_str(), mode);
 	if(!is)
 	{
 		cout << "# Error: Cannot open `" << path << "' for reading!" << endl;

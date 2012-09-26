@@ -1,7 +1,8 @@
-/work
+work
 /ref
 obj
 transcript
 vsim.wlf
 *.mif
 *.ver
+test_*.h
