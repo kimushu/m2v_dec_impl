@@ -185,6 +185,7 @@ m2vctrl_code u_code(
 	.q       (instruction_w)
 );
 
+/*
 `ifdef SIM
 wire [17:0] linenumber;
 m2vctrl_debug u_debug(
@@ -194,6 +195,7 @@ m2vctrl_debug u_debug(
 	.q       (linenumber)
 );
 `endif
+*/
 
 always @(posedge clk or negedge reset_n)
 	if(~reset_n)
