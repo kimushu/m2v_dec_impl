@@ -13,7 +13,7 @@ using namespace std;
 static ifstream isdq_out;
 bool verifying;
 
-DPI_LINK_DECL int start_verifying(const char* ref_dir)
+DPI_LINK_DECL int init_verify(const char* ref_dir)
 {
 	int wait;
 	svUnsigned<1> ready_isdq;
@@ -43,7 +43,6 @@ DPI_LINK_DECL int start_verifying(const char* ref_dir)
 static int verify_block(svUnsigned<1> s2_enable, svUnsigned<1> s2_coded)
 {
 	int i;
-	int wait;
 
 	if(!isdq_out) return 0;
 

@@ -26,26 +26,33 @@ DPI_LINK_DECL int init_feed(const char* ref_dir)
 
 	set_ready(sv_1, sv_1, sv_1);
 
+	for(int wait = 0; wait < 50; ++wait) posedge_clk();
+
+	svUnsigned<32> writedata;
+	writedata = 0;
+	control_write(sv_0, writedata.logic());
+
 	feed_finished = false;
 	return 0;
 }
 
 static int feed_stream(svUnsigned<1>& finished)
 {
-	uint32_t buf;
+	uint8_t buf;
 
-	svUnsigned<32> data;
+	svUnsigned<8> data;
 	svInt cycles;
 
 	finished = 0;
 
 	while(!input_bin.eof())
 	{
-		buf = 0xffffffff;
+		buf = ~0;
 		input_bin.read((char*)&buf, sizeof(buf));
 
 		data = buf;
 		stream_write(data.logic(), cycles.plogic());
+		posedge_clk();
 
 		// TODO: stop if too many cycle required
 	}

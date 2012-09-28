@@ -18,7 +18,7 @@ static uint32_t mix_addr[32];
 static uint16_t mix_data[32];
 bool verifying;
 
-DPI_LINK_DECL int start_verifying(const char* ref_dir)
+DPI_LINK_DECL int init_verify(const char* ref_dir)
 {
 	int wait;
 	svUnsigned<1> ready_mc;

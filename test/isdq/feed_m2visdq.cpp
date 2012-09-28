@@ -15,7 +15,7 @@ extern bool verifying;
 static ifstream side, rl;
 static int feed_stall;
 
-DPI_LINK_DECL int start_feeding(const char* ref_dir)
+DPI_LINK_DECL int init_feed(const char* ref_dir)
 {
 	svUnsigned<1> ready_isdq;
 
@@ -88,6 +88,17 @@ static int feed_block(svUnsigned<1>& finished)
 			if(name == "BLK")
 			{
 				break;
+			}
+			else if(name == "SEQ")
+			{
+				int cqmat;
+				setnewline(side, ss);	// vw
+				setnewline(side, ss);	// vh
+				setnewline(side, ss);	// frc
+				setnewline(side, ss) >> cqmat;	// iqm?
+				if(cqmat) for(int i = 0; i < 8; ++i) skipline(side);
+				setnewline(side, ss) >> cqmat;	// nqm?
+				if(cqmat) for(int i = 0; i < 8; ++i) skipline(side);
 			}
 			else if(name == "PIC")
 			{

@@ -183,12 +183,12 @@ begin
 end
 endtask
 
-import "DPI-C" context task start_feeding(string);
+import "DPI-C" context task init_feed(string);
 import "DPI-C" context task feed_block_s3(output finished);
 reg feed_finished_s3;
 integer feed_count_s3;
 initial begin
-	start_feeding(REF_DIR);
+	init_feed(REF_DIR);
 	feed_finished_s3 = 1'b0;
 	feed_count_s3 = 0;
 	while(~feed_finished_s3) begin
@@ -213,12 +213,12 @@ initial begin
 	$display("[%t] Feed(s4) finished", $time);
 end
 
-import "DPI-C" context task start_verifying(string);
+import "DPI-C" context task init_verify(string);
 import "DPI-C" context task verify_block(s4_enable, s4_coded);
 reg verify_finished;
 integer verify_count;
 initial begin
-	start_verifying(REF_DIR);
+	init_verify(REF_DIR);
 	verify_finished = 1'b0;
 	verify_count = 0;
 	while(~verify_finished) begin

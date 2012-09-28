@@ -92,7 +92,7 @@ end
 
 export "DPI-C" task control_write;
 task control_write;
-	input  [0:0] address;
+	input        address;
 	input [31:0] data;
 begin
 	control_address_r <= address;
@@ -107,7 +107,7 @@ endtask
 
 export "DPI-C" task control_read;
 task control_read;
-	input    [0:0] address;
+	input          address;
 	output  [31:0] data;
 	output integer cycles;
 begin
@@ -154,6 +154,51 @@ begin
 	ready_mc_r <= mc;
 end
 endtask
+
+export "DPI-C" task set_s1_sideinfo;
+task set_s1_sideinfo;
+	input [2:0] block;
+	input       coded;
+begin
+	s1_block_r <= block;
+	s1_coded_r <= coded;
+end
+endtask
+
+event ev;
+export "DPI-C" task wait_event;
+task wait_event;
+	output irq_change;
+	output pict_valid;
+	output mvec_h_valid;
+	output mvec_v_valid;
+	output s0_valid;
+	output rl_valid;
+	output qm_valid;
+	output pre_block_start;
+	output block_start;
+	output block_end;
+	output picture_complete;
+begin
+	@ev;
+	irq_change = 1'b0;
+	pict_valid = pict_valid_w;
+	mvec_h_valid = mvec_h_valid_w;
+	mvec_v_valid = mvec_v_valid_w;
+	s0_valid = s0_valid_w;
+	rl_valid = rl_valid_w;
+	qm_valid = qm_valid_w;
+	pre_block_start = pre_block_start_w;
+	block_start = block_start_w;
+	block_end = block_end_w;
+	picture_complete = picture_complete_w;
+end
+endtask
+
+always @(posedge clk)
+	if(pict_valid_w | mvec_h_valid_w | mvec_v_valid_w |
+		s0_valid_w | rl_valid_w | qm_valid_w)
+		->ev;
 
 m2vctrl u_dut(
 	.clk                   (clk),

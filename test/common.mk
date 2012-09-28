@@ -56,7 +56,7 @@ $(OBJ_DIR)/%.o: %.cpp
 .PRECIOUS: $(foreach v,$(MODULES_DPI_C),$(OBJ_DIR)/$(v).o)
 $(OBJ_DIR)/%.o: $(WORK_DIR)/%/_primary.dat
 	@echo "Generating DPI-export object for $*"
-	$(Q)(vsim $(VSFLAGS) -c -dpiexportobj $(basename $@) $* > $(basename $@).log) || \
+	$(Q)(vsim $(VSFLAGS) -c -l /dev/null -dpiexportobj $(basename $@) $* > $(basename $@).log) || \
 		(grep Error: --color $(basename $@).log; test)
 	$(Q)rm $(basename $@).so
 

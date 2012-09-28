@@ -23,7 +23,7 @@ static int coefs[64];
 
 #define ADDR_INVALID		0xffffffffu
 
-DPI_LINK_DECL int start_feeding(const char* ref_dir)
+DPI_LINK_DECL int init_feed(const char* ref_dir)
 {
 	svUnsigned<1> ready_mc;
 	svUnsigned<3> s3_block;
@@ -119,6 +119,17 @@ static int feed_block_s3(svUnsigned<1>& finished)
 			{
 				s3_block = num;
 				break;
+			}
+			else if(name == "SEQ")
+			{
+				int cqmat;
+				setnewline(side, ss);	// vw
+				setnewline(side, ss);	// vh
+				setnewline(side, ss);	// frc
+				setnewline(side, ss) >> cqmat;	// iqm?
+				if(cqmat) for(int i = 0; i < 8; ++i) skipline(side);
+				setnewline(side, ss) >> cqmat;	// nqm?
+				if(cqmat) for(int i = 0; i < 8; ++i) skipline(side);
 			}
 			else if(name == "PIC")
 			{

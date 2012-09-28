@@ -10,7 +10,7 @@ add wave -noupdate -radix hexadecimal /test_m2vctrl/u_dut/control_writedata
 add wave -noupdate /test_m2vctrl/u_dut/control_readdatavalid
 add wave -noupdate /test_m2vctrl/u_dut/irq
 add wave -noupdate /test_m2vctrl/u_dut/stream_valid
-add wave -noupdate /test_m2vctrl/u_dut/stream_data
+add wave -noupdate -radix hexadecimal /test_m2vctrl/u_dut/stream_data
 add wave -noupdate /test_m2vctrl/u_dut/stream_ready
 add wave -noupdate /test_m2vctrl/u_dut/s0_data
 add wave -noupdate /test_m2vctrl/u_dut/pict_valid
@@ -121,4 +121,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ps
 update
-WaveRestoreZoom {0 ps} {2505904 ps}
+WaveRestoreZoom {458712 ps} {772428 ps}

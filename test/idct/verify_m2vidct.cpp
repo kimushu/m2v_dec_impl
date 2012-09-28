@@ -13,7 +13,7 @@ using namespace std;
 static ifstream idct_out;
 bool verifying;
 
-DPI_LINK_DECL int start_verifying(const char* ref_dir)
+DPI_LINK_DECL int init_verify(const char* ref_dir)
 {
 	int wait;
 	svUnsigned<1> ready_idct;
