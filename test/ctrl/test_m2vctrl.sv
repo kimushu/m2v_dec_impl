@@ -90,6 +90,21 @@ initial begin
 	$display("[%t] Feed finished", $time);
 end
 
+import "DPI-C" context task init_verify(string);
+import "DPI-C" context task verify_video(output finished);
+reg verify_finished;
+integer verify_count;
+initial begin
+	init_verify(REF_DIR);
+	verify_finished = 1'b0;
+	verify_count = 0;
+	while(~verify_finished) begin
+		verify_video(verify_finished);
+		verify_count += 1;
+	end
+	$display("[%t] Verify finished", $time);
+end
+
 export "DPI-C" task control_write;
 task control_write;
 	input        address;
@@ -165,10 +180,15 @@ begin
 end
 endtask
 
+reg irq_1d_r;
+initial irq_1d_r = irq_w;
+always @(posedge clk) irq_1d_r <= irq_w;
+
 event ev;
 export "DPI-C" task wait_event;
 task wait_event;
 	output irq_change;
+	output irq_value;
 	output pict_valid;
 	output mvec_h_valid;
 	output mvec_v_valid;
@@ -181,22 +201,37 @@ task wait_event;
 	output picture_complete;
 begin
 	@ev;
-	irq_change = 1'b0;
+	$write("# Info: [event]");
+	irq_change = (irq_1d_r ^ irq_w);
+	irq_value = irq_w;
+	if(irq_change) $write(" irq");
 	pict_valid = pict_valid_w;
+	if(pict_valid) $write(" pict_valid");
 	mvec_h_valid = mvec_h_valid_w;
+	if(mvec_h_valid) $write(" mvec_h_valid");
 	mvec_v_valid = mvec_v_valid_w;
+	if(mvec_v_valid) $write(" mvec_v_valid");
 	s0_valid = s0_valid_w;
+	if(s0_valid) $write(" s0_valid");
 	rl_valid = rl_valid_w;
+	if(rl_valid) $write(" rl_valid");
 	qm_valid = qm_valid_w;
+	if(qm_valid) $write(" qm_valid");
 	pre_block_start = pre_block_start_w;
+	if(pre_block_start) $write(" pre_block_start");
 	block_start = block_start_w;
+	if(block_start) $write(" block_start");
 	block_end = block_end_w;
+	if(block_end) $write(" block_end");
 	picture_complete = picture_complete_w;
+	if(picture_complete) $write(" picture_complete");
+	$display("");
 end
 endtask
 
 always @(posedge clk)
-	if(pict_valid_w | mvec_h_valid_w | mvec_v_valid_w |
+	if((irq_1d_r ^ irq_w) | pict_valid_w |
+		mvec_h_valid_w | mvec_v_valid_w |
 		s0_valid_w | rl_valid_w | qm_valid_w)
 		->ev;
 

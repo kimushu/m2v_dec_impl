@@ -12,20 +12,21 @@ WORK_DIR   = ./work
 OBJ_DIR    = ./obj
 DUMP_DIR   = ./dump
 REF_DIR    = $(TEST_ROOT)/ref
-SIM_TOOL   = modelsim
+INC_DIR    = $(RTL_DIR)/inc
+# SIM_TOOL   = modelsim
 
 vpath %.v $(RTL_DIR)
 
 # Environments
 include $(TEST_ROOT)/../altera.mk
-#include $(TEST_ROOT)/$(SIM_TOOL).mk
+# include $(TEST_ROOT)/$(SIM_TOOL).mk
 Q ?= @
 VLFLAGS += -lint -quiet +incdir+$(RTL_DIR) +define+SIM=1
 VSFLAGS = -lib $(WORK_DIR) $(addprefix -L ,$(VS_LIBS)) \
 			-GREF_DIR=\"$(REF_DIR)\" -GDUMP_DIR=\"$(DUMP_DIR)\" \
 			-sv_root $(OBJ_DIR)
 CXXFLAGS += -m32 -pthread -O2 -Wall -fPIC -g \
-			-I$(TEST_ROOT) -I$(dir $(shell which vlog))../include
+			$(addprefix -I,$(TEST_ROOT)/inc $(dir $(shell which vlog))../include $(INC_DIR))
 
 include $(TEST_ROOT)/modules.mk
 
