@@ -40,6 +40,11 @@ static int verify_video(svUnsigned<1>& finished)
 	svUnsigned<1> block_start;
 	svUnsigned<1> block_end;
 	svUnsigned<1> picture_complete;
+
+	svUnsigned<1> address;
+	svUnsigned<32> data;
+	svInt cycles;
+
 #define wait_events()	wait_event( \
 	irq_change.plogic(), irq_value.plogic(), pict_valid.plogic(), \
 	mvec_h_valid.plogic(), mvec_v_valid.plogic(), \
@@ -61,17 +66,23 @@ static int verify_video(svUnsigned<1>& finished)
 		if(name == "SEQ")
 		{
 			int vw, vh, frc, iqm, nqm;
-			setnewline(ref_side, ss) >> vw;
-			setnewline(ref_side, ss) >> vh;
-			setnewline(ref_side, ss) >> frc;
-			setnewline(ref_side, ss) >> iqm;
+			int temp;
+			setnewline(ref_side, ss) >> name >> vw;
+			if(name != "vw") goto syntax_error;
+			setnewline(ref_side, ss) >> name >> vh;
+			if(name != "vh") goto syntax_error;
+			setnewline(ref_side, ss) >> name >> frc;
+			if(name != "frc") goto syntax_error;
+			setnewline(ref_side, ss) >> name >> iqm;
+			if(name != "iqm?") goto syntax_error;
 			if(iqm)
 			{
 				// not implemented
 				cout << "# Error: [verify] This test is not support custom quant matrix" << endl;
 				return 1;
 			}
-			setnewline(ref_side, ss) >> nqm;
+			setnewline(ref_side, ss) >> name >> nqm;
+			if(name != "nqm?") goto syntax_error;
 			if(nqm)
 			{
 				// not implemented
@@ -96,17 +107,60 @@ static int verify_video(svUnsigned<1>& finished)
 			wait_events();
 			if(!irq_change.val() || !irq_value.val())
 			{
-				cout << "# Error: [verify] irq expected!" << endl;
+				cout << "# Error: [verify] irq assertion expected!" << endl;
 				return 1;
 			}
 
 			for(int wait = 20; wait > 0; --wait) posedge_clk();
-			control_read();
-			control_write(M2VDEC_STATUS_REG, M1VDEC_STATUS_IRQ_SEQ_MSK);
+
+			address = M2VDEC_STATUS_REG;
+			data = M2VDEC_STATUS_IRQ_SEQ_MSK;
+			control_write(address.logic(), data.logic());
+
+			wait_events();
+			if(!irq_change.val() || irq_value.val())
+			{
+				cout << "# Error: [verify] irq negation expected!" << endl;
+				return 1;
+			}
+
+			address = M2VDEC_VIDEO_REG;
+			control_read(address.logic(), data.plogic(), cycles.plogic());
+
+			if(data.has_zx())
+			{
+				cout << "# Error: [verify] M2VDEC_VIDEO_REG value is invalid! (" << data << ")" << endl;
+				return 1;
+			}
+
+			temp = (data.val() & M2VDEC_VIDEO_FRATE_MSK) >> M2VDEC_VIDEO_FRATE_OFST;
+			if(temp != frc)
+			{
+				cout << "# Error: [verify] Frame rate code mismatch (Read: " << temp << ", Expected: " << frc << ")" << endl;
+				return 1;
+			}
+
+			temp = (data.val() & M2VDEC_VIDEO_WIDTH_MSK) >> M2VDEC_VIDEO_WIDTH_OFST;
+			if(temp != vw)
+			{
+				cout << "# Error: [verify] Video width mismatch (Read: " << temp << ", Expected: " << vw << ")" << endl;
+				return 1;
+			}
+
+			temp = (data.val() & M2VDEC_VIDEO_HEIGHT_MSK) >> M2VDEC_VIDEO_HEIGHT_OFST;
+			if(temp != vh)
+			{
+				cout << "# Error: [verify] Video height mismatch (Read: " << temp << ", Expected: " << vh << ")" << endl;
+				return 1;
+			}
 		}
 	}
 
 	return 0;
+
+syntax_error:
+	cout << "# Error: Invalid reference data syntax" << endl;
+	return 1;
 }
 
 DPI_LINK_DECL int verify_video(svLogic* finished)

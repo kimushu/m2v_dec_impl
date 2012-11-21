@@ -14,7 +14,7 @@ parameter
 	MBX_WIDTH = 6,
 	MBY_WIDTH = 5;
 
-`include "../common.vh"
+`include "tb_common.vh"
 
 wire        ready_mc_w;
 reg         block_start_r;

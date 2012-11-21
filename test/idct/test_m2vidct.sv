@@ -7,7 +7,7 @@
 
 module test_m2vidct;
 
-`include "../common.vh"
+`include "tb_common.vh"
 
 wire        ready_idct_w;
 reg         block_start_r;

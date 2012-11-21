@@ -8,6 +8,7 @@
 #include <string>
 #include <fstream>
 #include <stdlib.h>
+#include <m2vdec_regs.h>
 using namespace std;
 
 static ifstream input_bin;
@@ -28,9 +29,12 @@ DPI_LINK_DECL int init_feed(const char* ref_dir)
 
 	for(int wait = 0; wait < 50; ++wait) posedge_clk();
 
-	svUnsigned<32> writedata;
-	writedata = 0;
-	control_write(sv_0, writedata.logic());
+	svUnsigned<1> address;
+	svUnsigned<32> data;
+	address = M2VDEC_STATUS_REG;
+	data = 0;
+
+	control_write(address.logic(), data.logic());
 
 	feed_finished = false;
 	return 0;

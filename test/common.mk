@@ -21,7 +21,7 @@ vpath %.v $(RTL_DIR)
 include $(TEST_ROOT)/../altera.mk
 # include $(TEST_ROOT)/$(SIM_TOOL).mk
 Q ?= @
-VLFLAGS += -lint -quiet +incdir+$(RTL_DIR) +define+SIM=1
+VLFLAGS += -lint -quiet $(addprefix +incdir+,$(RTL_DIR) $(TEST_ROOT)/inc) +define+SIM=1
 VSFLAGS = -lib $(WORK_DIR) $(addprefix -L ,$(VS_LIBS)) \
 			-GREF_DIR=\"$(REF_DIR)\" -GDUMP_DIR=\"$(DUMP_DIR)\" \
 			-sv_root $(OBJ_DIR)

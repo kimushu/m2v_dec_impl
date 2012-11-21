@@ -15,7 +15,7 @@ parameter
 	MBX_WIDTH = 6,
 	MBY_WIDTH = 5;
 
-`include "../common.vh"
+`include "tb_common.vh"
 
 reg         lcd_clk_r;
 wire        lcd_reset_n_w;

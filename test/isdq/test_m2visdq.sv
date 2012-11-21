@@ -7,7 +7,7 @@
 
 module test_m2visdq;
 
-`include "../common.vh"
+`include "tb_common.vh"
 
 wire        ready_isdq_w;
 reg         block_start_r;

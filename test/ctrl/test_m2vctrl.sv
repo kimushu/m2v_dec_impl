@@ -14,7 +14,7 @@ parameter
 	MBX_WIDTH = 6,
 	MBY_WIDTH = 5;
 
-`include "../common.vh"
+`include "tb_common.vh"
 
 reg   [0:0] control_address_r;
 reg         control_read_r;
