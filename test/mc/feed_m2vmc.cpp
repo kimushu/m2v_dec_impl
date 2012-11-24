@@ -8,11 +8,12 @@
 #include <string>
 #include <fstream>
 #include <stdlib.h>
-#include "params_m2vmc.h"
+#include <params_m2vdec.h>
 using namespace std;
 
 extern bool verifying;
 
+int video_wd, video_ht;
 static ifstream side, idct_out, mc_fetch;
 static bool feed_finished_s3;
 static int feed_stall_s3;
@@ -123,8 +124,10 @@ static int feed_block_s3(svUnsigned<1>& finished)
 			else if(name == "SEQ")
 			{
 				int cqmat;
-				setnewline(side, ss);	// vw
-				setnewline(side, ss);	// vh
+				setnewline(side, ss) >> name >> video_wd;
+				if(name != "vw") goto syntax_error;
+				setnewline(side, ss) >> name >> video_ht;
+				if(name != "vh") goto syntax_error;
 				setnewline(side, ss);	// frc
 				setnewline(side, ss) >> cqmat;	// iqm?
 				if(cqmat) for(int i = 0; i < 8; ++i) skipline(side);

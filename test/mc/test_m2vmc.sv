@@ -14,6 +14,9 @@ parameter
 	MBX_WIDTH = 6,
 	MBY_WIDTH = 5;
 
+parameter
+	USE_IMAGE_VIEWER = 0;
+
 `include "tb_common.vh"
 
 wire        ready_mc_w;
@@ -213,12 +216,12 @@ initial begin
 	$display("[%t] Feed(s4) finished", $time);
 end
 
-import "DPI-C" context task init_verify(string);
-import "DPI-C" context task verify_block(s4_enable, s4_coded);
+import "DPI-C" context task init_verify(input string ref_dir, input int use_image_viewer);
+import "DPI-C" context task verify_block(input logic s4_enable, input logic s4_coded);
 reg verify_finished;
 integer verify_count;
 initial begin
-	init_verify(REF_DIR);
+	init_verify(REF_DIR, USE_IMAGE_VIEWER);
 	verify_finished = 1'b0;
 	verify_count = 0;
 	while(~verify_finished) begin
