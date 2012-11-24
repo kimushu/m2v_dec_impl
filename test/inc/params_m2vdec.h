@@ -11,7 +11,7 @@
 #define IS_LUMA(a)		(!(((a)>>(MBY_WIDTH+MBX_WIDTH+8))&1))
 #define IS_Y(a)			IS_LUMA(a)
 #define IS_CHROMA(a)	(!IS_LUMA(a))
-#define IS_Cb(a)		(IS_CHROMA(a)&&(~(((a)>>1)&1)))
+#define IS_Cb(a)		(IS_CHROMA(a)&&(!(((a)>>1)&1)))
 #define IS_Cr(a)		(IS_CHROMA(a)&&(((a)>>1)&1))
 
 #define GET_FRAME(a)	(((a)>>(MBY_WIDTH+MBX_WIDTH+9))&1)
